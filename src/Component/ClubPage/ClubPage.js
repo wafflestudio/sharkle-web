@@ -1,4 +1,4 @@
-
+import './ClubPage.scss';
 
 const ClubPage = () => {
 
