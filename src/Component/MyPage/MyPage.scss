@@ -1,0 +1,288 @@
+.container{
+  /*
+  background-color: #F7F7F7;
+  width: 1024px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;*/
+  position: absolute;
+  margin: 0px;
+  width: 988px;
+  height: 880px;
+  background-color: #f8f9fa;
+
+
+}
+
+
+
+
+.clubs {
+  background-color: #F7F7F7;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+
+  .clubs-title {
+    background-color: #F7F7F7;
+    height: 100px;
+  }
+
+    .clubs-title-inner{
+        position: absolute;
+        width: 268px;
+        height: 51px;
+        top:45px;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 18px;
+        /* or 75% */
+
+        display: flex;
+        align-items: center;
+      }
+
+
+  .clubs-content{
+    background-color: #F7F7F7;
+    height: 300px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+    .clubs-content-add{
+      width: 20%;
+    }
+
+    .clubs-content-lists{
+      width: 80%;
+      display: flex;
+      justify-content: space-between;
+    }
+
+
+}
+
+.info{
+  background-color: #F7F7F7;
+  height: 500px;
+
+    .info-title {
+      background-color: #F7F7F7;
+      height: 50px;
+    }
+      .info-title-inner{
+        position: absolute;
+        width: 268px;
+        height: 51px;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 18px;
+        /* or 75% */
+
+        display: flex;
+        align-items: center;
+      }
+
+
+
+
+      .info-content {
+
+        border-radius: 20px;
+        background-color: #C4C4C4;
+        width: 100%;
+        height: 400px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+        .info-content-profile{
+          width: 493px;
+          height: 90%;
+          background-color: #C4C4C4;
+          justify-content: space-around;
+        }
+        .info-content-posts{
+        width: 493px;
+        height: 90%;
+        background-color: #C4C4C4;
+        justify-content: space-around;
+        }
+
+          .info-content-posts-title{
+            margin-left:65px;
+            width: 120px;
+            height: 40px;
+
+
+
+            font-family: Noto Sans KR;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 20px;
+            line-height: 20px;
+            /* or 100% */
+
+            display: flex;
+            align-items: center;
+
+            color: #000000;
+          }
+          .info-content-posts-list{
+            margin-top:10px;
+          }
+
+
+        .info-content-vline{
+          border: 0.1px solid #F7F7F7;
+          width: 0.1px;
+          height: 100%;
+        }
+
+
+}
+
+
+
+
+.club-button{
+  width: 173px;
+  height: 173px;
+
+  background: #E5E5E5;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-width: 0.1px;
+}
+
+.info-form{
+  height: 43px;
+  width: 328px;
+  margin-left: 49px;
+  margin-top: 39px;
+  font-size: 1rem;
+  border-radius: 1rem;
+  border: none;
+  outline: none;
+  word-break: keep-all;
+  background: white;
+  color: black;
+  transition: all 0.125s ease-in 0s;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+
+.post-preview{
+  position: relative;
+  width: 370px;
+  height: 54px;
+  left:55px;
+  margin-bottom: 15px;
+
+  .post-preview-panel {
+    width: 370px;
+    height: 54px;
+
+    background: #FFFFFF;
+    border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 12px;
+    display: flex;
+  }
+
+    .post-preview-num {
+      position: absolute;
+      width: 16px;
+      height: 18px;
+      left: 15px;
+      top: 18px;
+
+      font-family: Noto Sans KR;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 18px;
+      /* identical to box height, or 100% */
+
+      display: flex;
+      align-items: center;
+
+      color: #C4C4C4;
+    }
+
+    .post-preview-title {
+      position: absolute;
+      width: 204px;
+      height: 18px;
+      left: 42px;
+      top: 19px;
+
+      font-family: Noto Sans KR;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 18px;
+      line-height: 18px;
+      /* identical to box height, or 100% */
+
+      display: flex;
+      align-items: center;
+
+      color: #000000;
+    }
+
+    .post-preview-date {
+      position: absolute;
+      width: 80px;
+      height: 18px;
+      left: 290px;
+      top: 4px;
+
+      font-family: Noto Sans KR;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 18px;
+      /* identical to box height, or 150% */
+
+      display: flex;
+      align-items: center;
+
+      color: #C4C4C4;
+    }
+
+    .post-preview-answer {
+      position: absolute;
+      width: 50px;
+      height: 18px;
+      left: 320px;
+      top: 30px;
+
+      font-family: Noto Sans KR;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 12px;
+      line-height: 18px;
+      /* identical to box height, or 150% */
+
+      display: flex;
+      align-items: center;
+
+      color: #1571FF;
+    }
+
+}
+
+
+
+
