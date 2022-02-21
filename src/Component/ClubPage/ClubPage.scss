@@ -1,5 +1,7 @@
 .container{
   position: relative;
+  display: flex;
+  justify-content: center;
   margin: 0px;
   width: 100vw;
   height: 100vh;
@@ -8,30 +10,69 @@
 
   .info{
     position: absolute;
+    display: inline-block;
     width: 980px;
     height: 240px;
     background: pink;
 
     .info-main{
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      width: 200px;
+      height: 100%;
+      background: #61dafb;
 
       .info-main-thumb{
-
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        width: 184px;
+        height: 184px;
+        background: antiquewhite;
       }
 
       .info-main-name{
-
+        position: absolute;
+        bottom: 0px;
+        height: 60px;
+        width: 184px;
+        background: orange;
       }
 
     }
 
     .info-sub{
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-left: 250px;
+      width: 500px;
+      height: 100%;
+      background: red;
 
       .info-sub-recruit{
-
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 378px;
+        height: 46px;
+        background: #C4C4C4;
+        border-radius: 18px;
+        margin-bottom: 50px;
       }
 
       .info-sub-tags{
-
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 378px;
+        height: 46px;
+        background: #C4C4C4;
+        border-radius: 18px;
       }
     }
 
