@@ -44,7 +44,12 @@ const ClubPage = () => {
             </div>
             <div className="content">
                 <div className="content-menu">
-
+                    <div className="content-menu-recruit">
+                        <span>Recruiting</span>
+                    </div>
+                    <div className="content-menu-qna">
+                        <span>Q&A</span>
+                    </div>
                 </div>
                 <div className="content-container">
 

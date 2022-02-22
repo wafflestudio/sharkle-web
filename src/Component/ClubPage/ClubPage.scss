@@ -3,7 +3,7 @@
   display: flex;
   justify-content: center;
   margin: 0px;
-  padding-top: 100px;
+  padding-top: 50px;
   width: 100vw;
   height: 100vh;
   background: #F7F7F7;
@@ -12,7 +12,7 @@
   .info{
     position: absolute;
     display: inline-block;
-    width: 750px;
+    width: 1000px;
     height: 240px;
 
     .info-main{
@@ -88,7 +88,7 @@
       flex-direction: column;
       justify-content: center;
       margin-left: 270px;
-      width: 300px;
+      width: 600px;
       height: 170px;
 
       .info-sub-recruit{
@@ -137,15 +137,17 @@
       position: absolute;
       display: flex;
       flex-direction: column;
-      margin-left: 620px;
-      width: 100px;
+      margin-left: 720px;
+      width: 200px;
       height: 170px;
+      right: 0px;
 
       .info-util-alert{
         position: absolute;
         display: flex;
         flex-direction: row;
         align-items: center;
+        right: 0px;
         bottom: 20px;
 
         .info-util-alert-btn{
@@ -167,6 +169,55 @@
         }
       }
 
+    }
+  }
+
+  /**/
+
+  .content{
+    position: absolute;
+    display: inline-block;
+    top: 300px;
+    width: 1000px;
+    height: 450px;
+    margin-bottom: 50px;
+    background-color: #61dafb;
+
+    .content-menu{
+      position: absolute;
+      left: 0px;
+      width: 200px;
+      height: 100%;
+      background: #C4C4C4;
+      border-radius: 16px;
+
+      span{
+        font-family: Noto Sans KR;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 18px;
+      }
+
+      .content-menu-recruit{
+        position: relative;
+        width: 100%;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-bottom: 1px solid #FFFFFF;
+      }
+
+      .content-menu-qna{
+        position: relative;
+        width: 100%;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-bottom: 1px solid #FFFFFF;
+      }
     }
   }
 }
