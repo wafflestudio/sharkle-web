@@ -1,9 +1,10 @@
 import './MyPage.scss';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import ClubButton from './ClubButton';
 import MyClub from './MyClub';
 import myClub from './MyClub';
 import AlarmSetButton from './AlarmSetButton';
+import ClubsList from './ClubsList';
 
 const InfoForm = ({ title, info, useAlarm = true }) => {
   const [clicked, setClicked] = useState(true);
@@ -67,22 +68,42 @@ const MyPage = () => {
       tags: ['tag1111111111111', 'tag222', 'tag333'],
     },
     {
-      name: '동아리4',
+      name: '동아리5',
       img: 'https://wafflestudio.com/images/icon_header.svg?auto=format&fit=max&w=128',
       tags: ['tag1', 'tag2', 'tag3'],
     },
     {
-      name: '동아리4',
+      name: '동아리6',
       img: 'https://wafflestudio.com/images/icon_header.svg?auto=format&fit=max&w=128',
       tags: ['tag1', 'tag2', 'tag3'],
     },
     {
-      name: '동아리4',
+      name: '동아리7',
       img: 'https://wafflestudio.com/images/icon_header.svg?auto=format&fit=max&w=128',
       tags: ['tag1', 'tag2', 'tag3'],
     },
     {
-      name: '동아리4',
+      name: '동아리8',
+      img: 'https://wafflestudio.com/images/icon_header.svg?auto=format&fit=max&w=128',
+      tags: ['tag1', 'tag2', 'tag3'],
+    },
+    {
+      name: '동아리9',
+      img: 'https://wafflestudio.com/images/icon_header.svg?auto=format&fit=max&w=128',
+      tags: ['tag1', 'tag2', 'tag3'],
+    },
+    {
+      name: '동아리10',
+      img: 'https://wafflestudio.com/images/icon_header.svg?auto=format&fit=max&w=128',
+      tags: ['tag1', 'tag2', 'tag3'],
+    },
+    {
+      name: '동아리11',
+      img: 'https://wafflestudio.com/images/icon_header.svg?auto=format&fit=max&w=128',
+      tags: ['tag1', 'tag2', 'tag3'],
+    },
+    {
+      name: '동아리12',
       img: 'https://wafflestudio.com/images/icon_header.svg?auto=format&fit=max&w=128',
       tags: ['tag1', 'tag2', 'tag3'],
     },
@@ -115,12 +136,7 @@ const MyPage = () => {
                 <ClubButton img={'https://wafflestudio.com/images/icon_header.svg?auto=format&fit=max&w=128'} />
               </div>
             </div>
-            <div className="clubs-content-lists">
-              {dummyClubsList.map((club, idx) => (
-                <MyClub club={club} key={idx} />
-              ))}
-              <button className="clubs-content-lists-more">더 보기</button>
-            </div>
+            <ClubsList clubsList={dummyClubsList} />
           </div>
         </div>
         <div className="info">

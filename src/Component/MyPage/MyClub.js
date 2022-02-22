@@ -8,10 +8,8 @@ const MyClub = ({ club }) => {
       <div className="club-name">{club.name}</div>
       <div className="club-tags">
         {club.tags.map((tag, idx) => (
-          <div className="club-tags-tag">
-            <span className="club-tags-tag-text" key={idx}>
-              {tag}
-            </span>
+          <div className="club-tags-tag" key={idx}>
+            <span className="club-tags-tag-text">{tag}</span>
           </div>
         ))}
       </div>
