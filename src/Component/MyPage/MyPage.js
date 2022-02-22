@@ -1,12 +1,23 @@
 import './MyPage.scss';
 import { useState } from 'react';
 import ClubButton from './ClubButton';
+import MyClub from './MyClub';
+import myClub from './MyClub';
+import AlarmSetButton from './AlarmSetButton';
 
-const InfoForm = ({ title, info }) => {
+const InfoForm = ({ title, info, useAlarm = true }) => {
+  const [clicked, setClicked] = useState(true);
+  const onClick = () => {
+    console.log('clicked');
+    setClicked(!clicked);
+  };
   return (
-    <div className="info-form">
-      <div style={{ fontWeight: 'bold', width: '20%', textAlign: 'center' }}>{title}</div>
-      <div style={{ width: '80%', textAlign: 'center' }}>{info}</div>
+    <div className="info-content-profile-form-wrapper">
+      <div className="info-content-profile-form">
+        <div style={{ fontWeight: 'bold', width: '20%', textAlign: 'center' }}>{title}</div>
+        <div style={{ width: '80%', textAlign: 'center' }}>{info}</div>
+      </div>
+      {useAlarm ? <AlarmSetButton clicked={clicked} onClick={onClick} /> : null}
     </div>
   );
 };
@@ -25,17 +36,7 @@ const PostPreviewForm = ({ post, idx }) => {
 };
 const MyPage = () => {
   //dummy data
-  const dummyClubsList = [
-    '동아리1',
-    '동아리2',
-    '동아리3',
-    '동아리4',
-    '동아리5',
-    '동아리6',
-    '동아리7',
-    '동아리8',
-    '동아리9',
-  ];
+
   const dummyUserInfo = { nickname: '김와플', email: 'sharkle@wafflestudio.com' };
   const dummyMyPostList = [
     { title: '게시글1', date: '2022-02-21', answerNum: 1 },
@@ -44,6 +45,48 @@ const MyPage = () => {
     { title: '게시글4', date: '2022-02-21', answerNum: 4 },
   ];
 
+  const dummyClubsList = [
+    {
+      name: '동아리1',
+      img: 'https://wafflestudio.com/images/icon_header.svg?auto=format&fit=max&w=128',
+      tags: ['tag1', 'tag22222', 'tag333'],
+    },
+    {
+      name: '동아리2',
+      img: 'https://wafflestudio.com/images/icon_header.svg?auto=format&fit=max&w=128',
+      tags: ['tag1', 'tag222', 'tag3'],
+    },
+    {
+      name: '동아리3',
+      img: 'https://wafflestudio.com/images/icon_header.svg?auto=format&fit=max&w=128',
+      tags: ['tag11111', 'tag222222', 'tag33333'],
+    },
+    {
+      name: '동아리4',
+      img: 'https://wafflestudio.com/images/icon_header.svg?auto=format&fit=max&w=128',
+      tags: ['tag1111111111111', 'tag222', 'tag333'],
+    },
+    {
+      name: '동아리4',
+      img: 'https://wafflestudio.com/images/icon_header.svg?auto=format&fit=max&w=128',
+      tags: ['tag1', 'tag2', 'tag3'],
+    },
+    {
+      name: '동아리4',
+      img: 'https://wafflestudio.com/images/icon_header.svg?auto=format&fit=max&w=128',
+      tags: ['tag1', 'tag2', 'tag3'],
+    },
+    {
+      name: '동아리4',
+      img: 'https://wafflestudio.com/images/icon_header.svg?auto=format&fit=max&w=128',
+      tags: ['tag1', 'tag2', 'tag3'],
+    },
+    {
+      name: '동아리4',
+      img: 'https://wafflestudio.com/images/icon_header.svg?auto=format&fit=max&w=128',
+      tags: ['tag1', 'tag2', 'tag3'],
+    },
+  ];
   // states
 
   const [clubsList, setClubsList] = useState([]);
@@ -68,13 +111,15 @@ const MyPage = () => {
           </div>
           <div className="clubs-content">
             <div className="clubs-content-add">
-              <ClubButton />
+              <div className="clubs-content-add-inner">
+                <ClubButton img={'https://wafflestudio.com/images/icon_header.svg?auto=format&fit=max&w=128'} />
+              </div>
             </div>
             <div className="clubs-content-lists">
-              <ClubButton />
-              <ClubButton />
-              <ClubButton />
-              <ClubButton />
+              {dummyClubsList.map((club, idx) => (
+                <MyClub club={club} key={idx} />
+              ))}
+              <button className="clubs-content-lists-more">더 보기</button>
             </div>
           </div>
         </div>
@@ -84,7 +129,7 @@ const MyPage = () => {
           </div>
           <div className="info-content">
             <div className="info-content-profile">
-              <InfoForm title="닉네임" info={dummyUserInfo.nickname}></InfoForm>
+              <InfoForm title="닉네임" info={dummyUserInfo.nickname} useAlarm={false}></InfoForm>
               <InfoForm title="이메일" info={dummyUserInfo.email}></InfoForm>
             </div>
             <div className="info-content-vline"></div>
