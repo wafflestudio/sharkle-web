@@ -1,3 +1,14 @@
+.my-page{
+  background-color: #F7F7F7;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+
+
+
 .container{
   /*
   background-color: #F7F7F7;
@@ -12,7 +23,6 @@
   width: 988px;
   height: 880px;
   background-color: #f8f9fa;
-
 
 }
 
@@ -59,13 +69,43 @@
 
       .clubs-content-add-inner{
         margin-top: 5px;
+        display: flex;
+        justify-content: center;
       }
     }
+
+    .clubs-content-add-description{
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+      font-size: 17px;
+      font-weight: bold;
+      font-family: Noto Sans KR;
+      font-style: normal;
+    }
+
 
     .clubs-content-lists{
       width: 80%;
       display: flex;
       overflow: auto;
+
+      &::-webkit-scrollbar{
+        width: 10px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: #2f3542;
+        border-radius: 10px;
+      }
+      &::-webkit-scrollbar-track {
+        background-color: grey;
+        border-radius: 10px;
+        box-shadow: inset 0px 0px 5px white;
+      }
+
+
+
 
       .clubs-content-lists-more{
         border: 0;
@@ -170,8 +210,58 @@
             color: #000000;
           }
           .info-content-posts-list{
-            margin-top:10px;
+            margin-top:5px;
+            display: flex;
+            flex-direction: column;
+            height: 260px;
           }
+
+          .info-content-posts-page{
+            display: flex;
+            justify-content: center;
+
+
+            > nav{
+              display: flex;
+              justify-content: center;
+              align-items: center;
+
+              > button{
+                border: none;
+                width: 20px;
+                height: 20px;
+                border-radius: 5px;
+
+                margin-left: 5px;
+                margin-right: 5px;
+                background: black;
+                color: white;
+
+                &:hover {
+                  background: tomato;
+                  cursor: pointer;
+                  transform: translateY(-2px);
+                }
+
+                &[disabled] {
+                  background: grey;
+                  cursor: revert;
+                  transform: revert;
+                }
+
+                &[aria-current] {
+                  background: deeppink;
+                  font-weight: bold;
+                  cursor: revert;
+                  transform: revert;
+                }
+
+              }
+            }
+          }
+
+
+
 
 
         .info-content-vline{
@@ -226,6 +316,38 @@
   }
 }
 
+.add-button{
+  border:0;
+  background: #F7F7F7;
+  display: flex;
+  justify-content: center;
+  width: 173px;
+  height: 173px;
+
+
+  .add-button-container{
+    border: 1px solid gainsboro;
+    width: 164px;
+    height: 164px;
+    border-radius: 70%;
+    padding-left: 20px;
+    padding-right: 20px;
+    object-fit: cover;
+    overflow: hidden;
+    box-shadow: rgb(0, 0, 0 / 6%) 0px 0px 4px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    > .add-button-plus{
+      display: block;
+      width: 90%;
+      height: 90%;
+      color: black;
+    }
+  }
+}
+
 
 
 
@@ -235,19 +357,20 @@
 .post-preview{
   position: relative;
   width: 370px;
-  height: 54px;
+  height: 50px;
   left:55px;
   margin-bottom: 15px;
 
   .post-preview-panel {
     width: 370px;
-    height: 54px;
+    height: 50px;
 
     background: #FFFFFF;
     border: 1px solid #C4C4C4;
     box-sizing: border-box;
     border-radius: 12px;
     display: flex;
+    align-items: center;
   }
 
     .post-preview-num {
@@ -255,7 +378,6 @@
       width: 16px;
       height: 18px;
       left: 15px;
-      top: 18px;
 
       font-family: Noto Sans KR;
       font-style: normal;
@@ -275,7 +397,7 @@
       width: 204px;
       height: 18px;
       left: 42px;
-      top: 19px;
+      margin-top: 3px;
 
       font-family: Noto Sans KR;
       font-style: normal;
@@ -295,7 +417,7 @@
       width: 80px;
       height: 18px;
       left: 290px;
-      top: 4px;
+      top: 5px;
 
       font-family: Noto Sans KR;
       font-style: normal;
@@ -315,7 +437,7 @@
       width: 50px;
       height: 18px;
       left: 320px;
-      top: 30px;
+      top: 27px;
 
       font-family: Noto Sans KR;
       font-style: normal;
@@ -449,3 +571,5 @@
   width:100%;
   display: flex;
 }
+
+

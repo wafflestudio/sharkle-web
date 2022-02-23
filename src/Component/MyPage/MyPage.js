@@ -1,10 +1,11 @@
 import './MyPage.scss';
 import { useRef, useState } from 'react';
 import ClubButton from './ClubButton';
-import MyClub from './MyClub';
-import myClub from './MyClub';
 import AlarmSetButton from './AlarmSetButton';
 import ClubsList from './ClubsList';
+import MyPostsList from './MyPostsList';
+import { AiOutlinePlus } from 'react-icons/ai';
+import AddButton from './AddButton';
 
 const InfoForm = ({ title, info, useAlarm = true }) => {
   const [clicked, setClicked] = useState(true);
@@ -23,18 +24,6 @@ const InfoForm = ({ title, info, useAlarm = true }) => {
   );
 };
 
-const PostPreviewForm = ({ post, idx }) => {
-  return (
-    <div className="post-preview">
-      <div className="post-preview-panel">
-        <div className="post-preview-num">{idx}.</div>
-        <div className="post-preview-title">{post.title}</div>
-        <div className="post-preview-answer">답변 {post.answerNum}</div>
-        <div className="post-preview-date">{post.date}</div>
-      </div>
-    </div>
-  );
-};
 const MyPage = () => {
   //dummy data
 
@@ -44,6 +33,13 @@ const MyPage = () => {
     { title: '게시글2', date: '2022-02-21', answerNum: 2 },
     { title: '게시글3', date: '2022-02-21', answerNum: 3 },
     { title: '게시글4', date: '2022-02-21', answerNum: 4 },
+    { title: '게시글5', date: '2022-02-21', answerNum: 5 },
+    { title: '게시글6', date: '2022-02-21', answerNum: 6 },
+    { title: '게시글7', date: '2022-02-21', answerNum: 7 },
+    { title: '게시글8', date: '2022-02-21', answerNum: 8 },
+    { title: '게시글9', date: '2022-02-21', answerNum: 9 },
+    { title: '게시글10', date: '2022-02-21', answerNum: 10 },
+    { title: '게시글11', date: '2022-02-21', answerNum: 11 },
   ];
 
   const dummyClubsList = [
@@ -115,16 +111,7 @@ const MyPage = () => {
   const [myPostList, setMyPostList] = useState([]);
 
   return (
-    <div
-      style={{
-        backgroundColor: '#F7F7F7',
-        width: '100wh',
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        overflow: 'scroll',
-      }}
-    >
+    <div className="my-page">
       <div className="container">
         <div className="clubs">
           <div className="clubs-title">
@@ -133,8 +120,9 @@ const MyPage = () => {
           <div className="clubs-content">
             <div className="clubs-content-add">
               <div className="clubs-content-add-inner">
-                <ClubButton img={'https://wafflestudio.com/images/icon_header.svg?auto=format&fit=max&w=128'} />
+                <AddButton />
               </div>
+              <div className="clubs-content-add-description">동아리 추가하기</div>
             </div>
             <ClubsList clubsList={dummyClubsList} />
           </div>
@@ -152,12 +140,7 @@ const MyPage = () => {
 
             <div className="info-content-posts">
               <div className="info-content-posts-title">내 게시글</div>
-              <div className="info-content-posts-list">
-                <PostPreviewForm post={dummyMyPostList[0]} idx={1} />
-                <PostPreviewForm post={dummyMyPostList[1]} idx={2} />
-                <PostPreviewForm post={dummyMyPostList[2]} idx={3} />
-                <PostPreviewForm post={dummyMyPostList[3]} idx={4} />
-              </div>
+              <MyPostsList postList={dummyMyPostList} />
             </div>
           </div>
         </div>
