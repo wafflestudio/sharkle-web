@@ -1,8 +1,16 @@
 import './ClubPage.scss';
-import { BiCalendar } from 'react-icons/bi';
+import { BiCalendar, BiSearchAlt2 } from 'react-icons/bi';
 import { AiFillTags } from 'react-icons/ai';
+import { BsPinAngle } from 'react-icons/bs';
+import {useState} from "react";
 
 const ClubPage = () => {
+
+    const [search, setSearch] = useState("");
+
+    const handleSearch = (e) => {
+        setSearch(e.target.value);
+    }
 
     return(
         <div className="container">
@@ -52,8 +60,42 @@ const ClubPage = () => {
                     </div>
                 </div>
                 <div className="content-container">
+                    <div className="content-container-bar">
+                        <div className="content-container-bar-title">
+                            <BsPinAngle className="content-container-bar-title-icon"/>
+                            <div className="content-container-bar-title-title">
+                                Q&A
+                            </div>
+                        </div>
+                        <div className="content-container-bar-sort">
+                            <div1>
+                                최신 순
+                            </div1>
+                            <div2>
+                                오래된 순
+                            </div2>
+                            <div3>
+                                댓글 수
+                            </div3>
+                            <div4>
+                                <span>
+                                    ㄱㄴㄷ 수
+                                </span>
+                            </div4>
+                        </div>
+                    </div>
+                    <div className="content-container-search">
+                        <div className="content-container-search-title">
+                            검색
+                        </div>
+                        <input className="content-container-search-input" value={search} onChange={handleSearch}/>
+                        <BiSearchAlt2 className="content-container-search-icon"/>
+                    </div>
+                    <div className="content-">
 
+                    </div>
                 </div>
+
             </div>
         </div>
     )
