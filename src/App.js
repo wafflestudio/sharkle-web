@@ -4,9 +4,12 @@ import ClubPage from "./Component/ClubPage/ClubPage";
 
 function App() {
   return (
-      <>
-          <ClubPage />
-      </>
+      <BrowserRouter>
+          <Routes>
+              <Route path="/club" element={<ClubPage />}/>
+              <Route path="/*" element={<ClubPage />}/>
+          </Routes>
+      </BrowserRouter>
   );
 }
 
