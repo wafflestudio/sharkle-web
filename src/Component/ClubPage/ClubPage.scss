@@ -8,6 +8,7 @@
   height: 100vh;
   background: #F7F7F7;
   overflow: scroll;
+  overflow-y: scroll;
 
   .info{
     position: absolute;
@@ -221,11 +222,14 @@
 
     .content-container{
       position: absolute;
+      display: flex;
+      justify-content: center;
       left: 210px;
       width: calc(100% - 210px);
       height: 100%;
       background: #FFFFFF;
       border-radius: 16px;
+      align-items: center;
 
       .content-container-bar{
         position: absolute;
@@ -377,6 +381,15 @@
           right: 15px;
           height: 1rem;
         }
+      }
+
+      .content-container-qna{
+        position: absolute;
+        height: 95%;
+        width: 95%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
       }
     }
   }

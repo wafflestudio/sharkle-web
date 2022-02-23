@@ -3,10 +3,23 @@ import { BiCalendar, BiSearchAlt2 } from 'react-icons/bi';
 import { AiFillTags } from 'react-icons/ai';
 import { BsPinAngle } from 'react-icons/bs';
 import {useState} from "react";
+import QnAItem from "./QnAItem/QnAItem";
 
 const ClubPage = () => {
 
     const [search, setSearch] = useState("");
+
+    const dummyQnA = [
+        { id: 0, title: "타대생도 가입 가능한가요?", date: "2022.03.01", comment: 1 },
+        { id: 1, title: "고학번도 가입 가능한가요?", date: "2022.03.01", comment: 1 },
+        { id: 2, title: "학기중에 많이 힘든가요?", date: "2022.03.01", comment: 3 },
+        { id: 3, title: "성비가 어떻게되나요?", date: "2022.03.01", comment: 5 },
+        { id: 4, title: "많이 힘든가요?", date: "2022.03.01", comment: 0 },
+        { id: 5, title: "처음하는사람도 괜찮나요?", date: "2022.03.01", comment: 2 },
+        { id: 6, title: "활동비가 있나요?", date: "2022.03.01", comment: 1 },
+        { id: 7, title: "질문질문", date: "2022.03.01", comment: 8 },
+        { id: 8, title: "이것저것 상세한 질문글", date: "2022.03.01", comment: 10 },
+    ]
 
     const handleSearch = (e) => {
         setSearch(e.target.value);
@@ -91,8 +104,10 @@ const ClubPage = () => {
                         <input className="content-container-search-input" value={search} onChange={handleSearch}/>
                         <BiSearchAlt2 className="content-container-search-icon"/>
                     </div>
-                    <div className="content-">
-
+                    <div className="content-container-qna">
+                        {dummyQnA.map((item) => (
+                            <QnAItem item={item} key={item.id} />
+                        ))}
                     </div>
                 </div>
 
