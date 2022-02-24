@@ -1,0 +1,134 @@
+.registerpage {
+  position: absolute;
+  margin: 0px;
+  width: 100vw;
+  height: 100vh;
+  overflow: scroll;
+}
+
+.register-section {
+  width: 768px;
+  margin: 100px auto 0px;
+  line-height: 1.5;
+}
+
+.register-welcome {
+  font-size: 4rem;
+  color: rgb(33, 37, 41);
+  font-weight: bolder;
+  margin: 0px;
+}
+
+.register-description {
+  font-size: 1.5rem;
+  color: rgb(33, 37, 41);
+}
+
+.register-detail-section {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+.register-detail-block {
+  box-sizing: inherit;
+  margin-bottom: 3rem;
+}
+
+.register-detail-text {
+  font-weight: bold;
+  font-size: 1.125rem;
+  color: rgb(33, 37, 41);
+  margin-bottom: 1rem;
+  transition: all 0.125s ease-in 0s;
+  display: block;
+  line-height: 1.5;
+}
+
+.register-detail-block:focus-within {
+  .register-detail-text {
+    font-weight: bold;
+    font-size: 1.125rem;
+    color: rgb(12, 166, 120);
+    margin-bottom: 1rem;
+    transition: all 0.125s ease-in 0s;
+    display: block;
+    line-height: 1.5;
+  }
+}
+
+.register-detail-input {
+  display: inline-block;
+  max-width: 100%;
+}
+
+.register-detail-input-wrapper {
+  width: 400px;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgb(73, 80, 87);
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+}
+
+.register-detail-input-wrapper:focus-within {
+  border-bottom: 1px solid rgb(12, 166, 120);
+}
+
+.register-detail-input-inputbox {
+  font-size: 1.5rem;
+  border: none;
+  outline: none;
+  width: 100%;
+  color: rgb(73, 80, 87);
+  transition: all 0.125s ease-in 0s;
+}
+
+.register-detail-input-inputbox:focus-within {
+  color: rgb(12, 166, 120);
+}
+
+.register-error-section{
+  margin-top: 5rem;
+  margin-bottom: 1rem;
+  font-size: 1.125rem;
+  line-height: 1.5;
+  color: rgb(255, 107, 107);
+  font-weight: bold;
+}
+
+.register-button-section {
+  margin-bottom: 5rem;
+}
+
+.register-btn-cancel{
+  height: 3rem;
+  font-size: 1.5rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  margin-right: 1.5rem;
+  border-radius: 1.5rem;
+  border: none;
+  outline: none;
+  font-weight: bold;
+  word-break: keep-all;
+  background: rgb(233, 236, 239);
+  color: rgb(73, 80, 87);
+  transition: all 0.125s ease-in 0s;
+  cursor: pointer;
+}
+
+.register-btn-complete{
+  height: 3rem;
+  font-size: 1.5rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  border-radius: 1.5rem;
+  border: none;
+  outline: none;
+  font-weight: bold;
+  word-break: keep-all;
+  background: rgb(18, 184, 134);
+  color: white;
+  transition: all 0.125s ease-in 0s;
+  cursor: pointer;
+}
