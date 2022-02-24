@@ -1,5 +1,6 @@
 import MyClub from './MyClub';
 import { useRef, useState } from 'react';
+import { AiOutlineDoubleRight } from 'react-icons/ai';
 
 const ClubsList = ({ clubsList }) => {
   const throttle = (func, ms) => {
@@ -64,7 +65,7 @@ const ClubsList = ({ clubsList }) => {
         <MyClub club={club} key={idx} />
       ))}
       <button className="clubs-content-lists-more" onClick={onNextClick}>
-        더 보기
+        {clubsList.length > 4 ? <AiOutlineDoubleRight className="arrow" /> : null}
       </button>
     </div>
   );

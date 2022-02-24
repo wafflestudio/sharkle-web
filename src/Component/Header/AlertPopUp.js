@@ -9,31 +9,19 @@ const AlertBox = ({ alert }) => {
     </div>
   );
 };
-const AlertPopUp = ({ alerts }) => {
+const AlertPopUp = ({ alerts, isAlertClicked, setIsAlertClicked }) => {
+  const close = () => {
+    setIsAlertClicked(!isAlertClicked);
+  };
+
   return (
     <div className="pop-up">
       <div className="header">
-        <div className="close-button">
-          <AiOutlineCloseCircle className="icon" />
+        <div className="close-button" onClick={close}>
+          <AiOutlineCloseCircle className="icon" onClick={close} />
         </div>
       </div>
       <div className="alert-list">
-        {/*<div className="alert-box">*/}
-        {/*  <div className="is-new"></div>*/}
-        {/*  <div className="alert-title">[와플 스튜디오123]에 새 공지사항이 올라왔어요!</div>*/}
-        {/*  <div className="when">몇시간전</div>*/}
-        {/*</div>*/}
-        {/*<div className="alert-box">*/}
-        {/*  <div className="is-new"></div>*/}
-        {/*  <div className="alert-title">[와플 스튜디오123]에 새 공지사항이 올라왔어요!</div>*/}
-        {/*  <div className="when">몇시간전</div>*/}
-        {/*</div>*/}
-        {/*<div className="alert-box">*/}
-        {/*  <div className="is-new"></div>*/}
-        {/*  <div className="alert-title">[와플 스튜디오123]에 새 공지사항이 올라왔어요!</div>*/}
-        {/*  <div className="when">몇시간전</div>*/}
-        {/*</div>*/}
-
         {alerts.map((alert, idx) => (
           <AlertBox alert={alert} key={idx} />
         ))}

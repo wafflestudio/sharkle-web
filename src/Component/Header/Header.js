@@ -49,10 +49,12 @@ const Header = () => {
           </button>
           <button className="button grey" onClick={onAlertClick}>
             <AiFillBell className="icon" />
+            {isAlertClicked ? (
+              <AlertPopUp alerts={dummyAlerts} isAlertClicked={isAlertClicked} setIsAlertClicked={setIsAlertClicked} />
+            ) : null}
           </button>
         </div>
       </div>
-      {isAlertClicked ? <AlertPopUp alerts={dummyAlerts} /> : null}
     </div>
   );
 };

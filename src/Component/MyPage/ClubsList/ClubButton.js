@@ -1,4 +1,4 @@
-import './MyPage.scss';
+import './ClubsList.scss';
 const ClubButton = ({ img }) => {
   return (
     <button className="club-button">

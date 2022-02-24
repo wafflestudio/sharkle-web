@@ -1,33 +1,19 @@
 import './MyPage.scss';
 import { useRef, useState } from 'react';
-import ClubButton from './ClubButton';
+import ClubButton from './ClubsList/ClubButton';
 import AlarmSetButton from './AlarmSetButton';
-import ClubsList from './ClubsList';
-import MyPostsList from './MyPostsList';
-import { AiOutlinePlus } from 'react-icons/ai';
+import ClubsList from './ClubsList/ClubsList';
+import MyPostsList from './MyPostList/MyPostsList';
 import AddButton from './AddButton';
-
-const InfoForm = ({ title, info, useAlarm = true }) => {
-  const [clicked, setClicked] = useState(true);
-  const onClick = () => {
-    console.log('clicked');
-    setClicked(!clicked);
-  };
-  return (
-    <div className="info-content-profile-form-wrapper">
-      <div className="info-content-profile-form">
-        <div style={{ fontWeight: 'bold', width: '20%', textAlign: 'center' }}>{title}</div>
-        <div style={{ width: '80%', textAlign: 'center' }}>{info}</div>
-      </div>
-      {useAlarm ? <AlarmSetButton clicked={clicked} onClick={onClick} /> : null}
-    </div>
-  );
-};
+import { BiEdit, BiSave } from 'react-icons/bi';
+import InfoForm from './InfoForm';
 
 const MyPage = () => {
   //dummy data
 
-  const dummyUserInfo = { nickname: '김와플', email: 'sharkle@wafflestudio.com' };
+  const dummyUserNickname = '김와플';
+  const dummyUserEmail = 'sharkle@ws.com';
+
   const dummyMyPostList = [
     { title: '게시글1', date: '2022-02-21', answerNum: 1 },
     { title: '게시글2', date: '2022-02-21', answerNum: 2 },
@@ -107,7 +93,9 @@ const MyPage = () => {
   // states
 
   const [clubsList, setClubsList] = useState([]);
-  const [userInfo, setUserInfo] = useState({});
+  const [userNickname, setUserNickname] = useState(dummyUserNickname);
+  const [userEmail, setUserEmail] = useState(dummyUserEmail);
+
   const [myPostList, setMyPostList] = useState([]);
 
   return (
@@ -133,8 +121,13 @@ const MyPage = () => {
           </div>
           <div className="info-content">
             <div className="info-content-profile">
-              <InfoForm title="닉네임" info={dummyUserInfo.nickname} useAlarm={false}></InfoForm>
-              <InfoForm title="이메일" info={dummyUserInfo.email}></InfoForm>
+              <InfoForm
+                userInfo={userNickname}
+                setUserInfo={setUserNickname}
+                infoType={'닉네임'}
+                useAlarm={false}
+              ></InfoForm>
+              <InfoForm userInfo={userEmail} setUserInfo={setUserEmail} infoType={'이메일'} useAlarm={true}></InfoForm>
             </div>
             <div className="info-content-vline"></div>
 

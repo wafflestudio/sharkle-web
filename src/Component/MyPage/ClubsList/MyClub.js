@@ -1,5 +1,5 @@
 import ClubButton from './ClubButton';
-
+import './ClubsList.scss';
 const MyClub = ({ club }) => {
   console.log(club);
   return (
