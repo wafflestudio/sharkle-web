@@ -1,4 +1,4 @@
-import './MyPage.scss';
+import './Buttons.scss';
 import { HiPlus } from 'react-icons/hi';
 const AddButton = () => {
   return (

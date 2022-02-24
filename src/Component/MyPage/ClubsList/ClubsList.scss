@@ -12,6 +12,7 @@
     justify-content: center;
     width: 173px;
     height: 173px;
+    cursor: pointer;
 
 
     .club-button-container{
@@ -49,6 +50,7 @@
     font-weight: bold;
     font-size: 18px;
     line-height: 18px;
+    cursor: pointer;
     /* or 100% */
 
     display: flex;
@@ -74,6 +76,7 @@
       line-height: 15px;
       display: flex;
       align-items: center;
+      cursor: pointer;
 
       &:hover{
         transform:scale(1.1);

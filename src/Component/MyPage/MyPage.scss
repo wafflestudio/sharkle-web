@@ -6,28 +6,13 @@
   justify-content: center;
 }
 
-
-
-
 .container{
-  /*
-  background-color: #F7F7F7;
-  width: 1024px;
-  margin-left: auto;
-  margin-right: auto;
-  height: 100%;
-  display: flex;
-  flex-direction: column;*/
   position: absolute;
   margin: 0px;
   width: 988px;
   height: 880px;
   background-color: #f8f9fa;
-
 }
-
-
-
 
 .clubs {
   background-color: #F7F7F7;
@@ -83,9 +68,6 @@
       font-family: Noto Sans KR;
       font-style: normal;
     }
-
-
-
 }
 
 .info{
@@ -110,9 +92,6 @@
         align-items: center;
       }
 
-
-
-
       .info-content {
 
         border-radius: 20px;
@@ -129,8 +108,6 @@
           background-color: #C4C4C4;
         }
 
-
-
         .info-content-posts{
         width: 493px;
         background-color: #C4C4C4;
@@ -141,8 +118,6 @@
             margin-left:65px;
             width: 120px;
             height: 40px;
-
-
 
             font-family: Noto Sans KR;
             font-style: normal;
@@ -157,123 +132,16 @@
             color: #000000;
           }
 
-
         .info-content-vline{
           border: 0.1px solid #F7F7F7;
           width: 0.1px;
           height: 100%;
         }
 
-
 }
 
 
 
-
-//.club-button{
-//  width: 173px;
-//  height: 173px;
-//
-//  background: #E5E5E5;
-//  border-radius: 30px;
-//  display: flex;
-//  justify-content: center;
-//  align-items: center;
-//  border-width: 0.1px;
-//}
-
-
-.add-button{
-  border:0;
-  background: #F7F7F7;
-  display: flex;
-  justify-content: center;
-  width: 173px;
-  height: 173px;
-
-
-  .add-button-container{
-    border: 1px solid gainsboro;
-    width: 164px;
-    height: 164px;
-    border-radius: 70%;
-    padding-left: 20px;
-    padding-right: 20px;
-    object-fit: cover;
-    overflow: hidden;
-    box-shadow: rgb(0, 0, 0 / 6%) 0px 0px 4px 0px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    > .add-button-plus{
-      display: block;
-      width: 90%;
-      height: 90%;
-      color: black;
-
-
-      &:hover{
-
-          transform:scale(1.1);
-          transition: transform .3s;
-
-      }
-    }
-  }
-}
-
-
-.alarm{
-  position:relative;
-  margin-top: 41px;
-  margin-left: 15px;
-}
-.alarm-button{
-  width: 70px;
-  height: 40px;
-
-  background: #E5E5E5;
-  border-radius: 47px;
-  border:0;
-
-  .alarm-button-circle{
-    position:absolute;
-    width: 38px;
-    height: 38px;
-    left:0;
-    top:0;
-    border-radius: 47px;
-
-    background: #FFFFFF;
-  }
-}
-
-
-.clicked-alarm{
-  position:relative;
-  margin-top: 42px;
-  margin-left: 15px;
-}
-.clicked-alarm-button{
-  width: 70px;
-  height: 40px;
-
-  background: #1571FF;
-  border-radius: 47px;
-  border:0;
-
-  .clicked-alarm-button-circle{
-    position:absolute;
-    width: 40px;
-    height: 40px;
-    right:0;
-    top:0;
-    border-radius: 47px;
-
-    background: #FFFFFF;
-  }
-}
 
 
 .info-content-profile-form-wrapper{

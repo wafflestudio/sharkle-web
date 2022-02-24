@@ -1,3 +1,4 @@
+import './Buttons.scss';
 const AlarmSetButton = ({ clicked, onClick }) => {
   //clicked 에는 알림을 구독중인지에 대한 state가 들어가야 함.
   return !clicked ? (

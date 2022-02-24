@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { BiEdit, BiSave } from 'react-icons/bi';
-import AlarmSetButton from './AlarmSetButton';
+import AlarmSetButton from '../Buttons/AlarmSetButton';
 import './InfoForm.scss';
 
 const InfoForm = ({ userInfo, setUserInfo, infoType, useAlarm = true }) => {

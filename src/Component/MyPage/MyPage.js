@@ -1,19 +1,15 @@
 import './MyPage.scss';
-import { useRef, useState } from 'react';
-import ClubButton from './ClubsList/ClubButton';
-import AlarmSetButton from './AlarmSetButton';
+import { useState } from 'react';
 import ClubsList from './ClubsList/ClubsList';
 import MyPostsList from './MyPostList/MyPostsList';
-import AddButton from './AddButton';
-import { BiEdit, BiSave } from 'react-icons/bi';
-import InfoForm from './InfoForm';
+import AddButton from './Buttons/AddButton';
+import InfoForm from './InfoForm/InfoForm';
 
 const MyPage = () => {
   //dummy data
 
   const dummyUserNickname = '김와플';
   const dummyUserEmail = 'sharkle@ws.com';
-
   const dummyMyPostList = [
     { title: '게시글1', date: '2022-02-21', answerNum: 1 },
     { title: '게시글2', date: '2022-02-21', answerNum: 2 },
@@ -27,7 +23,6 @@ const MyPage = () => {
     { title: '게시글10', date: '2022-02-21', answerNum: 10 },
     { title: '게시글11', date: '2022-02-21', answerNum: 11 },
   ];
-
   const dummyClubsList = [
     {
       name: '동아리1',
@@ -92,11 +87,10 @@ const MyPage = () => {
   ];
   // states
 
-  const [clubsList, setClubsList] = useState([]);
+  const [clubsList, setClubsList] = useState(dummyClubsList);
   const [userNickname, setUserNickname] = useState(dummyUserNickname);
   const [userEmail, setUserEmail] = useState(dummyUserEmail);
-
-  const [myPostList, setMyPostList] = useState([]);
+  const [myPostList, setMyPostList] = useState(dummyMyPostList);
 
   return (
     <div className="my-page">
@@ -112,7 +106,7 @@ const MyPage = () => {
               </div>
               <div className="clubs-content-add-description">동아리 추가하기</div>
             </div>
-            <ClubsList clubsList={dummyClubsList} />
+            <ClubsList clubsList={clubsList} />
           </div>
         </div>
         <div className="info">
@@ -133,7 +127,7 @@ const MyPage = () => {
 
             <div className="info-content-posts">
               <div className="info-content-posts-title">내 게시글</div>
-              <MyPostsList postList={dummyMyPostList} />
+              <MyPostsList postList={myPostList} />
             </div>
           </div>
         </div>
