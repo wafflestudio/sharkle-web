@@ -1,15 +1,20 @@
 import './App.css';
-import {BrowserRouter, Redirect, Route, Routes, Switch} from "react-router-dom";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
 import ClubPage from "./Component/ClubPage/ClubPage";
+import MyPage from "./Component/MyPage/MyPage";
+import Header from "./Component/Header/Header";
 
 function App() {
   return (
-      <BrowserRouter>
-          <Routes>
-              <Route path="/club" element={<ClubPage />}/>
-              <Route path="/*" element={<ClubPage />}/>
-          </Routes>
-      </BrowserRouter>
+          <BrowserRouter>
+              <Header/>
+              <Routes>
+                  <Route path="/*" element={<ClubPage />}/>
+                  <Route path="/club" element={<ClubPage />}/>
+                  <Route path="/mypage" element={<MyPage/>}/>
+              </Routes>
+          </BrowserRouter>
+
   );
 }
 
