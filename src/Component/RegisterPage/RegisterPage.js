@@ -1,5 +1,13 @@
 import './RegisterPage.scss';
+import { useNavigate } from 'react-router';
+
 const RegisterPage = () => {
+  const navigate = useNavigate();
+
+  const handleCancel = () => {
+    navigate('/login');
+  };
+
   return (
     <div className="registerpage">
       <div className="register-section">
@@ -54,7 +62,9 @@ const RegisterPage = () => {
         {/*</div>*/}
 
         <div className="register-button-section">
-          <button className="register-btn-cancel">취소</button>
+          <button className="register-btn-cancel" onClick={handleCancel}>
+            취소
+          </button>
           <button className="register-btn-complete">완료</button>
         </div>
       </div>
