@@ -3,9 +3,21 @@ import { useNavigate } from 'react-router';
 import { GiSharkFin } from 'react-icons/gi';
 import { BsFillPersonFill } from 'react-icons/bs';
 import { BiLockAlt } from 'react-icons/bi';
+import axios from 'axios';
 
 const LoginPage = () => {
   const navigate = useNavigate();
+
+  const handleLogin = () => {
+    axios
+      .get(`http://sharkle-server/api/v1/ping`, {})
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   const handleRegister = () => {
     navigate('/register');
@@ -29,7 +41,10 @@ const LoginPage = () => {
         </div>
 
         <div className="login-button-container">
-          <button className="login-button-login"> 로그인</button>
+          <button className="login-button-login" onClick={handleLogin}>
+            {' '}
+            로그인
+          </button>
           <button className="login-button-register" onClick={handleRegister}>
             {' '}
             회원가입
