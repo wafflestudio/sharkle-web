@@ -88,21 +88,6 @@ const MyPage = () => {
   ];
   // states
 
-  // load data from server
-
-  // const getClubsList = () => {
-  //   axios
-  //     .get(`http://sharkle-server.kro.kr/api/v1/circle/`)
-  //     .then(function (response) {
-  //       setClubsList(response);
-  //     })
-  //     .catch(function (response) {
-  //       console.log(response);
-  //     });
-  // };
-  // useEffect(() => {
-  //   getClubsList();
-  // }, []);
   const [clubsList, setClubsList] = useState(dummyClubsList);
   const [userNickname, setUserNickname] = useState(dummyUserNickname);
   const [userEmail, setUserEmail] = useState(dummyUserEmail);
@@ -112,15 +97,15 @@ const MyPage = () => {
     <div className={styles['my-page']}>
       <div className={styles.container}>
         <div className={styles.clubs}>
-          <div className={styles['clubs-title']}>
-            <div className={styles['clubs-title-inner']}>알림설정한 동아리 목록</div>
+          <div className={styles.title}>
+            <div className={styles.inner}>알림설정한 동아리 목록</div>
           </div>
-          <div className={styles['clubs-content']}>
-            <div className={styles['clubs-content-add']}>
-              <div className={styles['clubs-content-add-inner']}>
+          <div className={styles.content}>
+            <div className={styles.add}>
+              <div className={styles.inner}>
                 <AddButton />
               </div>
-              <div className={styles['clubs-content-add-description']}>동아리 추가하기</div>
+              <div className={styles.description}>동아리 추가하기</div>
             </div>
             <ClubsList clubsList={clubsList} />
           </div>

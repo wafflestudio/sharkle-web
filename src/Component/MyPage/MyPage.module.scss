@@ -17,86 +17,76 @@
       display: flex;
       flex-direction: column;
 
-      .clubs-title {
+      .title {
         background-color: #F7F7F7;
         height: 100px;
+        .inner{
+          position: absolute;
+          width: 268px;
+          height: 51px;
+          top:45px;
+          font-style: normal;
+          font-weight: bold;
+          font-size: 24px;
+          line-height: 18px;
+          /* or 75% */
+
+          display: flex;
+          align-items: center;
+        }
       }
 
-      .clubs-title-inner{
-        position: absolute;
-        width: 268px;
-        height: 51px;
-        top:45px;
-        font-style: normal;
-        font-weight: bold;
-        font-size: 24px;
-        line-height: 18px;
-        /* or 75% */
-
-        display: flex;
-        align-items: center;
-      }
-
-
-      .clubs-content{
+      .content{
         background-color: #F7F7F7;
         height: 300px;
         display: flex;
         flex-direction: row;
         justify-content: center;
+        .add{
+          width: 20%;
+
+          .inner{
+            margin-top: 5px;
+            display: flex;
+            justify-content: center;
+          }
+          .description{
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+            font-size: 17px;
+            font-weight: bold;
+            font-family: Noto Sans KR;
+            font-style: normal;
+          }
+        }
       }
+    }
 
-      .clubs-content-add{
-        width: 20%;
+    .info{
+      background-color: #F7F7F7;
+      height: 500px;
 
-        .clubs-content-add-inner{
-          margin-top: 5px;
+      > .title {
+        background-color: #F7F7F7;
+        height: 50px;
+        .inner{
+          position: absolute;
+          width: 268px;
+          height: 51px;
+          font-style: normal;
+          font-weight: bold;
+          font-size: 24px;
+          line-height: 18px;
+          /* or 75% */
+
           display: flex;
-          justify-content: center;
+          align-items: center;
         }
       }
 
-      .clubs-content-add-description{
-        display: flex;
-        justify-content: center;
-        margin-top: 10px;
-        font-size: 17px;
-        font-weight: bold;
-        font-family: Noto Sans KR;
-        font-style: normal;
-      }
-    }
-  }
-}
 
-
-
-
-
-.info{
-  background-color: #F7F7F7;
-  height: 500px;
-
-    > .title {
-      background-color: #F7F7F7;
-      height: 50px;
-      .inner{
-        position: absolute;
-        width: 268px;
-        height: 51px;
-        font-style: normal;
-        font-weight: bold;
-        font-size: 24px;
-        line-height: 18px;
-        /* or 75% */
-
-        display: flex;
-        align-items: center;
-      }
-    }
-
-
-    > .content {
+      > .content {
         border-radius: 20px;
         background-color: #C4C4C4;
         width: 100%;
@@ -104,45 +94,43 @@
         display: flex;
         justify-content: space-around;
         align-items: center;
-      .profile{
-        width: 493px;
-        height: 90%;
-        background-color: #C4C4C4;
-      }
+        .profile{
+          width: 493px;
+          height: 90%;
+          background-color: #C4C4C4;
+        }
 
-      .posts{
-        width: 493px;
-        background-color: #C4C4C4;
-        justify-content: space-around;
-        .title{
-          margin-left:65px;
-          width: 120px;
-          height: 40px;
+        .posts{
+          width: 493px;
+          background-color: #C4C4C4;
+          justify-content: space-around;
+          .title{
+            margin-left:65px;
+            width: 120px;
+            height: 40px;
 
-          font-family: Noto Sans KR;
-          font-style: normal;
-          font-weight: bold;
-          font-size: 20px;
-          line-height: 20px;
-          /* or 100% */
+            font-family: Noto Sans KR;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 20px;
+            line-height: 20px;
+            /* or 100% */
 
-          display: flex;
-          align-items: center;
+            display: flex;
+            align-items: center;
 
-          color: #000000;
+            color: #000000;
+          }
+        }
+
+        .vline{
+          border: 0.1px solid #F7F7F7;
+          width: 0.1px;
+          height: 100%;
         }
       }
 
-      .vline{
-        border: 0.1px solid #F7F7F7;
-        width: 0.1px;
-        height: 100%;
-      }
     }
-
-
+  }
 }
-
-
-
 
