@@ -1,11 +1,18 @@
-.post-preview{
+.list{
+  margin-top:5px;
+  display: flex;
+  flex-direction: column;
+  height: 260px;
+}
+
+.preview{
   position: relative;
   width: 370px;
   height: 50px;
   left:55px;
   margin-bottom: 15px;
 
-  .post-preview-panel {
+  .preview-panel {
     width: 370px;
     height: 50px;
 
@@ -42,7 +49,7 @@
       align-items: center;
       justify-content: center;
 
-      .post-preview-num {
+      .num {
         position: absolute;
         width: 16px;
         height: 18px;
@@ -66,7 +73,7 @@
       height: 100%;
       display: flex;
       align-items: center;
-      .post-preview-title {
+      .title {
         position: absolute;
         width: 204px;
         height: 18px;
@@ -92,7 +99,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: space-around;
-      .post-preview-date {
+      .date {
         //position: absolute;
         width: 80px;
         height: 18px;
@@ -111,7 +118,7 @@
         color: #C4C4C4;
       }
 
-      .post-preview-answer {
+      .answer {
         //position: absolute;
         width: 50px;
         height: 18px;
@@ -138,14 +145,8 @@
 
 }
 
-.info-content-posts-list{
-  margin-top:5px;
-  display: flex;
-  flex-direction: column;
-  height: 260px;
-}
 
-.info-content-posts-page{
+.page{
   display: flex;
   justify-content: center;
 

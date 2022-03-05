@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { BiEdit, BiSave } from 'react-icons/bi';
 import AlarmSetButton from '../Buttons/AlarmSetButton';
-import './InfoForm.scss';
+import styles from './InfoForm.module.scss';
 
 const InfoForm = ({ userInfo, setUserInfo, infoType, useAlarm = true }) => {
   const [buttonClicked, setButtonClicked] = useState(true);
@@ -23,20 +23,20 @@ const InfoForm = ({ userInfo, setUserInfo, infoType, useAlarm = true }) => {
   };
 
   return (
-    <div className="info-content-profile-form-wrapper">
-      <div className="info-content-profile-form">
-        <div className="info-content-profile-key">{infoType}</div>
-        <div className="info-content-profile-wrapper">
+    <div className={styles['form-wrapper']}>
+      <div className={styles.form}>
+        <div className={styles.key}>{infoType}</div>
+        <div className={styles.wrapper}>
           {editClicked ? (
-            <input className="info-content-profile-edit" value={editInput} onChange={onEditInputChange} />
+            <input className={styles} value={editInput} onChange={onEditInputChange} />
           ) : (
-            <div className="info-content-profile-value">{userInfo}</div>
+            <div className={styles.value}>{userInfo}</div>
           )}
         </div>
 
-        <div className="edit-button-wrapper" onClick={onEditClick}>
-          <div className="edit-button">
-            {editClicked ? <BiSave className="edit-icon" /> : <BiEdit className="edit-icon" />}
+        <div className={styles['button-wrapper']} onClick={onEditClick}>
+          <div className={styles.button}>
+            {editClicked ? <BiSave className={styles['edit-icon']} /> : <BiEdit className={styles['edit-icon']} />}
           </div>
         </div>
       </div>

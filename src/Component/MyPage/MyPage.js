@@ -1,9 +1,10 @@
-import './MyPage.scss';
-import { useState } from 'react';
+import styles from './MyPage.module.scss';
+import { useEffect, useState } from 'react';
 import ClubsList from './ClubsList/ClubsList';
 import MyPostsList from './MyPostList/MyPostsList';
 import AddButton from './Buttons/AddButton';
 import InfoForm from './InfoForm/InfoForm';
+import axios from 'axios';
 
 const MyPage = () => {
   //dummy data
@@ -87,34 +88,49 @@ const MyPage = () => {
   ];
   // states
 
+  // load data from server
+
+  // const getClubsList = () => {
+  //   axios
+  //     .get(`http://sharkle-server.kro.kr/api/v1/circle/`)
+  //     .then(function (response) {
+  //       setClubsList(response);
+  //     })
+  //     .catch(function (response) {
+  //       console.log(response);
+  //     });
+  // };
+  // useEffect(() => {
+  //   getClubsList();
+  // }, []);
   const [clubsList, setClubsList] = useState(dummyClubsList);
   const [userNickname, setUserNickname] = useState(dummyUserNickname);
   const [userEmail, setUserEmail] = useState(dummyUserEmail);
   const [myPostList, setMyPostList] = useState(dummyMyPostList);
 
   return (
-    <div className="my-page">
-      <div className="mypage-container">
-        <div className="clubs">
-          <div className="clubs-title">
-            <div className="clubs-title-inner">알림설정한 동아리 목록</div>
+    <div className={styles['my-page']}>
+      <div className={styles.container}>
+        <div className={styles.clubs}>
+          <div className={styles['clubs-title']}>
+            <div className={styles['clubs-title-inner']}>알림설정한 동아리 목록</div>
           </div>
-          <div className="clubs-content">
-            <div className="clubs-content-add">
-              <div className="clubs-content-add-inner">
+          <div className={styles['clubs-content']}>
+            <div className={styles['clubs-content-add']}>
+              <div className={styles['clubs-content-add-inner']}>
                 <AddButton />
               </div>
-              <div className="clubs-content-add-description">동아리 추가하기</div>
+              <div className={styles['clubs-content-add-description']}>동아리 추가하기</div>
             </div>
             <ClubsList clubsList={clubsList} />
           </div>
         </div>
-        <div className="mypage-info">
-          <div className="info-title">
-            <div className="info-title-inner">내 정보</div>
+        <div className={styles.info}>
+          <div className={styles.title}>
+            <div className={styles.inner}>내 정보</div>
           </div>
-          <div className="info-content">
-            <div className="info-content-profile">
+          <div className={styles.content}>
+            <div className={styles.profile}>
               <InfoForm
                 userInfo={userNickname}
                 setUserInfo={setUserNickname}
@@ -123,10 +139,10 @@ const MyPage = () => {
               ></InfoForm>
               <InfoForm userInfo={userEmail} setUserInfo={setUserEmail} infoType={'이메일'} useAlarm={true}></InfoForm>
             </div>
-            <div className="info-content-vline"></div>
+            <div className={styles.vline}></div>
 
-            <div className="info-content-posts">
-              <div className="info-content-posts-title">내 게시글</div>
+            <div className={styles.posts}>
+              <div className={styles.title}>내 게시글</div>
               <MyPostsList postList={myPostList} />
             </div>
           </div>
