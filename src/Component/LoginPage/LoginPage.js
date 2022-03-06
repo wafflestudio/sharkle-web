@@ -1,21 +1,30 @@
 import './LoginPage.scss';
+import { useState } from 'react';
 import { useNavigate } from 'react-router';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 import { GiSharkFin } from 'react-icons/gi';
 import { BsFillPersonFill } from 'react-icons/bs';
 import { BiLockAlt } from 'react-icons/bi';
-import axios from 'axios';
 
 const LoginPage = () => {
   const navigate = useNavigate();
 
+  const [loginId, setLoginId] = useState('');
+  const [loginPassword, setLoginPassword] = useState('');
+
   const handleLogin = () => {
     axios
-      .get(`http://sharkle-server.kro.kr/api/v1/ping`, {})
+      .post(`/api/v1/auth/login/`, {
+        email: loginId,
+        password: loginPassword,
+      })
       .then((response) => {
         console.log(response.data);
       })
       .catch((error) => {
         console.log(error);
+        toast.error('로그인 에러!');
       });
   };
 
@@ -32,12 +41,23 @@ const LoginPage = () => {
       <div className="login-container">
         <div className="login-id">
           <BsFillPersonFill className="login-id-icon" />
-          <input className="login-id-input" placeholder="ID" />
+          <input
+            className="login-id-input"
+            placeholder="ID"
+            value={loginId}
+            onChange={(e) => setLoginId(e.target.value)}
+          />
         </div>
 
         <div className="login-password">
           <BiLockAlt className="login-password-icon" />
-          <input className="login-password-input" type="password" placeholder="PW" />
+          <input
+            className="login-password-input"
+            type="password"
+            placeholder="PW"
+            value={loginPassword}
+            onChange={(e) => setLoginPassword(e.target.value)}
+          />
         </div>
 
         <div className="login-button-container">
