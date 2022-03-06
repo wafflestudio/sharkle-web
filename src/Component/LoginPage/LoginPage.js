@@ -44,12 +44,17 @@ const LoginPage = () => {
       <div className="login-container">
         <div className="login-id">
           <BsFillPersonFill className="login-id-icon" />
-          <input className="login-id-input" placeholder="ID" />
+          <input className="login-id-input" placeholder="ID" onChange={(e) => setLoginId(e.target.value)} />
         </div>
 
         <div className="login-password">
           <BiLockAlt className="login-password-icon" />
-          <input className="login-password-input" type="password" placeholder="PW" />
+          <input
+            className="login-password-input"
+            type="password"
+            placeholder="PW"
+            onChange={(e) => setLoginPassword(e.target.value)}
+          />
         </div>
 
         <div className="login-button-container">
