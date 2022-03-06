@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { SessionProvider } from './Context/SessionContext';
 import axios from 'axios';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -11,8 +12,10 @@ axios.defaults.baseURL = 'http://sharkle-server.kro.kr/';
 
 ReactDOM.render(
   <React.StrictMode>
-    <ToastContainer />
-    <App />
+    <SessionProvider>
+      <ToastContainer />
+      <App />
+    </SessionProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

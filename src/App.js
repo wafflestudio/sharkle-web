@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import ClubPage from './Component/ClubPage/ClubPage';
 import MyPage from './Component/MyPage/MyPage';
 import Header from './Component/Header/Header';
@@ -11,11 +11,12 @@ function App() {
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route path="/*" element={<ClubPage />} />
-        <Route path="/club" element={<ClubPage />} />
-        <Route path="/mypage" element={<MyPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
+        <Route exact path="/" element={<ClubPage />} />
+        <Route exact path="/club" element={<ClubPage />} />
+        <Route exact path="/mypage" element={<MyPage />} />
+        <Route exact path="/login" element={<LoginPage />} />
+        <Route exact path="/register" element={<RegisterPage />} />
+        <Route path="/*" element={<Navigate replace to="/" />} />
       </Routes>
     </BrowserRouter>
   );
