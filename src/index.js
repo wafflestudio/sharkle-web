@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { SessionProvider } from './Context/SessionContext';
 import axios from 'axios';
 import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 axios.defaults.baseURL = 'http://sharkle-server.kro.kr/';
 
