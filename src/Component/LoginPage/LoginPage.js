@@ -18,7 +18,7 @@ const LoginPage = () => {
 
   const handleLogins = () => {
     axios
-      .post(`http://sharkle-server.kro.kr/api/v1/auth/login`, {
+      .post(`/api/v1/auth/login/`, {
         email: loginId,
         password: loginPassword,
       })
