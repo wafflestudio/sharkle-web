@@ -10,7 +10,7 @@ const LoginPage = () => {
 
   const handleLogin = () => {
     axios
-      .get(`/api/v1/ping`, {})
+      .get(`http://sharkle-server.kro.kr/api/v1/ping`, {})
       .then((response) => {
         console.log(response.data);
       })
