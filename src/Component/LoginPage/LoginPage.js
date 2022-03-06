@@ -4,11 +4,14 @@ import { GiSharkFin } from 'react-icons/gi';
 import { BsFillPersonFill } from 'react-icons/bs';
 import { BiLockAlt } from 'react-icons/bi';
 import axios from 'axios';
+import { useSessionContext } from '../../Context/SessionContext';
 
 const LoginPage = () => {
   const navigate = useNavigate();
 
-  const handleLogin = () => {
+  const { handleLogin, handleLogout } = useSessionContext();
+
+  const handleLogins = () => {
     axios
       .get(`http://sharkle-server.kro.kr/api/v1/ping`, {})
       .then((response) => {
