@@ -3,13 +3,16 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { SessionProvider } from './Context/SessionContext';
 import axios from 'axios';
 
 axios.defaults.baseURL = 'http://sharkle-server.kro.kr/';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <SessionProvider>
+      <App />
+    </SessionProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
