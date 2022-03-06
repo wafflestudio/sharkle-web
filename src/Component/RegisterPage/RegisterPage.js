@@ -1,7 +1,6 @@
 import './RegisterPage.scss';
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
-import { toast } from 'react-toastify';
 import axios from 'axios';
 
 const RegisterPage = () => {
@@ -10,8 +9,8 @@ const RegisterPage = () => {
   const [registerName, setRegisterName] = useState('');
   const [registerEmail, setRegisterEmail] = useState('');
   const [registerId, setRegisterId] = useState('');
-  const [registerPW, setRegisterPW] = useState('');
-  const [registerPW2, setRegisterPW2] = useState('');
+  const [registerPassword, setRegisterPassword] = useState('');
+  const [checkPassword, setCheckPassword] = useState('');
   const [registerError, setRegisterError] = useState('');
 
   const handleCancel = () => {
@@ -25,24 +24,25 @@ const RegisterPage = () => {
       setRegisterError('서울대학교 이메일이 아닙니다.');
     } else if (registerId === '') {
       setRegisterError('아이디를 입력해주세요.');
-    } else if (registerPW === '') {
+    } else if (registerPassword === '') {
       setRegisterError('비밀번호를 입력해주세요.');
-    } else if (registerPW !== registerPW2) {
+    } else if (registerPassword !== checkPassword) {
       setRegisterError('확인 비밀번호가 일치하지 않습니다.');
     } else {
       setRegisterError('');
       axios
-        .post(`/api/v1/auth/signup`, {
+        .post(`/api/v1/auth/signup/`, {
           email: registerEmail,
           user_id: registerId,
-          password: registerPW,
+          password: registerPassword,
           username: registerName,
         })
         .then((response) => {
           console.log(response);
         })
         .catch((error) => {
-          console.log(error);
+          console.log(error.response.data.detail);
+          setRegisterError(error.response.data.detail);
         });
     }
   };
@@ -98,7 +98,7 @@ const RegisterPage = () => {
                   className="register-detail-input-inputbox"
                   type={'password'}
                   placeholder="비밀번호를 입력하세요"
-                  onChange={(e) => setRegisterPW(e.target.value)}
+                  onChange={(e) => setRegisterPassword(e.target.value)}
                 />
               </div>
             </div>
@@ -112,7 +112,7 @@ const RegisterPage = () => {
                   className="register-detail-input-inputbox"
                   type={'password'}
                   placeholder="비밀번호를 다시 한번 입력하세요"
-                  onChange={(e) => setRegisterPW2(e.target.value)}
+                  onChange={(e) => setCheckPassword(e.target.value)}
                 />
               </div>
             </div>

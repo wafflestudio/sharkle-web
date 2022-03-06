@@ -1,24 +1,33 @@
 import './LoginPage.scss';
+import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { GiSharkFin } from 'react-icons/gi';
 import { BsFillPersonFill } from 'react-icons/bs';
 import { BiLockAlt } from 'react-icons/bi';
 import axios from 'axios';
 import { useSessionContext } from '../../Context/SessionContext';
+import { toast } from 'react-toastify';
 
 const LoginPage = () => {
   const navigate = useNavigate();
+
+  const [loginId, setLoginId] = useState('');
+  const [loginPassword, setLoginPassword] = useState('');
 
   const { handleLogin, handleLogout } = useSessionContext();
 
   const handleLogins = () => {
     axios
-      .get(`http://sharkle-server.kro.kr/api/v1/ping`, {})
+      .post(`http://sharkle-server.kro.kr/api/v1/auth/login`, {
+        email: loginId,
+        password: loginPassword,
+      })
       .then((response) => {
-        console.log(response.data);
+        console.log(response);
       })
       .catch((error) => {
         console.log(error);
+        toast.error('로그인 에러!');
       });
   };
 
@@ -44,7 +53,7 @@ const LoginPage = () => {
         </div>
 
         <div className="login-button-container">
-          <button className="login-button-login" onClick={handleLogin}>
+          <button className="login-button-login" onClick={handleLogins}>
             {' '}
             로그인
           </button>
