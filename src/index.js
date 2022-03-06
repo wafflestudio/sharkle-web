@@ -5,12 +5,14 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { SessionProvider } from './Context/SessionContext';
 import axios from 'axios';
+import { ToastContainer } from 'react-toastify';
 
 axios.defaults.baseURL = 'http://sharkle-server.kro.kr/';
 
 ReactDOM.render(
   <React.StrictMode>
     <SessionProvider>
+      <ToastContainer />
       <App />
     </SessionProvider>
   </React.StrictMode>,
