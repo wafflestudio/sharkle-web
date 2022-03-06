@@ -1,0 +1,91 @@
+.add-button{
+  border:0;
+  background: #F7F7F7;
+  display: flex;
+  justify-content: center;
+  width: 173px;
+  height: 173px;
+
+
+  .add-button-container{
+    border: 1px solid gainsboro;
+    width: 164px;
+    height: 164px;
+    border-radius: 70%;
+    padding-left: 20px;
+    padding-right: 20px;
+    object-fit: cover;
+    overflow: hidden;
+    box-shadow: rgb(0 0 0 / 6%) 0px 0px 4px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    > .add-button-plus{
+      display: block;
+      width: 90%;
+      height: 90%;
+      color: black;
+
+
+      &:hover{
+
+        transform:scale(1.1);
+        transition: transform .3s;
+
+      }
+    }
+  }
+}
+
+
+.alarm{
+  position:relative;
+  margin-top: 41px;
+  margin-left: 15px;
+}
+.alarm-button{
+  width: 70px;
+  height: 40px;
+
+  background: #E5E5E5;
+  border-radius: 47px;
+  border:0;
+  cursor: pointer;
+  .alarm-button-circle{
+    position:absolute;
+    width: 38px;
+    height: 38px;
+    left:0;
+    top:0;
+    border-radius: 47px;
+
+    background: #FFFFFF;
+  }
+}
+
+
+.clicked-alarm{
+  position:relative;
+  margin-top: 42px;
+  margin-left: 15px;
+}
+.clicked-alarm-button{
+  width: 70px;
+  height: 40px;
+
+  background: #1571FF;
+  border-radius: 47px;
+  border:0;
+  cursor: pointer;
+  .clicked-alarm-button-circle{
+    position:absolute;
+    width: 40px;
+    height: 40px;
+    right:0;
+    top:0;
+    border-radius: 47px;
+
+    background: #FFFFFF;
+  }
+}
