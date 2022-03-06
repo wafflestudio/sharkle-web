@@ -1,4 +1,4 @@
-import './Header.scss';
+import styles from './Header.module.scss';
 import { AiOutlineHome, AiOutlineUser, AiFillBell } from 'react-icons/ai';
 import { GiSharkFin } from 'react-icons/gi';
 import { useContext, useState } from 'react';
@@ -6,6 +6,7 @@ import AlertPopUp from './AlertPopUp';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router';
 import { useSessionContext } from '../../Context/SessionContext';
+import ResponsiveHeader from './ResponsiveHeader';
 
 const Header = () => {
   // TODO
@@ -46,35 +47,41 @@ const Header = () => {
   };
 
   return (
-    <div className="header">
-      <div className="inner">
-        {isLogin ? 'OOOOOOOOO' : 'XXXXXXXX'}
-        <button onClick={handleLogin}>로그인 페이지로</button>
-        <button onClick={handleLogout}>로그아웃</button>
-        <button onClick={handleClub}>club</button>
-        <div className="left">
-          <button className="icon-container">
-            <GiSharkFin className="icon" />
-          </button>
-          <div className="title">SHARKLE</div>
-        </div>
+    <ResponsiveHeader>
+      <div className={styles.header}>
+        <div className={styles.inner}>
+          {isLogin ? 'OOOOOOOOO' : 'XXXXXXXX'}
+          <button onClick={handleLogin}>로그인 페이지로</button>
+          <button onClick={handleLogout}>로그아웃</button>
+          <button onClick={handleClub}>club</button>
+          <div className={styles.left}>
+            <button className={styles['icon-container']}>
+              <GiSharkFin className={styles.icon} />
+            </button>
+            <div className={styles.title}>SHARKLE</div>
+          </div>
 
-        <div className="right">
-          <button className="button grey">
-            <AiOutlineHome className="icon" />
-          </button>
-          <button className="button grey" onClick={handleLogin}>
-            <AiOutlineUser className="icon" />
-          </button>
-          <button className="button grey" onClick={onAlertClick}>
-            <AiFillBell className="icon" />
-            {isAlertClicked ? (
-              <AlertPopUp alerts={dummyAlerts} isAlertClicked={isAlertClicked} setIsAlertClicked={setIsAlertClicked} />
-            ) : null}
-          </button>
+          <div className={styles.right}>
+            <button className={styles.button}>
+              <AiOutlineHome className={styles.icon} />
+            </button>
+            <button className={styles.button} onClick={handleLogin}>
+              <AiOutlineUser className={styles.icon} />
+            </button>
+            <button className={styles.button} onClick={onAlertClick}>
+              <AiFillBell className={styles.icon} />
+              {isAlertClicked ? (
+                <AlertPopUp
+                  alerts={dummyAlerts}
+                  isAlertClicked={isAlertClicked}
+                  setIsAlertClicked={setIsAlertClicked}
+                />
+              ) : null}
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+    </ResponsiveHeader>
   );
 };
 
