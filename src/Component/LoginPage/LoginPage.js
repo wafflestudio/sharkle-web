@@ -53,7 +53,7 @@ const LoginPage = () => {
         </div>
 
         <div className="login-button-container">
-          <button className="login-button-login" onClick={handleLogin}>
+          <button className="login-button-login" onClick={handleLogins}>
             {' '}
             로그인
           </button>
