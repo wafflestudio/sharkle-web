@@ -47,5 +47,5 @@
   "devDependencies": {
     "prettier": "^2.5.1"
   },
-  "proxy": "http://sharkle-server.kro.kr/"
+  "proxy" : "http://sharkle-server.kro.kr/"
 }
