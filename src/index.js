@@ -4,11 +4,14 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import axios from 'axios';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 axios.defaults.baseURL = 'http://sharkle-server.kro.kr/';
 
 ReactDOM.render(
   <React.StrictMode>
+    <ToastContainer />
     <App />
   </React.StrictMode>,
   document.getElementById('root')
