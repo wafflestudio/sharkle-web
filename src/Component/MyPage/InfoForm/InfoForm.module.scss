@@ -1,4 +1,8 @@
-.info-content-profile-form{
+.form-wrapper{
+  width:100%;
+  display: flex;
+}
+.form{
   position: relative;
   height: 43px;
   width: 328px;
@@ -17,18 +21,18 @@
   align-items: center;
   box-shadow: rgb(0 0 255 / 4%) 0px 4px 8px 0px;
 
-  >.info-content-profile-key {
+  >.key {
     font-weight: bold;
     width: 20%;
     text-align: center;
     margin-left: 10px;
   }
 
-  .info-content-profile-wrapper{
+  .wrapper{
     width: 70%;
     display: flex;
     justify-content: center;
-    >.info-content-profile-value{
+    >.value{
       font-weight: bold;
       font-size: 16px;
       width: 70%;
@@ -37,7 +41,7 @@
 
     }
 
-    > .info-content-profile-edit{
+    > .edit{
       width: 70%;
       height: 25px;
       margin: 0px 10px 0px 10px;
@@ -52,9 +56,9 @@
 
   }
 
-  >.edit-button-wrapper{
+  >.button-wrapper{
     width: 10%;
-    >.edit-button{
+    >.button{
       display: flex;
       justify-content: center;
       align-items: center;

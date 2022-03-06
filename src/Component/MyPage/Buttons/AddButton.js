@@ -1,11 +1,11 @@
-import './Buttons.scss';
+import styles from './Buttons.module.scss';
 import { HiPlus } from 'react-icons/hi';
 const AddButton = () => {
   return (
     <>
-      <button className="add-button">
-        <div className="add-button-container">
-          <HiPlus className="add-button-plus" />
+      <button className={styles['add-button']}>
+        <div className={styles.container}>
+          <HiPlus className={styles.plus} />
         </div>
       </button>
     </>

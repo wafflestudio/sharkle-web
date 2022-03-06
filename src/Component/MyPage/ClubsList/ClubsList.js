@@ -1,6 +1,7 @@
 import MyClub from './MyClub';
 import { useRef, useState } from 'react';
 import { AiOutlineDoubleRight } from 'react-icons/ai';
+import styles from './ClubsList.module.scss';
 
 const ClubsList = ({ clubsList }) => {
   const throttle = (func, ms) => {
@@ -54,7 +55,7 @@ const ClubsList = ({ clubsList }) => {
 
   return (
     <div
-      className="clubs-content-lists"
+      className={styles.list}
       onMouseDown={onDragStart}
       onMouseMove={isDrag ? onThrottleDragMove : null}
       onMouseUp={onDragEnd}
@@ -64,8 +65,8 @@ const ClubsList = ({ clubsList }) => {
       {clubsList.map((club, idx) => (
         <MyClub club={club} key={idx} />
       ))}
-      <button className="clubs-content-lists-more" onClick={onNextClick}>
-        {clubsList.length > 4 ? <AiOutlineDoubleRight className="arrow" /> : null}
+      <button className={styles.more} onClick={onNextClick}>
+        {clubsList.length > 4 ? <AiOutlineDoubleRight className={styles.arrow} /> : null}
       </button>
     </div>
   );

@@ -1,9 +1,9 @@
-import './ClubsList.scss';
+import styles from './ClubsList.module.scss';
 const ClubButton = ({ img }) => {
   return (
-    <button className="club-button">
-      <div className="club-button-container">
-        <img className="club-button-container-img" src={img}></img>
+    <button className={styles.button}>
+      <div className={styles.container}>
+        <img className={styles.img} src={img}></img>
       </div>
     </button>
   );

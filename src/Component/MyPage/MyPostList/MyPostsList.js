@@ -1,11 +1,11 @@
-import './MyPostsList.scss';
+import styles from './MyPostsList.module.scss';
 import { useState } from 'react';
 
 const Pagination = ({ total, limit, page, setPage }) => {
   const numPages = Math.ceil(total / limit);
 
   return (
-    <div className="info-content-posts-page">
+    <div className={styles.page}>
       <nav>
         <button onClick={() => setPage(page - 1)} disabled={page === 1}>
           &lt;
@@ -27,17 +27,17 @@ const Pagination = ({ total, limit, page, setPage }) => {
 
 const PostPreviewForm = ({ post, idx }) => {
   return (
-    <div className="post-preview">
-      <div className="post-preview-panel">
-        <div className="left">
-          <div className="post-preview-num">{idx}.</div>
+    <div className={styles.preview}>
+      <div className={styles['preview-panel']}>
+        <div className={styles.left}>
+          <div className={styles.num}>{idx}.</div>
         </div>
-        <div className="mid">
-          <div className="post-preview-title">{post.title}</div>
+        <div className={styles.mid}>
+          <div className={styles.title}>{post.title}</div>
         </div>
-        <div className="right">
-          <div className="post-preview-date">{post.date}</div>
-          <div className="post-preview-answer">답변 {post.answerNum}</div>
+        <div className={styles.right}>
+          <div className={styles.date}>{post.date}</div>
+          <div className={styles.answer}>답변 {post.answerNum}</div>
         </div>
       </div>
     </div>
@@ -52,7 +52,7 @@ const MyPostsList = ({ postList }) => {
 
   return (
     <>
-      <div className="info-content-posts-list">
+      <div className={styles.list}>
         {postList.slice(offset, offset + limit).map((post, idx) => (
           <PostPreviewForm post={post} key={idx} idx={idx + 1 + offset} />
         ))}
