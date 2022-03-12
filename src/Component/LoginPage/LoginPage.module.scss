@@ -7,7 +7,7 @@
   align-content: center;
   background-color: #f8f9fa;
 
-  .login-title{
+  .title{
     display: flex;
     align-items: center;
     height: 50px;
@@ -15,19 +15,19 @@
     margin-left: calc(50% - 230px);
     margin-top: 12rem;
 
-    .login-title-icon{
+    .icon{
       height: 2rem;
       width: 2rem;
       margin-right: 0.5rem;
     }
 
-    .login-title-text{
+    .text{
       font-size: 1.4rem;
     }
 
   }
 
-  .login-container{
+  .container{
     width: 500px;
     height: 300px;
     margin-top: 0.5rem;
@@ -40,7 +40,7 @@
     box-sizing: border-box;
 
 
-    .login-id{
+    .id{
       display: flex;
       margin-top: 3rem;
       margin-left: 50px;
@@ -54,7 +54,7 @@
       font-size: 1rem;
       box-sizing: border-box;
 
-      .login-id-icon{
+      .icon{
         margin-top: 0.7rem;
         margin-right: 0.7rem;
         width: 2rem;
@@ -62,22 +62,22 @@
         color: #C4C4C4;
       }
 
-      .login-id-input{
+      .input{
         width: 95%;
         font-size: 1rem;
         border: none;
 
       }
     }
-    .login-id:focus-within{
+    .id:focus-within{
       outline: 1px solid rgba(136, 136, 136, 0.5);
     }
 
-    .login-id-input:focus{
+    .input:focus{
       outline: none;
     }
 
-    .login-password{
+    .password{
       display: flex;
       margin-top: 0.7rem;
       margin-left: 50px;
@@ -91,7 +91,7 @@
       font-size: 1rem;
       box-sizing: border-box;
 
-      .login-password-icon{
+      .icon{
         margin-top: 0.7rem;
         margin-right: 0.7rem;
         width: 2rem;
@@ -99,23 +99,23 @@
         color: #C4C4C4;
       }
 
-      .login-password-input{
+      .input{
         width: 100%;
         font-size: 1rem;
         border: none;
 
       }
     }
-    .login-password:focus-within{
+    .password:focus-within{
       outline: 1px solid rgba(136, 136, 136, 0.5);
     }
 
-    .login-password-input:focus{
+    .password-input:focus{
       outline: none;
     }
   }
 
-  .login-button-container{
+  .button{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -123,7 +123,7 @@
     margin-left: 50px;
     width: 400px;
 
-    .login-button-login{
+    .login{
       display: inline-flex;
       -webkit-box-align: center;
       align-items: center;
@@ -142,7 +142,7 @@
       font-size: 1rem;
     }
 
-    .login-button-register{
+    .register{
       display: inline-flex;
       margin-left: 20px;
       -webkit-box-align: center;

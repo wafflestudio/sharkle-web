@@ -5,6 +5,7 @@ import MyPostsList from './MyPostList/MyPostsList';
 import AddButton from './Buttons/AddButton';
 import InfoForm from './InfoForm/InfoForm';
 import axios from 'axios';
+import Header from '../Header/Header';
 
 const MyPage = () => {
   //dummy data
@@ -95,6 +96,7 @@ const MyPage = () => {
 
   return (
     <div className={styles['my-page']}>
+      <Header />
       <div className={styles.container}>
         <div className={styles.clubs}>
           <div className={styles.title}>
