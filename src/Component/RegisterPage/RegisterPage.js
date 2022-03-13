@@ -32,7 +32,7 @@ const RegisterPage = () => {
     } else {
       setRegisterError('');
       axios
-        .post(`/api/v1/auth/signup/`, {
+        .post(`api/v1/auth/signup/`, {
           email: registerEmail,
           user_id: registerId,
           password: registerPassword,

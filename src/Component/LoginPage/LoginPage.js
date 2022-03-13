@@ -18,8 +18,9 @@ const LoginPage = () => {
   const { handleLogin, handleLogout } = useSessionContext();
 
   const handleLoginButton = () => {
+    console.log('asdf');
     axios
-      .post(`/api/v1/auth/login/`, {
+      .post(`api/v1/auth/login/`, {
         email: loginId,
         password: loginPassword,
       })
