@@ -20,6 +20,7 @@ const ClubPage = () => {
 
   return (
     <div className="container">
+      <Header />
       <div className="info">
         <div className="info-main">
           <div className="info-main-thumb">

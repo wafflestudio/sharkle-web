@@ -2,6 +2,7 @@ import './RegisterPage.scss';
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const RegisterPage = () => {
   const navigate = useNavigate();
@@ -39,6 +40,8 @@ const RegisterPage = () => {
         })
         .then((response) => {
           console.log(response);
+          toast.success('회원가입 되었습니다.');
+          navigate('/login');
         })
         .catch((error) => {
           console.log(error.response.data.detail);

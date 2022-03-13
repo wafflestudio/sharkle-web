@@ -2,14 +2,12 @@ import './App.css';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import ClubPage from './Component/ClubPage/ClubPage';
 import MyPage from './Component/MyPage/MyPage';
-import Header from './Component/Header/Header';
 import LoginPage from './Component/LoginPage/LoginPage';
 import RegisterPage from './Component/RegisterPage/RegisterPage';
 
 function App() {
   return (
     <BrowserRouter>
-      <Header />
       <Routes>
         <Route exact path="/" element={<ClubPage />} />
         <Route exact path="/club" element={<ClubPage />} />
