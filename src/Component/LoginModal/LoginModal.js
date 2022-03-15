@@ -1,24 +1,25 @@
-import styles from './LoginPage.module.scss';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
-import { GiSharkFin } from 'react-icons/gi';
+import Modal from 'react-modal';
+import axios from 'axios';
+import styles from './LoginModal.module.scss';
+import { toast } from 'react-toastify';
 import { BsFillPersonFill } from 'react-icons/bs';
 import { BiLockAlt } from 'react-icons/bi';
-import axios from 'axios';
 import { useSessionContext } from '../../Context/SessionContext';
-import { toast } from 'react-toastify';
-import Header from '../Header/Header';
+import { GiSharkFin } from 'react-icons/gi';
 
-const LoginPage = () => {
+const LoginModal = (props) => {
   const navigate = useNavigate();
+
+  const { isOpen, setIsOpen } = props;
+
+  const { handleLogin, handleLogout } = useSessionContext();
 
   const [loginId, setLoginId] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
 
-  const { handleLogin, handleLogout } = useSessionContext();
-
   const handleLoginButton = () => {
-    console.log('asdf');
     axios
       .post(`api/v1/auth/login/`, {
         email: loginId,
@@ -26,8 +27,7 @@ const LoginPage = () => {
       })
       .then((response) => {
         toast.success('로그인 되었습니다.');
-        navigate('/clubpage'); // 메인페이지 완성되면 메인페이지로
-        console.log(response);
+        setIsOpen(false);
         handleLogin(loginId, null, null, response.data.access);
       })
       .catch((error) => {
@@ -41,11 +41,10 @@ const LoginPage = () => {
   };
 
   return (
-    <div className={styles['login-page']}>
-      <Header />
+    <Modal className={styles['login-modal']} isOpen={isOpen} onRequestClose={() => setIsOpen(false)}>
       <div className={styles.title}>
         <GiSharkFin className={styles.icon} />
-        <div className={styles.text}>SHARKLE</div>
+        로그인
       </div>
       <div className={styles.container}>
         <div className={styles.id}>
@@ -74,8 +73,8 @@ const LoginPage = () => {
           </button>
         </div>
       </div>
-    </div>
+    </Modal>
   );
 };
 
-export default LoginPage;
+export default LoginModal;
