@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router';
 import { useSessionContext } from '../../Context/SessionContext';
 import ResponsiveHeader from './ResponsiveHeader';
+import LoginModal from '../LoginModal/LoginModal';
 
 const Header = () => {
   // TODO
@@ -18,6 +19,7 @@ const Header = () => {
   const { isLogin, handleLogout } = useSessionContext();
 
   const [isAlertClicked, setIsAlertClicked] = useState(false);
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
 
   const dummyAlerts = [
     { title: '[와플 스튜디오1]에 새 공지사항이 올라왔어요!', isNew: true },
@@ -40,7 +42,7 @@ const Header = () => {
     setIsAlertClicked(!isAlertClicked);
   };
   const handleLogin = () => {
-    navigate('/login');
+    setIsLoginOpen(true);
   };
   const handleClub = () => {
     navigate('/club');
@@ -81,6 +83,8 @@ const Header = () => {
           </div>
         </div>
       </div>
+
+      <LoginModal isOpen={isLoginOpen} setIsOpen={setIsLoginOpen} />
     </ResponsiveHeader>
   );
 };
