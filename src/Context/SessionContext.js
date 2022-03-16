@@ -26,6 +26,7 @@ export const SessionProvider = ({ children }) => {
 
   const handleLogin = (id, userid, img, token) => {
     setIsLogin(true);
+    setId(id);
   };
   const handleLogout = () => {
     setIsLogin(false);
