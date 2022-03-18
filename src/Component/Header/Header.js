@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router';
 import { useSessionContext } from '../../Context/SessionContext';
 import ResponsiveHeader from './ResponsiveHeader';
 import LoginModal from '../LoginModal/LoginModal';
+import UserIconPopUp from './UserIconPopUp';
 
 const Header = () => {
   // TODO
@@ -16,11 +17,11 @@ const Header = () => {
 
   const navigate = useNavigate();
 
-  const { isLogin, handleLogout } = useSessionContext();
+  const { isLogin, handleLogout, id } = useSessionContext();
 
   const [isAlertClicked, setIsAlertClicked] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
-
+  const [isUserIconClicked, setIsUserIconClicked] = useState(false);
   const dummyAlerts = [
     { title: '[와플 스튜디오1]에 새 공지사항이 올라왔어요!', isNew: true },
     { title: '[와플 스튜디오1]에 새 공지사항이 올라왔어요!', isNew: false },
@@ -45,41 +46,55 @@ const Header = () => {
     setIsLoginOpen(true);
   };
   const handleClub = () => {
+    console.log('clicked');
     navigate('/club');
+  };
+  const handleMyPage = () => {
+    navigate('/mypage');
+  };
+  const onUserIconClick = () => {
+    console.log('clicked');
+    setIsUserIconClicked(!isUserIconClicked);
   };
 
   return (
     <ResponsiveHeader>
       <div className={styles.header}>
         <div className={styles.inner}>
-          {isLogin ? 'OOOOOOOOO' : 'XXXXXXXX'}
-          <button onClick={handleLogin}>로그인 페이지로</button>
-          <button onClick={handleLogout}>로그아웃</button>
-          <button onClick={handleClub}>club</button>
           <div className={styles.left}>
-            <button className={styles['icon-container']}>
+            <button className={styles['icon-container']} onClick={handleClub}>
               <GiSharkFin className={styles.icon} />
             </button>
-            <div className={styles.title}>SHARKLE</div>
+            <div className={styles.title} onClick={handleClub}>
+              SHARKLE
+            </div>
           </div>
 
           <div className={styles.right}>
-            <button className={styles.button}>
-              <AiOutlineHome className={styles.icon} />
-            </button>
-            <button className={styles.button} onClick={handleLogin}>
-              <AiOutlineUser className={styles.icon} />
-            </button>
-            <button className={styles.button} onClick={onAlertClick}>
-              <AiFillBell className={styles.icon} />
-              {isAlertClicked ? (
-                <AlertPopUp
-                  alerts={dummyAlerts}
-                  isAlertClicked={isAlertClicked}
-                  setIsAlertClicked={setIsAlertClicked}
-                />
-              ) : null}
-            </button>
+            {!isLogin ? (
+              <button className={styles['login-button']} onClick={handleLogin}>
+                로그인
+              </button>
+            ) : (
+              <>
+                <div className={styles.name}>{id}</div>
+                <button className={styles.button} onClick={onUserIconClick}>
+                  <AiOutlineUser className={styles.icon} />
+                  {isUserIconClicked ? <UserIconPopUp handleMyPage={handleMyPage} handleClub={handleClub} /> : null}
+                </button>
+
+                <button className={styles.button} onClick={onAlertClick}>
+                  <AiFillBell className={styles.icon} />
+                  {isAlertClicked ? (
+                    <AlertPopUp
+                      alerts={dummyAlerts}
+                      isAlertClicked={isAlertClicked}
+                      setIsAlertClicked={setIsAlertClicked}
+                    />
+                  ) : null}
+                </button>
+              </>
+            )}
           </div>
         </div>
       </div>
