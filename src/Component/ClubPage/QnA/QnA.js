@@ -3,9 +3,14 @@ import { BiSearchAlt2 } from 'react-icons/bi';
 import './QnA.scss';
 import QnAItem from './QnAItem/QnAItem';
 import { useState } from 'react';
+import { useSessionContext } from '../../../Context/SessionContext';
+import LoginModal from '../../LoginModal/LoginModal';
 
 const QnA = () => {
+  const { isLogin, handleLogout } = useSessionContext();
+
   const [search, setSearch] = useState('');
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
 
   const dummyQnA = [
     { id: 0, title: '타대생도 가입 가능한가요?', date: '2022.03.01', comment: 1 },
@@ -21,6 +26,13 @@ const QnA = () => {
 
   const handleSearch = (e) => {
     setSearch(e.target.value);
+  };
+  const handleWrite = () => {
+    if (isLogin) {
+      window.alert('아무튼 작성페이지');
+    } else {
+      setIsLoginOpen(true);
+    }
   };
 
   return (
@@ -51,9 +63,13 @@ const QnA = () => {
       </div>
       <div className="content-container-util">
         <div className="content-container-util-wrap">
-          <button className="content-container-util-wrap-write">작성하기</button>
+          <button className="content-container-util-wrap-write" onClick={handleWrite}>
+            작성하기
+          </button>
         </div>
       </div>
+
+      <LoginModal isOpen={isLoginOpen} setIsOpen={setIsLoginOpen} />
     </div>
   );
 };
