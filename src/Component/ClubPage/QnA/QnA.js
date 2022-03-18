@@ -49,6 +49,11 @@ const QnA = () => {
           <QnAItem item={item} key={item.id} />
         ))}
       </div>
+      <div className="content-container-util">
+        <div className="content-container-util-wrap">
+          <button className="content-container-util-wrap-write">작성하기</button>
+        </div>
+      </div>
     </div>
   );
 };
