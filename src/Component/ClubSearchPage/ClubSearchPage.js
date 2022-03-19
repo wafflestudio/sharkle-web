@@ -7,7 +7,22 @@ const ClubSearchPage = () => {
   return (
     <div>
       <Header />
-      <div className={styles.header}>헤더</div>
+      <div className={styles['header-wrapper']}>
+        <div className={styles.header}>
+          <div className={styles.select}>전체</div>
+          <div className={styles.select}>연합</div>
+          <div className={styles.select}>중앙</div>
+          <div className={styles.select}>단과대</div>
+          <div className={styles.select}>과</div>
+          <div className={styles.select}>기타</div>
+          <div className={styles.select}>학술/매체</div>
+          <div className={styles.select}>연행/예술</div>
+          <div className={styles.select}>취미/교양</div>
+          <div className={styles.select}>무예/운동</div>
+          <div className={styles.select}>인권/봉사</div>
+          <div className={styles.select}>종교</div>
+        </div>
+      </div>
       <div className={styles.main}>
         <div className={styles.categories}>
           <div className={styles.category}>
