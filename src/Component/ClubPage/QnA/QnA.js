@@ -33,7 +33,6 @@ const QnA = () => {
   };
   const handleWrite = () => {
     if (isLogin) {
-      window.alert('아무튼 작성페이지');
       setContentType('write');
     } else {
       setIsLoginOpen(true);
@@ -63,7 +62,7 @@ const QnA = () => {
       </div>
       <div className="content-container-qna">
         {contentType === 'list' && dummyQnA.map((item) => <QnAItem item={item} key={item.id} />)}
-        {contentType === 'write' && <QnAWrite />}
+        {contentType === 'write' && <QnAWrite setContentType={setContentType} />}
       </div>
       <div className="content-container-util">
         <div className="content-container-util-wrap">
