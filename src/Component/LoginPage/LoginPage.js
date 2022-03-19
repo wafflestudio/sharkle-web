@@ -17,23 +17,36 @@ const LoginPage = () => {
 
   const { handleLogin, handleLogout } = useSessionContext();
 
+  const onKeyPress = (e) => {
+    if (e.key == 'Enter') {
+      handleLoginButton();
+    }
+  };
+
   const handleLoginButton = () => {
-    console.log('asdf');
-    axios
-      .post(`api/v1/auth/login/`, {
-        email: loginId,
-        password: loginPassword,
-      })
-      .then((response) => {
-        toast.success('로그인 되었습니다.');
-        navigate('/clubpage'); // 메인페이지 완성되면 메인페이지로
-        console.log(response);
-        handleLogin(loginId, null, null, response.data.access);
-      })
-      .catch((error) => {
-        console.log(error);
-        toast.error('로그인 에러!');
-      });
+    if (loginId === '') {
+      toast.error('아이디를 입력해주세요.');
+    } else if (loginPassword === '') {
+      toast.error('비밀번호를 입력해주세요.');
+    } else {
+      axios
+        .post(`api/v1/auth/login/`, {
+          email: loginId,
+          password: loginPassword,
+        })
+        .then((response) => {
+          toast.success('로그인 되었습니다.');
+          handleLogin(loginId, null, null, response.data.access, response.data.refresh);
+        })
+        .catch((error) => {
+          console.log(error);
+          if (error.response.status === 401) {
+            toast.error('로그인 정보가 맞지 않습니다.');
+          } else {
+            toast.error('로그인 에러!');
+          }
+        });
+    }
   };
 
   const handleRegister = () => {
@@ -50,7 +63,12 @@ const LoginPage = () => {
       <div className={styles.container}>
         <div className={styles.id}>
           <BsFillPersonFill className={styles.icon} />
-          <input className={styles.input} placeholder="ID" onChange={(e) => setLoginId(e.target.value)} />
+          <input
+            className={styles.input}
+            placeholder="아이디"
+            onKeyPress={onKeyPress}
+            onChange={(e) => setLoginId(e.target.value)}
+          />
         </div>
 
         <div className={styles.password}>
@@ -58,7 +76,8 @@ const LoginPage = () => {
           <input
             className={styles.input}
             type="password"
-            placeholder="PW"
+            placeholder="비밀번호"
+            onKeyPress={onKeyPress}
             onChange={(e) => setLoginPassword(e.target.value)}
           />
         </div>

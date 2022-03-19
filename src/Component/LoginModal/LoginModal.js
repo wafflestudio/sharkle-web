@@ -19,21 +19,39 @@ const LoginModal = (props) => {
   const [loginId, setLoginId] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
 
+  Modal.setAppElement('#root');
+
+  const onKeyPress = (e) => {
+    if (e.key == 'Enter') {
+      handleLoginButton();
+    }
+  };
+
   const handleLoginButton = () => {
-    axios
-      .post(`api/v1/auth/login/`, {
-        email: loginId,
-        password: loginPassword,
-      })
-      .then((response) => {
-        toast.success('로그인 되었습니다.');
-        setIsOpen(false);
-        handleLogin(loginId, null, null, response.data.access);
-      })
-      .catch((error) => {
-        console.log(error);
-        toast.error('로그인 에러!');
-      });
+    if (loginId === '') {
+      toast.error('아이디를 입력해주세요.');
+    } else if (loginPassword === '') {
+      toast.error('비밀번호를 입력해주세요.');
+    } else {
+      axios
+        .post(`api/v1/auth/login/`, {
+          email: loginId,
+          password: loginPassword,
+        })
+        .then((response) => {
+          toast.success('로그인 되었습니다.');
+          setIsOpen(false);
+          handleLogin(loginId, null, null, response.data.access, response.data.refresh);
+        })
+        .catch((error) => {
+          console.log(error);
+          if (error.response.status === 401) {
+            toast.error('로그인 정보가 맞지 않습니다.');
+          } else {
+            toast.error('로그인 에러!');
+          }
+        });
+    }
   };
 
   const handleRegister = () => {
@@ -49,7 +67,12 @@ const LoginModal = (props) => {
       <div className={styles.container}>
         <div className={styles.id}>
           <BsFillPersonFill className={styles.icon} />
-          <input className={styles.input} placeholder="ID" onChange={(e) => setLoginId(e.target.value)} />
+          <input
+            className={styles.input}
+            placeholder="아이디"
+            onKeyPress={onKeyPress}
+            onChange={(e) => setLoginId(e.target.value)}
+          />
         </div>
 
         <div className={styles.password}>
@@ -57,7 +80,8 @@ const LoginModal = (props) => {
           <input
             className={styles.input}
             type="password"
-            placeholder="PW"
+            placeholder="비밀번호"
+            onKeyPress={onKeyPress}
             onChange={(e) => setLoginPassword(e.target.value)}
           />
         </div>
