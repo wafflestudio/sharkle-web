@@ -5,11 +5,14 @@ import QnAItem from './QnAItem/QnAItem';
 import { useState } from 'react';
 import { useSessionContext } from '../../../Context/SessionContext';
 import LoginModal from '../../LoginModal/LoginModal';
+import Recruiting from '../Recruiting/Recruiting';
+import QnAWrite from './QnAWrite/QnAWrite';
 
 const QnA = () => {
   const { isLogin, handleLogout } = useSessionContext();
 
   const [search, setSearch] = useState('');
+  const [contentType, setContentType] = useState('list');
   const [isLoginOpen, setIsLoginOpen] = useState(false);
 
   const dummyQnA = [
@@ -22,6 +25,7 @@ const QnA = () => {
     { id: 6, title: '활동비가 있나요?', date: '2022.03.01', comment: 1 },
     { id: 7, title: '질문질문', date: '2022.03.01', comment: 8 },
     { id: 8, title: '이것저것 상세한 질문글', date: '2022.03.01', comment: 10 },
+    { id: 9, title: '이것저것 상세한 질문글', date: '2022.03.01', comment: 10 },
   ];
 
   const handleSearch = (e) => {
@@ -30,6 +34,7 @@ const QnA = () => {
   const handleWrite = () => {
     if (isLogin) {
       window.alert('아무튼 작성페이지');
+      setContentType('write');
     } else {
       setIsLoginOpen(true);
     }
@@ -57,9 +62,8 @@ const QnA = () => {
         <BiSearchAlt2 className="content-container-search-icon" />
       </div>
       <div className="content-container-qna">
-        {dummyQnA.map((item) => (
-          <QnAItem item={item} key={item.id} />
-        ))}
+        {contentType === 'list' && dummyQnA.map((item) => <QnAItem item={item} key={item.id} />)}
+        {contentType === 'write' && <QnAWrite />}
       </div>
       <div className="content-container-util">
         <div className="content-container-util-wrap">
