@@ -1,12 +1,13 @@
 import { BsPinAngle } from 'react-icons/bs';
 import { BiSearchAlt2 } from 'react-icons/bi';
 import './QnA.scss';
-import QnAItem from './QnAItem/QnAItem';
+import QnAList from './QnAList/QnAList';
 import { useState } from 'react';
 import { useSessionContext } from '../../../Context/SessionContext';
 import LoginModal from '../../LoginModal/LoginModal';
 import Recruiting from '../Recruiting/Recruiting';
 import QnAWrite from './QnAWrite/QnAWrite';
+import QnAItem from './QnAItem/QnAItem';
 
 const QnA = () => {
   const { isLogin, handleLogout } = useSessionContext();
@@ -38,6 +39,9 @@ const QnA = () => {
       setIsLoginOpen(true);
     }
   };
+  const handleBack = () => {
+    setContentType('list');
+  };
 
   return (
     <div className="content-container">
@@ -61,14 +65,17 @@ const QnA = () => {
         <BiSearchAlt2 className="content-container-search-icon" />
       </div>
       <div className="content-container-qna">
-        {contentType === 'list' && dummyQnA.map((item) => <QnAItem item={item} key={item.id} />)}
+        {contentType === 'list' &&
+          dummyQnA.map((item) => <QnAList item={item} key={item.id} setContentType={setContentType} />)}
         {contentType === 'write' && <QnAWrite setContentType={setContentType} />}
+        {contentType === 'item' && <QnAItem setContentType={setContentType} />}
       </div>
       <div className="content-container-util">
         <div className="content-container-util-wrap">
           <button className="content-container-util-wrap-write" onClick={handleWrite}>
             작성하기
           </button>
+          {contentType === 'item' && <button onClick={handleBack}> 뒤로가기 </button>}
         </div>
       </div>
 

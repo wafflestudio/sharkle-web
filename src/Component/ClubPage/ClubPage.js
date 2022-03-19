@@ -3,7 +3,7 @@ import { BiCalendar, BiSearchAlt2 } from 'react-icons/bi';
 import { AiFillTags } from 'react-icons/ai';
 import { BsPinAngle } from 'react-icons/bs';
 import { useState } from 'react';
-import QnAItem from './QnA/QnAItem/QnAItem';
+import QnAList from './QnA/QnAList/QnAList';
 import Header from '../Header/Header';
 import QnA from './QnA/QnA';
 import Recruiting from './Recruiting/Recruiting';
