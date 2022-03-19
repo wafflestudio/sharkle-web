@@ -4,6 +4,7 @@ import ClubPage from './Component/ClubPage/ClubPage';
 import MyPage from './Component/MyPage/MyPage';
 import LoginPage from './Component/LoginPage/LoginPage';
 import RegisterPage from './Component/RegisterPage/RegisterPage';
+import ClubSearchPage from './Component/ClubSearchPage/ClubSearchPage';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route exact path="/mypage" element={<MyPage />} />
         <Route exact path="/login" element={<LoginPage />} />
         <Route exact path="/register" element={<RegisterPage />} />
+        <Route exact path="/search" element={<ClubSearchPage />} />
         <Route path="/*" element={<Navigate replace to="/" />} />
       </Routes>
     </BrowserRouter>
