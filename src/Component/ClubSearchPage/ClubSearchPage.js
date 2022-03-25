@@ -3,7 +3,23 @@ import Header from '../Header/Header';
 import { MdOutlineSportsBaseball } from 'react-icons/md';
 import { AiOutlineSearch } from 'react-icons/ai';
 import ClubInfo from './ClubInfo';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+
 const ClubSearchPage = () => {
+  const [clubs, setClubs] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`api/v1/circle`)
+      .then((response) => {
+        console.log(response.data.results);
+        setClubs(response.data.results);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
   return (
     <div>
       <Header />
@@ -52,15 +68,18 @@ const ClubSearchPage = () => {
           </div>
         </div>
         <div className={styles.list}>
-          <ClubInfo />
-          <ClubInfo />
-          <ClubInfo />
-          <ClubInfo />
-          <ClubInfo />
-          <ClubInfo />
-          <ClubInfo />
-          <ClubInfo />
-          <ClubInfo />
+          {clubs.map((club) => (
+            <ClubInfo club={club} />
+          ))}
+          {/*<ClubInfo />*/}
+          {/*<ClubInfo />*/}
+          {/*<ClubInfo />*/}
+          {/*<ClubInfo />*/}
+          {/*<ClubInfo />*/}
+          {/*<ClubInfo />*/}
+          {/*<ClubInfo />*/}
+          {/*<ClubInfo />*/}
+          {/*<ClubInfo />*/}
         </div>
       </div>
     </div>
