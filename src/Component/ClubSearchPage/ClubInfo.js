@@ -1,15 +1,19 @@
 import styles from './ClubSearchPage.module.scss';
+import { useEffect } from 'react';
 
-const ClubInfo = () => {
+const ClubInfo = ({ club }) => {
   return (
     <div className={styles.club}>
       <div className={styles['club-icon']}></div>
-      <div className={styles['club-name']}>동아리 이름</div>
+      <div className={styles['club-name']}>{club.name}</div>
       <div className={styles.tags}>
-        <div className={styles.tag}>#태그</div>
-        <div className={styles.tag}>#태그태그</div>
-        <div className={styles.tag}>#태그태</div>
-        <div className={styles.tag}>#태그</div>
+        {club.tag.split(' ').map((tag) => (
+          <div className={styles.tag}>{tag}</div>
+        ))}
+        {/*<div className={styles.tag}>#{club.tag}</div>*/}
+        {/*<div className={styles.tag}>#태그태그</div>*/}
+        {/*<div className={styles.tag}>#태그태</div>*/}
+        {/*<div className={styles.tag}>#태그</div>*/}
       </div>
     </div>
   );

@@ -6,6 +6,7 @@ import AddButton from './Buttons/AddButton';
 import InfoForm from './InfoForm/InfoForm';
 import axios from 'axios';
 import Header from '../Header/Header';
+import { useNavigate } from 'react-router';
 
 const MyPage = () => {
   //dummy data
@@ -94,6 +95,11 @@ const MyPage = () => {
   const [userEmail, setUserEmail] = useState(dummyUserEmail);
   const [myPostList, setMyPostList] = useState(dummyMyPostList);
 
+  const navigate = useNavigate();
+  const onAddButtonClick = () => {
+    navigate('/search');
+    console.log('clicked');
+  };
   return (
     <div className={styles['my-page']}>
       <Header />
@@ -104,7 +110,7 @@ const MyPage = () => {
           </div>
           <div className={styles.content}>
             <div className={styles.add}>
-              <div className={styles.inner}>
+              <div className={styles.inner} onClick={onAddButtonClick}>
                 <AddButton />
               </div>
               <div className={styles.description}>동아리 추가하기</div>
