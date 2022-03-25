@@ -7,19 +7,26 @@
     height: 100%;
     margin-left: auto;
     margin-right: auto;
-    width: 100%; // should be modified
     display: flex;
     -webkit-box-align: center;
     align-items: center;
     -webkit-box-pack: justify;
     justify-content: space-between;
 
+    @media (min-width: 1057px) {
+      left: calc((100% - 1056px) / 2);
+      width: 1056px;
+    }
+    @media (max-width: 1056px) {
+      width: 100%;
+    }
+
+
     > .left {
       display: flex;
-      margin-left: 10%;
+      margin-left: 40px;
       width: 400px;
       -webkit-box-align: center;
-
       align-items: center;
       -webkit-box-pack: center;
 
@@ -58,7 +65,7 @@
 
     > .right {
       display: flex;
-      margin-right: 10%;
+      margin-right: 40px;
       -webkit-box-align: center;
       align-items: center;
       position: relative;
@@ -73,8 +80,8 @@
         border: none;
         width: 2.25rem;
         height: 2.25rem;
-        margin-left: 1.5rem;
-        margin-right: 5rem;
+        margin-left: 20px;
+        margin-right: 10px;
         border-radius: 2.25rem;
         cursor: pointer;
 
@@ -108,12 +115,13 @@
 }
 
 .pop-up {
-  position: relative;
-  margin-top: 20px;
-  margin-left: 20px;
+  position: absolute;
+  left: -60px;
+  margin-top: 10px;
   width: 350px;
   height: 537px;
   z-index: 1;
+
 
   background: white;
   border: 1px solid #c4c4c4;
@@ -248,9 +256,9 @@
 // for UserIconMenu
 
 .user {
+  left: -140px;
   margin-top: 7px;
   width: 180px;
-
   display: flex;
   flex-direction: column;
   text-align: left;
@@ -258,6 +266,7 @@
 
   background: #ffffff;
   box-shadow: rgb(0 0 0 / 10%) 0px 0px 8px;
+  z-index: 2;
 
   > .wrapper {
     padding: 0.75rem 1rem;
@@ -269,7 +278,7 @@
 
     &:hover {
       background: #f8f9fa;
-      color: #12b886;
+      color: #538DFF;
     }
   }
 }

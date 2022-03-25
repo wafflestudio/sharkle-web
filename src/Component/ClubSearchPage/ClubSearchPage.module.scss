@@ -112,9 +112,12 @@
 
 .list{
   display: flex;
+  flex-direction: row; /* 왼쪽에서 오른쪽으로 나열되도록 설정 */
   flex-wrap: wrap;
-  height: 500px;
+  left: calc((100% - 1200px) / 2);
+  height: auto;
   width: 1200px;
+
 
 
   > .club{
@@ -132,6 +135,10 @@
 
       background: #E5E5E5;
       border-radius: 30px;
+    }
+
+    > .club-icon:hover{
+      box-shadow: rgb(0 0 0 / 15%) 5px 5px 10px 0px;
     }
 
     > .club-name{
