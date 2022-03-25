@@ -96,6 +96,10 @@
         transition: all 0.125s ease-in 0s;
         cursor: pointer;
       }
+
+      > .login-button:hover {
+        background: #484848;
+      }
     }
   }
 }
