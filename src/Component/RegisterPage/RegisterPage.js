@@ -15,7 +15,7 @@ const RegisterPage = () => {
   const [registerError, setRegisterError] = useState('');
 
   const handleCancel = () => {
-    navigate('/login');
+    navigate('/');
   };
 
   const handleRegister = () => {

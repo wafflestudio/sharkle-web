@@ -13,7 +13,7 @@ axios.defaults.baseURL = 'http://sharkle-server.kro.kr/';
 ReactDOM.render(
   <React.StrictMode>
     <SessionProvider>
-      <ToastContainer />
+      <ToastContainer autoClose={2700} />
       <App />
     </SessionProvider>
   </React.StrictMode>,

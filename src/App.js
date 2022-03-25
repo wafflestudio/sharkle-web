@@ -10,12 +10,12 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route exact path="/" element={<ClubPage />} />
+        <Route exact path="/" element={<ClubSearchPage />} />
         <Route exact path="/club" element={<ClubPage />} />
         <Route exact path="/mypage" element={<MyPage />} />
         <Route exact path="/login" element={<LoginPage />} />
         <Route exact path="/register" element={<RegisterPage />} />
-        <Route exact path="/search" element={<ClubSearchPage />} />
+        <Route exact path="/main" element={<ClubSearchPage />} />
         <Route path="/*" element={<Navigate replace to="/" />} />
       </Routes>
     </BrowserRouter>

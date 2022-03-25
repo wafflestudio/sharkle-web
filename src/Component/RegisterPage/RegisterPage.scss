@@ -48,7 +48,7 @@
   .register-detail-text {
     font-weight: bold;
     font-size: 1.125rem;
-    color: rgb(12, 166, 120);
+    color: #538DFF;
     margin-bottom: 1rem;
     transition: all 0.125s ease-in 0s;
     display: block;
@@ -71,7 +71,7 @@
 }
 
 .register-detail-input-wrapper:focus-within {
-  border-bottom: 1px solid rgb(12, 166, 120);
+  border-bottom: 1px solid #538DFF;
 }
 
 .register-detail-input-inputbox {
@@ -84,7 +84,7 @@
 }
 
 .register-detail-input-inputbox:focus-within {
-  color: rgb(12, 166, 120);
+  color: #538DFF;
 }
 
 .register-error-section{
@@ -127,7 +127,7 @@
   outline: none;
   font-weight: bold;
   word-break: keep-all;
-  background: rgb(18, 184, 134);
+  background: #538DFF;
   color: white;
   transition: all 0.125s ease-in 0s;
   cursor: pointer;
