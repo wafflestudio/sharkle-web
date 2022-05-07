@@ -8,9 +8,10 @@
   > .header {
     width: 1200px;
     display: flex;
+    justify-content: space-evenly;
 
     > .select {
-      flex-grow: 1;
+      flex-grow: 0;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -116,82 +117,147 @@
   }
 }
 
+
+
+
 .list {
   display: flex;
   flex-wrap: wrap;
   height: 500px;
-  width: 1200px;
+  width: 1376px;
+
+    > .club {
+
+      width: 198px;
+      height: 290px;
+      margin-left: 15px;
+      margin-right: 15px;
 
 
-  > .club {
+      > .club-icon {
+        width: 198px;
+        height: 198px;
 
-    width: 14%;
-    height: 290px;
-    margin-left: 15px;
-    margin-right: 15px;
-
-
-    > .club-icon {
-      width: 100%;
-      padding-bottom: 100%;
-
-
-      background: #E5E5E5;
-      border-radius: 30px;
-      overflow: hidden; // margin 병합 문제
-
-      > .d-day {
-        background: #FF7455;
-        border-radius: 10.5px;
-        width: 45px;
-        height: 21px;
-        margin-top: 11px;
-        margin-left: 15px;
-        font-size: 10px;
-        font-weight: bold;
-        color: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-    }
-
-    > .club-name {
-      font-family: 'Noto Sans KR';
-      font-style: normal;
-      font-size: 18px;
-      margin-left: 10px;
-      margin-top: 5px;
-      font-weight: 1000;
-    }
-
-    > .tags {
-      width: 170px;
-      margin-top: 10px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-start;
-      align-items: center;
-
-      > .tag {
-        margin: 3px;
-        padding: 6px;
         background: #E5E5E5;
-        color: white;
-        border-radius: 21px;
-        font-size: 15px;
-        line-height: 15px;
-        display: flex;
-        align-items: center;
-        cursor: pointer;
+        border-radius: 30px;
+        overflow: hidden; // margin 병합 문제
 
-        &:hover {
-          background: #B9DBFF;
-          transform: scale(1.05);
-          transition: transform .1s;
+        > .d-day {
+          background: #FF7455;
+          border-radius: 10.5px;
+          width: 45px;
+          height: 21px;
+          margin-top: 11px;
+          margin-left: 15px;
+          font-size: 10px;
+          font-weight: bold;
+          color: white;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+
+      > .club-name {
+        font-family: 'Noto Sans KR';
+        font-style: normal;
+        font-size: 18px;
+        margin-left: 10px;
+        margin-top: 5px;
+        font-weight: 1000;
+      }
+
+      > .tags {
+        width: 198px;
+        margin-top: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        align-items: center;
+
+        > .tag {
+          margin: 3px;
+          padding: 6px;
+          background: #E5E5E5;
+          color: white;
+          border-radius: 21px;
+          font-size: 15px;
+          line-height: 15px;
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+
+          &:hover {
+            background: #B9DBFF;
+            transform: scale(1.05);
+            transition: transform .1s;
+          }
         }
       }
     }
 
+}
+
+@media ( max-width: 1440px ) {
+  .list{
+    width: 916px;
   }
 }
+@media (max-width: 1080px) {
+
+  .header{
+    overflow: auto;
+
+    &::-webkit-scrollbar{
+      height: 7px;
+
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #2f3542;
+      border-radius: 10px;
+    }
+    &::-webkit-scrollbar-track {
+      background-color: grey;
+      border-radius: 10px;
+      box-shadow: inset 0px 0px 5px white;
+    }
+    .select{
+      width: 100px;
+      flex-shrink: 0;
+    }
+  }
+
+
+
+  .list{
+    width: 90%;
+    > .club{
+      width: calc(50% - 2rem);
+      height: auto;
+      aspect-ratio: 3 / 4;
+      > .club-icon{
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1;
+      }
+    }
+  }
+}
+
+@media (max-width: 720px) {
+  .list{
+    width: 90%;
+    > .club{
+      width: calc(100% - 2rem);
+      height: auto;
+      aspect-ratio: 3 / 4;
+      > .club-icon{
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1;
+      }
+    }
+  }
+}
+
