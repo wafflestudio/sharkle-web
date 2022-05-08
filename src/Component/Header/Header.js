@@ -45,9 +45,13 @@ const Header = () => {
   const handleLogin = () => {
     setIsLoginOpen(true);
   };
+  const handleMainPage = () => {
+    console.log('clicked');
+    navigate('/main');
+  };
   const handleClub = () => {
     console.log('clicked');
-    navigate('/club');
+    navigate('/Club');
   };
   const handleMyPage = () => {
     navigate('/mypage');
@@ -62,10 +66,10 @@ const Header = () => {
       <div className={styles.header}>
         <div className={styles.inner}>
           <div className={styles.left}>
-            <button className={styles['icon-container']} onClick={handleClub}>
+            <button className={styles['icon-container']} onClick={handleMainPage}>
               <GiSharkFin className={styles.icon} />
             </button>
-            <div className={styles.title} onClick={handleClub}>
+            <div className={styles.title} onClick={handleMainPage}>
               SHARKLE
             </div>
           </div>
