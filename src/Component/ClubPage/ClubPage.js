@@ -7,15 +7,40 @@ import QnAList from './QnA/QnAList/QnAList';
 import Header from '../Header/Header';
 import QnA from './QnA/QnA';
 import Recruiting from './Recruiting/Recruiting';
+import { useParams } from 'react-router';
+import { useNavigate } from 'react-router';
+
+const tempMenu = [
+  {
+    name: '소개',
+    id: 0,
+  },
+  {
+    name: '모집',
+    id: 1,
+  },
+  {
+    name: 'QnA',
+    id: 2,
+  },
+  {
+    name: '커뮤니티',
+    id: 3,
+  },
+];
 
 const ClubPage = () => {
+  const params = useParams();
+  const navigate = useNavigate();
+
   const [menutype, setMenutype] = useState('recruiting');
 
-  const handleRecruiting = () => {
-    setMenutype('recruiting');
+  const handleMenu = (item) => {
+    navigate(`/circle/${params.circleName}/${item.name}`);
   };
-  const handleQnA = () => {
-    setMenutype('qna');
+
+  const testParam = () => {
+    console.log(params);
   };
 
   return (
@@ -33,7 +58,9 @@ const ClubPage = () => {
             </div>
           </div>
           <div className="info-main-name">
-            <div className="info-main-name-style">와플 스튜디오</div>
+            <div className="info-main-name-style" onClick={testParam}>
+              {params.circleName}
+            </div>
           </div>
         </div>
         <div className="info-sub">
@@ -54,15 +81,18 @@ const ClubPage = () => {
       </div>
       <div className="content">
         <div className="content-menu">
-          <div className={`content-menu-recruit ${menutype === 'recruiting' ? 'on' : ''}`} onClick={handleRecruiting}>
-            <span>Recruiting</span>
-          </div>
-          <div className={`content-menu-qna ${menutype === 'qna' ? 'on' : ''}`} onClick={handleQnA}>
-            <span>Q&A</span>
-          </div>
+          {tempMenu.map((item) => (
+            <div
+              className={`content-menu-recruit ${params.boardName === item.name ? 'on' : ''}`}
+              onClick={() => handleMenu(item)}
+              key={item.id}
+            >
+              <span>{item.name}</span>
+            </div>
+          ))}
         </div>
-        {menutype === 'recruiting' && <Recruiting />}
-        {menutype === 'qna' && <QnA />}
+        {params.boardName === '모집' && <Recruiting />}
+        {params.boardName === 'QnA' && <QnA />}
       </div>
     </div>
   );

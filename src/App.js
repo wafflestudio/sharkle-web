@@ -11,7 +11,8 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route exact path="/" element={<ClubSearchPage />} />
-        <Route exact path="/club" element={<ClubPage />} />
+        <Route exact path="/circle/:circleName/:boardName" element={<ClubPage />} />
+        <Route path="/circle/*" element={<Navigate replace to="/circle/:circleName/info" />} /> {/*추후 수정 필요*/}
         <Route exact path="/mypage" element={<MyPage />} />
         <Route exact path="/login" element={<LoginPage />} />
         <Route exact path="/register" element={<RegisterPage />} />
