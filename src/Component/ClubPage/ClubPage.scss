@@ -187,9 +187,11 @@
       position: absolute;
       left: 0px;
       width: 200px;
-      height: 100%;
-      background: #C4C4C4;
-      border-radius: 16px;
+      height: auto;
+
+      background: #FFFFFF;
+      border: 1px solid #C4C4C4;
+      border-radius: 15px;
 
       span{
         font-family: Noto Sans KR;
@@ -199,17 +201,17 @@
         line-height: 18px;
       }
 
-      .content-menu-recruit{
+      .content-menu-box{
         position: relative;
         width: 100%;
         height: 50px;
         display: flex;
         justify-content: center;
         align-items: center;
-        border-bottom: 1px solid #FFFFFF;
+        border-bottom: 1px solid #C4C4C4;
         cursor: pointer;
       }
-      .content-menu-recruit.on{
+      .content-menu-box.on{
         color: #538DFF;
         font-weight: bold;
       }
