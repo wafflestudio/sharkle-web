@@ -6,7 +6,8 @@ const ClubInfo = ({ club }) => {
   const navigate = useNavigate();
 
   const handleClub = () => {
-    navigate('/club');
+    console.log(club);
+    navigate(`/circle/${club.name}/소개`);
   };
 
   return (
