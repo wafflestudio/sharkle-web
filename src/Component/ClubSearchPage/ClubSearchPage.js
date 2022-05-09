@@ -6,6 +6,7 @@ import ClubInfo from './ClubInfo';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import SearchPageHeader from './SearchPageHeader';
 
 const ClubSearchPage = () => {
   const [clubs, setClubs] = useState([]);
@@ -26,6 +27,128 @@ const ClubSearchPage = () => {
     { id: 10, picked: false, title: '종교' },
   ]);
 
+  const dummyClubs = [
+    {
+      type0: 1,
+      type1: 1,
+      name: 'asdf',
+      bio: 'asdf',
+      introduction: 'asdf',
+      tag: 'asdf',
+      homepage: 'asdf',
+      facebook: 'asdf',
+      instagram: 'asdf',
+      twitter: 'asdf',
+      youtube: 'asdf',
+      tiktok: 'asdf',
+      band: 'asdf',
+    },
+    {
+      type0: 1,
+      type1: 1,
+      name: 'asdf',
+      bio: 'asdf',
+      introduction: 'asdf',
+      tag: 'asdf',
+      homepage: 'asdf',
+      facebook: 'asdf',
+      instagram: 'asdf',
+      twitter: 'asdf',
+      youtube: 'asdf',
+      tiktok: 'asdf',
+      band: 'asdf',
+    },
+    {
+      type0: 1,
+      type1: 1,
+      name: 'asdf',
+      bio: 'asdf',
+      introduction: 'asdf',
+      tag: 'asdf',
+      homepage: 'asdf',
+      facebook: 'asdf',
+      instagram: 'asdf',
+      twitter: 'asdf',
+      youtube: 'asdf',
+      tiktok: 'asdf',
+      band: 'asdf',
+    },
+    {
+      type0: 1,
+      type1: 1,
+      name: 'asdf',
+      bio: 'asdf',
+      introduction: 'asdf',
+      tag: 'asdf',
+      homepage: 'asdf',
+      facebook: 'asdf',
+      instagram: 'asdf',
+      twitter: 'asdf',
+      youtube: 'asdf',
+      tiktok: 'asdf',
+      band: 'asdf',
+    },
+    {
+      type0: 1,
+      type1: 1,
+      name: 'asdf',
+      bio: 'asdf',
+      introduction: 'asdf',
+      tag: 'asdf',
+      homepage: 'asdf',
+      facebook: 'asdf',
+      instagram: 'asdf',
+      twitter: 'asdf',
+      youtube: 'asdf',
+      tiktok: 'asdf',
+      band: 'asdf',
+    },
+    {
+      type0: 1,
+      type1: 1,
+      name: 'asdf',
+      bio: 'asdf',
+      introduction: 'asdf',
+      tag: 'asdf',
+      homepage: 'asdf',
+      facebook: 'asdf',
+      instagram: 'asdf',
+      twitter: 'asdf',
+      youtube: 'asdf',
+      tiktok: 'asdf',
+      band: 'asdf',
+    },
+    {
+      type0: 1,
+      type1: 1,
+      name: 'asdf',
+      bio: 'asdf',
+      introduction: 'asdf',
+      tag: 'asdf',
+      homepage: 'asdf',
+      facebook: 'asdf',
+      instagram: 'asdf',
+      twitter: 'asdf',
+      youtube: 'asdf',
+      tiktok: 'asdf',
+      band: 'asdf',
+    },
+    {
+      type0: 1,
+      type1: 1,
+      name: 'asdf',
+      bio: 'asdf',
+      introduction: 'asdf',
+      tag: 'asdf',
+      homepage: 'asdf',
+      facebook: 'asdf',
+      instagram: 'asdf',
+      twitter: 'asdf',
+      youtube: 'asdf',
+      tiktok: 'asdf',
+      band: 'asdf',
+    },
+  ];
   const onTypeClick = (id) => {
     if (typePicked == id) {
       setTypePicked('');
@@ -46,43 +169,20 @@ const ClubSearchPage = () => {
         console.log(error);
       });
   }, []);
+  // useEffect(() => {
+  //   setClubs(dummyClubs);
+  // }, []);      if server off
+
   return (
     <div>
       <Header />
-      <div className={styles['header-wrapper']}>
-        <div className={styles.header}>
-          <div className={styles.select} style={{ color: '#000000' }} onClick={() => onTypeClick(typePicked)}>
-            전체
-          </div>
-          {types.map((type) => (
-            <div
-              className={styles.select}
-              style={{ color: type.picked ? '#538DFF' : null }}
-              onClick={() => onTypeClick(type.id)}
-            >
-              {type.title}
-            </div>
-          ))}
-        </div>
-      </div>
+      <SearchPageHeader types={types} setTypes={setTypes} typePicked={typePicked} setTypePicked={setTypePicked} />
       <div className={styles.main}>
         <div className={styles.categories}>
           <div className={styles.category}>
             <MdOutlineSportsBaseball className={styles.icon} />
             <div>전체</div>
           </div>
-          {/*<div className={styles.category}>*/}
-          {/*  <MdOutlineSportsBaseball className={styles.icon} />*/}
-          {/*  <div>연합</div>*/}
-          {/*</div>*/}
-          {/*<div className={styles.category}>*/}
-          {/*  <MdOutlineSportsBaseball className={styles.icon} />*/}
-          {/*  <div>중앙</div>*/}
-          {/*</div>*/}
-          {/*<div className={styles.category}>*/}
-          {/*  <MdOutlineSportsBaseball className={styles.icon} />*/}
-          {/*  <div>단과대</div>*/}
-          {/*</div>*/}
         </div>
         <div className={styles['searcher-wrapper']}>
           <div className={styles.searcher}>
@@ -109,15 +209,6 @@ const ClubSearchPage = () => {
             .map((club) => (
               <ClubInfo club={club} key={club.id} />
             ))}
-          {/*<ClubInfo />*/}
-          {/*<ClubInfo />*/}
-          {/*<ClubInfo />*/}
-          {/*<ClubInfo />*/}
-          {/*<ClubInfo />*/}
-          {/*<ClubInfo />*/}
-          {/*<ClubInfo />*/}
-          {/*<ClubInfo />*/}
-          {/*<ClubInfo />*/}
         </div>
       </div>
     </div>
