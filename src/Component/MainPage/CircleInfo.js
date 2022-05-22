@@ -1,9 +1,16 @@
-import styles from './ClubSearchPage.module.scss';
+import styles from './MainPage.module.scss';
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router';
 
-const ClubInfo = ({ club }) => {
+const CircleInfo = ({ club, key }) => {
+  const navigate = useNavigate();
+
+  const moveToCirclePage = () => {
+    navigate('/circle/' + club.id);
+  };
+
   return (
-    <div className={styles.club}>
+    <div className={styles.club} onClick={moveToCirclePage}>
       <div className={styles['club-icon']}>
         <div className={styles['d-day']}>D-16</div>
       </div>
@@ -21,4 +28,4 @@ const ClubInfo = ({ club }) => {
   );
 };
 
-export default ClubInfo;
+export default CircleInfo;

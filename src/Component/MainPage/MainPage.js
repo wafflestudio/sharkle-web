@@ -1,14 +1,14 @@
-import styles from './ClubSearchPage.module.scss';
+import styles from './MainPage.module.scss';
 import Header from '../Header/Header';
 import { MdOutlineSportsBaseball } from 'react-icons/md';
 import { AiOutlineSearch } from 'react-icons/ai';
-import ClubInfo from './ClubInfo';
+import CircleInfo from './CircleInfo';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import SearchPageHeader from './SearchPageHeader';
+import MainPageHeader from './MainPageHeader';
 
-const ClubSearchPage = () => {
+const MainPage = () => {
   const [clubs, setClubs] = useState([]);
   const [searcher, setSearcher] = useState('');
   const numOfType = 11;
@@ -176,7 +176,7 @@ const ClubSearchPage = () => {
   return (
     <div>
       <Header />
-      <SearchPageHeader types={types} setTypes={setTypes} typePicked={typePicked} setTypePicked={setTypePicked} />
+      <MainPageHeader types={types} setTypes={setTypes} typePicked={typePicked} setTypePicked={setTypePicked} />
       <div className={styles.main}>
         <div className={styles.categories}>
           <div className={styles.category}>
@@ -207,7 +207,7 @@ const ClubSearchPage = () => {
               }
             })
             .map((club) => (
-              <ClubInfo club={club} key={club.id} />
+              <CircleInfo club={club} key={club.id} />
             ))}
         </div>
       </div>
@@ -215,4 +215,4 @@ const ClubSearchPage = () => {
   );
 };
 
-export default ClubSearchPage;
+export default MainPage;

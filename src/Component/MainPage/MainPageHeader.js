@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
-import styles from './ClubSearchPage.module.scss';
+import styles from './MainPage.module.scss';
 
-const SearchPageHeader = ({ typePicked, setTypePicked, types, setTypes }) => {
+const MainPageHeader = ({ typePicked, setTypePicked, types, setTypes }) => {
   const throttle = (func, ms) => {
     let throttled = false;
     return (...args) => {
@@ -80,4 +80,4 @@ const SearchPageHeader = ({ typePicked, setTypePicked, types, setTypes }) => {
   );
 };
 
-export default SearchPageHeader;
+export default MainPageHeader;

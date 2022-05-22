@@ -8,7 +8,7 @@ import LoginModal from '../../LoginModal/LoginModal';
 import Recruiting from '../Recruiting/Recruiting';
 import QnAWrite from './QnAWrite/QnAWrite';
 import QnAItem from './QnAItem/QnAItem';
-import styles from '../ClubPage.module.scss';
+import styles from '../CirclePage.module.scss';
 
 const QnA = () => {
   const { isLogin, handleLogout } = useSessionContext();

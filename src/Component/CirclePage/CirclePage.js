@@ -1,16 +1,20 @@
-import './ClubPage.module.scss';
+import './CirclePage.module.scss';
 import { BiCalendar, BiSearchAlt2 } from 'react-icons/bi';
 import { AiFillTags } from 'react-icons/ai';
 import { BsPinAngle } from 'react-icons/bs';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router';
 import QnAList from './QnA/QnAList/QnAList';
+import axios from 'axios';
 import Header from '../Header/Header';
 import QnA from './QnA/QnA';
 import Recruiting from './Recruiting/Recruiting';
-import styles from './ClubPage.module.scss';
+import styles from './CirclePage.module.scss';
 import { RiPushpinLine } from 'react-icons/ri';
 
-const ClubPage = () => {
+const CirclePage = () => {
+  const params = useParams();
+
   const [menutype, setMenutype] = useState('recruiting');
 
   const handleRecruiting = () => {
@@ -19,6 +23,17 @@ const ClubPage = () => {
   const handleQnA = () => {
     setMenutype('qna');
   };
+
+  useEffect(() => {
+    axios
+      .get(`api/v1/circle/${params.circleId}`)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  });
 
   return (
     <div className={styles.clubpage}>
@@ -116,4 +131,4 @@ const ClubPage = () => {
   );
 };
 
-export default ClubPage;
+export default CirclePage;
