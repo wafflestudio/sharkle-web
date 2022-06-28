@@ -69,7 +69,6 @@
       width: 100%;
       padding-top: 30px;
       height: 145px;
-      background-color: #1571FF;
 
       .name_wrapper{
         position: relative;
@@ -93,6 +92,8 @@
 
         .due{
           display: flex;
+          flex-direction: row;
+          justify-content: center;
           align-items: center;
           height: 33px;
           width: 500px;
@@ -107,10 +108,11 @@
         position: relative;
         margin-top: 10px;
         height: 40px;
-        background-color: azure;
 
         .tag{
           display: flex;
+          flex-direction: row;
+          justify-content: center;
           align-items: center;
           height: 33px;
           width: 500px;
@@ -120,6 +122,8 @@
         }
         .join{
           display: flex;
+          flex-direction: row;
+          justify-content: center;
           flex-direction: row;
           justify-content: center;
           align-items: center;
@@ -151,7 +155,6 @@
 
     .board_wrapper{
       position: relative;
-      background-color: pink;
       padding-top: 25px;
       height: 100%;
 
