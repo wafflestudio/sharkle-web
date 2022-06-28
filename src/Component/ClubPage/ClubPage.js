@@ -1,4 +1,4 @@
-import './ClubPage.scss';
+import styles from './ClubPage.module.scss';
 import { BiCalendar, BiSearchAlt2 } from 'react-icons/bi';
 import { AiFillTags } from 'react-icons/ai';
 import { BsPinAngle } from 'react-icons/bs';
@@ -19,50 +19,41 @@ const ClubPage = () => {
   };
 
   return (
-    <div className="container">
+    <div>
       <Header />
-      <div className="info">
-        <div className="info-main">
-          <div className="info-main-thumb">
-            <div className="info-main-thumb-container">
-              <img
-                className="info-main-thumb-img"
-                src="https://wafflestudio.com/images/icon_header.svg?auto=format&fit=max&w=256"
-                alt="temp"
-              />
+      <div className={styles.container}>
+        <div className={styles.left}>
+          <div className={styles.image_wrapper}>
+            <img
+              className={styles.image}
+              src="https://wafflestudio.com/images/icon_header.svg?auto=format&fit=max&w=256"
+              alt="temp"
+            />
+          </div>
+          <div className={styles.menu_wrapper}>
+            <div className={styles.menu_list}>메뉴 1</div>
+            <div className={styles.menu_list}>메뉴 2</div>
+            <div className={styles.menu_list}>메뉴 3</div>
+            <div className={styles.menu_list}>메뉴 4</div>
+            <div className={styles.menu_list}>메뉴 5</div>
+          </div>
+        </div>
+        <div className={styles.right}>
+          <div className={styles.info}>
+            <div className={styles.name_wrapper}>이름 자리</div>
+            <div className={styles.due_wrapper}>
+              <div className={styles.due}>지원기간 박스 자리</div>
+            </div>
+            <div className={styles.extra_wrapper}>
+              <div className={styles.tag}>태그 자리</div>
+              <button className={styles.join}>가입신청 자리</button>
+              <button className={styles.notice}>알림설정 자리</button>
             </div>
           </div>
-          <div className="info-main-name">
-            <div className="info-main-name-style">와플 스튜디오</div>
+          <div className={styles.board_wrapper}>
+            <div className={styles.board}></div>
           </div>
         </div>
-        <div className="info-sub">
-          <div className="info-sub-recruit">
-            <BiCalendar className="info-sub-recruit-icon" />
-            <div className="info-sub-recruit-date">22/03/01 ~ 22/03/31</div>
-          </div>
-          <div className="info-sub-tags">
-            <AiFillTags className="info-sub-tags-icon" />
-            <div className="info-sub-tags-list">#개발 #코딩 #디자이너</div>
-          </div>
-        </div>
-        <div className="info-util">
-          <div className="info-util-alert">
-            <button className="info-util-alert-btn">알림설정</button>
-          </div>
-        </div>
-      </div>
-      <div className="content">
-        <div className="content-menu">
-          <div className={`content-menu-recruit ${menutype === 'recruiting' ? 'on' : ''}`} onClick={handleRecruiting}>
-            <span>Recruiting</span>
-          </div>
-          <div className={`content-menu-qna ${menutype === 'qna' ? 'on' : ''}`} onClick={handleQnA}>
-            <span>Q&A</span>
-          </div>
-        </div>
-        {menutype === 'recruiting' && <Recruiting />}
-        {menutype === 'qna' && <QnA />}
       </div>
     </div>
   );
