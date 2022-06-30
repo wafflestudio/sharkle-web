@@ -1,11 +1,22 @@
 import styles from './ClubSearchPage.module.scss';
 import { useEffect } from 'react';
 
+const getDDay = (due) => {
+  const dueDate = new Date(due);
+  const today = new Date();
+
+  const diff = dueDate - today;
+
+  const dayDiff = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+  return dayDiff == 0 ? 'D-Day' : dayDiff < 0 ? `D+${-dayDiff}` : `D-${dayDiff}`;
+};
+
 const ClubInfo = ({ club }) => {
   return (
     <div className={styles.club}>
       <div className={styles['club-icon']}>
-        <div className={styles['d-day']}>D-16</div>
+        <div className={styles['d-day']}>{getDDay(club.due)}</div>
       </div>
       <div className={styles['club-name']}>{club.name}</div>
       <div className={styles.tags}>

@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 import styles from './ClubSearchPage.module.scss';
 
-const SearchPageHeader = ({ typePicked, setTypePicked, types, setTypes }) => {
+const SearchPageHeader = ({ typePicked, setTypePicked, types, setTypes, onClubSearch }) => {
   const throttle = (func, ms) => {
     let throttled = false;
     return (...args) => {
@@ -47,10 +47,10 @@ const SearchPageHeader = ({ typePicked, setTypePicked, types, setTypes }) => {
   const onThrottleDragMove = throttle(onDragMove, delay);
 
   const onTypeClick = (id) => {
-    if (typePicked == id) {
-      setTypePicked('');
-    } else setTypePicked(id);
-    setTypes(types.map((type) => (type.id === id ? { ...type, picked: !type.picked } : { ...type, picked: false })));
+    //if (typePicked == id) {
+    //  setTypePicked('');
+    setTypePicked(id);
+    setTypes(types.map((type) => (type.id === id ? { ...type, picked: true } : { ...type, picked: false })));
   };
 
   return (
@@ -63,14 +63,23 @@ const SearchPageHeader = ({ typePicked, setTypePicked, types, setTypes }) => {
       ref={scrollRef}
     >
       <div className={styles.header}>
-        <div className={styles.select} style={{ color: '#000000' }} onClick={() => onTypeClick(typePicked)}>
+        <div
+          className={styles.select}
+          style={{ color: '#000000' }}
+          onClick={() => {
+            onTypeClick(typePicked);
+          }}
+        >
           전체
         </div>
         {types.map((type) => (
           <div
             className={styles.select}
             style={{ color: type.picked ? '#538DFF' : null }}
-            onClick={() => onTypeClick(type.id)}
+            onClick={() => {
+              onClubSearch(typePicked);
+              onTypeClick(type.id);
+            }}
           >
             {type.title}
           </div>
