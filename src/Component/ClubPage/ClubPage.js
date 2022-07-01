@@ -2,11 +2,13 @@ import styles from './ClubPage.module.scss';
 import { BiCalendar, BiSearchAlt2 } from 'react-icons/bi';
 import { AiFillTags } from 'react-icons/ai';
 import { BsPinAngle } from 'react-icons/bs';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import QnAList from './QnA/QnAList/QnAList';
 import Header from '../Header/Header';
 import QnA from './QnA/QnA';
 import Recruiting from './Recruiting/Recruiting';
+import axios from 'axios';
+import { useParams } from 'react-router';
 
 const ClubPage = () => {
   const [menutype, setMenutype] = useState('recruiting');
@@ -18,8 +20,21 @@ const ClubPage = () => {
     setMenutype('qna');
   };
 
+  const params = useParams();
+
+  useEffect(() => {
+    axios
+      .get(`api/v1/circle/${params.circleId}`)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  });
+
   return (
-    <div>
+    <div className={styles.container_wrapper}>
       <Header />
       <div className={styles.container}>
         <div className={styles.left}>
