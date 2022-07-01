@@ -6,35 +6,83 @@
   overflow: scroll;
 }
 
-.register-section {
+.mainsection {
   width: 768px;
   margin: 100px auto 0px;
   line-height: 1.5;
 }
 
-.register-welcome {
+.welcome {
   font-size: 4rem;
   color: rgb(33, 37, 41);
   font-weight: bolder;
   margin: 0px;
 }
 
-.register-description {
+.description {
   font-size: 1.5rem;
   color: rgb(33, 37, 41);
 }
 
-.register-detail-section {
+.membersection{
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+}
+
+.memberbutton{
+  height: 3rem;
+  font-size: 1rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  margin-right: 1.5rem;
+  border: 2px solid #538DFF;
+  border-radius: 0.75rem;
+  outline: none;
+  font-weight: bold;
+  word-break: keep-all;
+  background: none;
+  color: #538DFF;
+  transition: all 0.1s ease-in 0s;
+  cursor: pointer;
+}
+
+.memberbutton:hover{
+  border-width: 3px;
+}
+
+.memberbuttongray{
+  height: 3rem;
+  font-size: 1rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  margin-right: 1.5rem;
+  border: 2px solid #757883;
+  border-radius: 0.75rem;
+  outline: none;
+  font-weight: bold;
+  word-break: keep-all;
+  background: none;
+  color: #757883;
+  transition: all 0.1s ease-in 0s;
+  cursor: pointer;
+}
+
+.memberbuttongray:hover{
+  border-width: 3px;
+}
+
+
+.detailsection {
   margin-top: 3rem;
   margin-bottom: 3rem;
 }
 
-.register-detail-block {
+.block {
   box-sizing: inherit;
   margin-bottom: 3rem;
 }
 
-.register-detail-text {
+.text {
   font-weight: bold;
   font-size: 1.125rem;
   color: rgb(33, 37, 41);
@@ -44,8 +92,8 @@
   line-height: 1.5;
 }
 
-.register-detail-block:focus-within {
-  .register-detail-text {
+.block:focus-within {
+  .text {
     font-weight: bold;
     font-size: 1.125rem;
     color: #538DFF;
@@ -56,12 +104,12 @@
   }
 }
 
-.register-detail-input {
+.input {
   display: inline-block;
   max-width: 100%;
 }
 
-.register-detail-input-wrapper {
+.inputwrapper {
   width: 400px;
   padding-bottom: 0.5rem;
   border-bottom: 1px solid rgb(73, 80, 87);
@@ -70,11 +118,11 @@
   align-items: center;
 }
 
-.register-detail-input-wrapper:focus-within {
+.inputwrapper:focus-within {
   border-bottom: 1px solid #538DFF;
 }
 
-.register-detail-input-inputbox {
+.inputbox {
   font-size: 1.5rem;
   border: none;
   outline: none;
@@ -83,11 +131,11 @@
   transition: all 0.125s ease-in 0s;
 }
 
-.register-detail-input-inputbox:focus-within {
+.inputbox:focus-within {
   color: #538DFF;
 }
 
-.register-error-section{
+.errorsection{
   margin-top: 5rem;
   margin-bottom: 1rem;
   font-size: 1.125rem;
@@ -96,11 +144,11 @@
   font-weight: bold;
 }
 
-.register-button-section {
+.buttonsection {
   margin-bottom: 5rem;
 }
 
-.register-btn-cancel{
+.cancelbutton{
   height: 3rem;
   font-size: 1.5rem;
   padding-left: 2rem;
@@ -117,7 +165,7 @@
   cursor: pointer;
 }
 
-.register-btn-complete{
+.completebutton{
   height: 3rem;
   font-size: 1.5rem;
   padding-left: 2rem;
