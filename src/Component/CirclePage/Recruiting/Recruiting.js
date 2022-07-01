@@ -2,7 +2,7 @@ import { BsPinAngle } from 'react-icons/bs';
 import { BiSearchAlt2 } from 'react-icons/bi';
 // import './Recruiting.scss';
 import { useState } from 'react';
-import styles from '../ClubPage.module.scss';
+import styles from '../CirclePage.module.scss';
 
 const Recruiting = () => {
   return (
