@@ -223,9 +223,10 @@ const ClubSearchPage = () => {
   const onInputChange = (e) => {
     setSearcher(e.target.value);
   };
+
   // useEffect(() => {
   //   axios
-  //     .get(`api/v1/circle`)
+  //     .get(`api/v1/circle/`)
   //     .then((response) => {
   //       console.log(response.data.results);
   //       setClubs(response.data.results);

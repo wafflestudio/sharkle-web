@@ -1,6 +1,6 @@
 import './App.css';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
-import ClubPage from './Component/ClubPage/ClubPage';
+import CirclePage from './Component/CirclePage/CirclePage';
 import MyPage from './Component/MyPage/MyPage';
 import LoginPage from './Component/LoginPage/LoginPage';
 import RegisterPage from './Component/RegisterPage/RegisterPage';
@@ -12,7 +12,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route exact path="/" element={<ClubSearchPage />} />
-        <Route exact path="/club/*" element={<ClubPage />} />
+        <Route exact path="/circle/:circle_name/*" element={<CirclePage />} />
         <Route exact path="/mypage" element={<MyPage />} />
         <Route exact path="/login" element={<LoginPage />} />
         <Route exact path="/register" element={<RegisterPage />} />
