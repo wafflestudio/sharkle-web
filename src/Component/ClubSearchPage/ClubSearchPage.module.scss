@@ -8,10 +8,11 @@
   > .header {
     width: 1200px;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
 
     > .select {
-      flex-grow: 0;
+      //flex-grow: 0;
+      width:100px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -20,6 +21,7 @@
       font-family: 'Noto Sans KR';
       font-style: normal;
       cursor: pointer;
+      border-radius: 15px 15px 0px 0px;
 
       &:hover {
         color: #538DFF;

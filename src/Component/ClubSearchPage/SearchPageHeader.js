@@ -63,19 +63,19 @@ const SearchPageHeader = ({ typePicked, setTypePicked, types, setTypes, onClubSe
       ref={scrollRef}
     >
       <div className={styles.header}>
-        <div
-          className={styles.select}
-          style={{ color: '#000000' }}
-          onClick={() => {
-            onTypeClick(typePicked);
-          }}
-        >
-          전체
-        </div>
+        {/*<div*/}
+        {/*  className={styles.select}*/}
+        {/*  style={{ color: '#000000' }}*/}
+        {/*  onClick={() => {*/}
+        {/*    onTypeClick(typePicked);*/}
+        {/*  }}*/}
+        {/*>*/}
+        {/*  전체*/}
+        {/*</div>*/}
         {types.map((type) => (
           <div
             className={styles.select}
-            style={{ color: type.picked ? '#538DFF' : null }}
+            style={{ color: type.picked ? '#FFFFFF' : null, backgroundColor: type.picked ? '#538DFF' : '#FFFFFF' }}
             onClick={() => {
               onClubSearch(typePicked);
               onTypeClick(type.id);

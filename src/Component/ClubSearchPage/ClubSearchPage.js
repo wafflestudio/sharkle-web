@@ -5,9 +5,8 @@ import { AiOutlineSearch } from 'react-icons/ai';
 import ClubInfo from './ClubInfo';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { toast } from 'react-toastify';
 import SearchPageHeader from './SearchPageHeader';
-import { type } from '@testing-library/user-event/dist/type';
+import CircleCreateForm from './CircleCreateForm';
 
 const ClubSearchPage = () => {
   const [clubs, setClubs] = useState([]);
@@ -49,6 +48,10 @@ const ClubSearchPage = () => {
     } else return;
   };
 
+  /* 정렬 End
+  
+   */
+
   /* Type : 동아리 유형 (ex. 단과대, 과, ...)
      Backend에서는 실제 규모 별 분류인 type0과 분야 별 분류인 type1 두 가지 분류를 채택하고 있기 때문에, 추후 front에서 수정이 필요함
      현재는 하나의 type 유형으로 관리한 후, 임의로 type0, type1을 계산하여 query param으로 보냄.
@@ -61,38 +64,45 @@ const ClubSearchPage = () => {
 
    */
 
-  const [typePicked, setTypePicked] = useState('');
+  const [typePicked, setTypePicked] = useState(0);
   const [types, setTypes] = useState([
-    { id: 0, picked: false, title: '기타' },
-    { id: 1, picked: false, title: '연합' },
-    { id: 2, picked: false, title: '중앙' },
-    { id: 3, picked: false, title: '단과대' },
-    { id: 4, picked: false, title: '과' },
-    { id: 5, picked: false, title: '학술/매체' },
-    { id: 6, picked: false, title: '연행/예술' },
-    { id: 7, picked: false, title: '취미/교양' },
-    { id: 8, picked: false, title: '무예/운동' },
-    { id: 9, picked: false, title: '인권/봉사' },
-    { id: 10, picked: false, title: '종교' },
+    { id: 0, picked: true, title: '전체' },
+    { id: 1, picked: false, title: '기타' },
+    { id: 2, picked: false, title: '연합' },
+    { id: 3, picked: false, title: '중앙' },
+    { id: 4, picked: false, title: '단과대' },
+    { id: 5, picked: false, title: '과' },
+    { id: 6, picked: false, title: '학술/매체' },
+    { id: 7, picked: false, title: '연행/예술' },
+    { id: 8, picked: false, title: '취미/교양' },
+    { id: 9, picked: false, title: '무예/운동' },
+    { id: 10, picked: false, title: '인권/봉사' },
+    { id: 11, picked: false, title: '종교' },
   ]);
+
+  /* Type End
+   */
 
   const onClubSearch = (typePicked) => {
     console.log('getting Clubs');
-    // axios
-    //   .get(`api/v1/circle`, { type0: typePicked <= '4' ? typePicked : '', type1: typePicked > 4 ? typePicked - 4 : '' })
-    //   .then((response) => {
-    //     console.log(response.data.results);
-    //     setClubs(response.data.results);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
+    axios
+      .get(`api/v1/circle`, {
+        type0: typePicked <= 5 ? typePicked - 1 : '',
+        type1: typePicked > 5 ? typePicked - 5 : '',
+      })
+      .then((response) => {
+        console.log(response.data.results);
+        setClubs(response.data.results);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const dummyClubs = [
     {
       type0: 1,
-      type1: 1,
+      type1: 2,
       name: 'd',
       bio: 'asdf',
       introduction: 'asdf',
@@ -108,7 +118,7 @@ const ClubSearchPage = () => {
     },
     {
       type0: 1,
-      type1: 1,
+      type1: 2,
       name: 'c',
       bio: 'asdf',
       introduction: 'asdf',
@@ -140,7 +150,7 @@ const ClubSearchPage = () => {
     },
     {
       type0: 1,
-      type1: 1,
+      type1: 2,
       name: '가',
       bio: 'asdf',
       introduction: 'asdf',
@@ -224,21 +234,21 @@ const ClubSearchPage = () => {
     setSearcher(e.target.value);
   };
 
-  // useEffect(() => {
-  //   axios
-  //     .get(`api/v1/circle/`)
-  //     .then((response) => {
-  //       console.log(response.data.results);
-  //       setClubs(response.data.results);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }, []);
-
   useEffect(() => {
-    setClubs(dummyClubs);
-  }, []); //if server off
+    axios
+      .get(`api/v1/circle/`)
+      .then((response) => {
+        console.log(response.data.results);
+        setClubs(response.data.results);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  // useEffect(() => {
+  //   setClubs(dummyClubs);
+  // }, []); //if server off
 
   return (
     <div>
@@ -284,8 +294,8 @@ const ClubSearchPage = () => {
           {clubs
             .sort(sortFunction)
             .filter((club) => {
-              if (typePicked === '') return club;
-              else if (club.type1 === typePicked) return club;
+              if (typePicked == '0') return club;
+              else if (club.type1 === typePicked) return club; // need fix
             })
             .filter((club) => {
               if (searcher === '') {
@@ -299,6 +309,8 @@ const ClubSearchPage = () => {
             ))}
         </div>
       </div>
+
+      <CircleCreateForm />
     </div>
   );
 };
