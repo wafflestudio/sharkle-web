@@ -6,7 +6,11 @@ const ClubInfo = ({ club }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(`circle/${club.name}/intro`);
+    navigate(`circle/${club.name}/소개`, {
+      state: {
+        id: club.id,
+      },
+    });
   };
 
   return (

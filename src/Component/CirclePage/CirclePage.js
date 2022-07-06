@@ -8,15 +8,31 @@ import Header from '../Header/Header';
 import QnA from './QnA/QnA';
 import Recruiting from './Recruiting/Recruiting';
 import axios from 'axios';
-import { useParams } from 'react-router';
+import { useLocation, useNavigate, useParams } from 'react-router';
 import { toast } from 'react-toastify';
-import { Route } from 'react-router-dom';
+import { BrowserRouter, Link, Navigate, Route, Routes } from 'react-router-dom';
+import { useSessionContext } from '../../Context/SessionContext';
+import ClubSearchPage from '../ClubSearchPage/ClubSearchPage';
+import MyPage from '../MyPage/MyPage';
+import LoginPage from '../LoginPage/LoginPage';
+import RegisterPage from '../RegisterPage/RegisterPage';
+import classNames from 'classnames';
 
-const DummyMenuList = ['소개', '지원', 'QnA', '커뮤니티'];
+const DummyMenuList = [{ name: '소개' }, { name: 'QnA' }, { name: '지원' }, { name: '커뮤니티' }];
 
 const CirclePage = ({ match }) => {
+  const { accessToken } = useSessionContext();
+  const navigate = useNavigate();
+  const params = useParams();
+  const location = useLocation();
+
+  const [circleId, setCircleId] = useState(0);
+  const [menuList, setMenuList] = useState([]);
   const [menutype, setMenutype] = useState('recruiting');
 
+  const handleMenu = (item) => {
+    navigate(`/circle/${params.circleName}/${item.name}`);
+  };
   const handleRecruiting = () => {
     setMenutype('recruiting');
   };
@@ -24,45 +40,39 @@ const CirclePage = ({ match }) => {
     setMenutype('qna');
   };
 
-  const params = useParams();
-
-  const tempCreateCircle = () => {
-    axios
-      .post(`api/v1/circle/`, {
-        type0: 4,
-        type1: 1,
-        name: '와플 스튜디오',
-        bio: '개발 동아리 입니다.',
-        introduction: '맛있는 서비스를 만드는 곳',
-        tag: '컴퓨터 개발 코딩',
-        homepage: 'https://wafflestudio.com/',
-        facebook: '',
-        instagram: '',
-        twitter: '',
-        youtube: '',
-        tiktok: '',
-        band: '',
-      })
-      .then((response) => {
-        console.log(response.data);
-        toast.success('새로운 동아리가 생성되었습니다.');
-      })
-      .catch((error) => {
-        console.log(error);
-        toast.error('생성에 실패하였습니다.');
-      });
-  };
-
   /*useEffect(() => {
     axios
-      .get(`api/v1/circle/${params.circleId}`)
+      .get(`api/v1/circle/${location.state.id}/board/`)
       .then((response) => {
-        console.log(response);
+        setMenuList(response.data);
+        //console.log(response.data);
       })
       .catch((error) => {
         console.log(error);
       });
-  });*/
+  }, []);*/
+
+  const tempFunction = () => {
+    console.log(accessToken);
+    axios
+      .post(
+        `api/v1/circle/${location.state.id}/board/`,
+        {
+          name: '임시게시판',
+        },
+        {
+          headers: {
+            Authentication: accessToken,
+          },
+        }
+      )
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error.data);
+      });
+  };
 
   return (
     <div className={styles.container_wrapper}>
@@ -77,15 +87,21 @@ const CirclePage = ({ match }) => {
             />
           </div>
           <div className={styles.menu_wrapper}>
+            <div className={styles.menu_title}>게시판 목록</div>
             {DummyMenuList.map((item) => (
-              <div className={styles.menu_list}>{item}</div>
+              <div className={styles.menu_list} key={item.id} onClick={() => handleMenu(item)}>
+                <BsPinAngle className={params.boardName === item.name ? styles.on : styles.pin} />
+                <div className={params.boardName === item.name ? styles.menu_name_on : styles.menu_name}>
+                  {item.name}
+                </div>
+              </div>
             ))}
-            <button onClick={tempCreateCircle}>임시 동아리 추가 버튼</button>
+            <button onClick={tempFunction}>임시 기능 테스트용</button>
           </div>
         </div>
         <div className={styles.right}>
           <div className={styles.info}>
-            <div className={styles.name_wrapper}>이름 자리</div>
+            <div className={styles.name_wrapper}>{params.circleName}</div>
             <div className={styles.due_wrapper}>
               <div className={styles.due}>지원기간 박스 자리</div>
             </div>
@@ -96,7 +112,7 @@ const CirclePage = ({ match }) => {
             </div>
           </div>
           <div className={styles.board_wrapper}>
-            <div className={styles.board}></div>
+            <div className={styles.board}>{params.boardName}</div>
           </div>
         </div>
       </div>
