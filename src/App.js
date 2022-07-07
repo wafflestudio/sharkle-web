@@ -12,7 +12,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route exact path="/" element={<ClubSearchPage />} />
-        <Route path="/circle/:circleName/:boardName" element={<CirclePage />} />
+        <Route path="/circle/:circleName/:boardName/*" element={<CirclePage />} />
         <Route exact path="/mypage" element={<MyPage />} />
         <Route exact path="/login" element={<LoginPage />} />
         <Route exact path="/register" element={<RegisterPage />} />

@@ -89,7 +89,7 @@ const CirclePage = ({ match }) => {
           <div className={styles.menu_wrapper}>
             <div className={styles.menu_title}>게시판 목록</div>
             {DummyMenuList.map((item) => (
-              <div className={styles.menu_list} key={item.id} onClick={() => handleMenu(item)}>
+              <div className={styles.menu_list} key={item.name} onClick={() => handleMenu(item)}>
                 <BsPinAngle className={params.boardName === item.name ? styles.on : styles.pin} />
                 <div className={params.boardName === item.name ? styles.menu_name_on : styles.menu_name}>
                   {item.name}
@@ -112,7 +112,12 @@ const CirclePage = ({ match }) => {
             </div>
           </div>
           <div className={styles.board_wrapper}>
-            <div className={styles.board}>{params.boardName}</div>
+            <div className={styles.board}>
+              {/*<Routes>*/}
+              {/*  <Route exact path="/:postId" element={<QnA />} />*/}
+              {/*  <Route path="/" element={<Recruiting />} />*/}
+              {/*</Routes>*/}
+            </div>
           </div>
         </div>
       </div>
