@@ -8,10 +8,11 @@
   > .header {
     width: 1200px;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
 
     > .select {
-      flex-grow: 0;
+      //flex-grow: 0;
+      width:100px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -20,6 +21,7 @@
       font-family: 'Noto Sans KR';
       font-style: normal;
       cursor: pointer;
+      border-radius: 15px 15px 0px 0px;
 
       &:hover {
         color: #538DFF;
@@ -57,7 +59,7 @@
 }
 
 .searcher-wrapper {
-  height: 90px;
+  height: 60px;
   display: flex;
   justify-content: center;
 
@@ -117,7 +119,21 @@
   }
 }
 
+.sort{
+  display: flex;
+  width: 1341px;
+  height: 70px;
+  font-weight: 500;
+  font-size: 20px;
+  justify-content: flex-end;
 
+  > .box {
+    display: flex;
+    justify-content: space-between;
+    width: 200px;
+  }
+
+}
 
 
 .list {
@@ -133,7 +149,6 @@
     margin-left: 15px;
     margin-right: 15px;
 
-
     > .club-icon {
       width: 198px;
       height: 198px;
@@ -141,6 +156,12 @@
       background: #E5E5E5;
       border-radius: 30px;
       overflow: hidden; // margin 병합 문제
+
+      &:hover {
+
+        transform: scale(1.02);
+        transition: transform .1s;
+      }
 
       > .d-day {
         background: #FF7455;
@@ -202,7 +223,11 @@
   .list{
     width: 916px;
   }
+  .sort{
+    width : 916-35px;
+  }
 }
+
 @media (max-width: 1080px) {
 
   .header{
@@ -243,6 +268,10 @@
       }
     }
   }
+
+  .sort{
+    width : 80%;
+  }
 }
 
 @media (max-width: 720px) {
@@ -259,4 +288,9 @@
       }
     }
   }
+
+  .sort{
+    width : 80%;
+  }
+
 }
