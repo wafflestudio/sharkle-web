@@ -47,7 +47,7 @@ const Header = () => {
   };
   const handleMainPage = () => {
     console.log('clicked');
-    navigate('/main');
+    navigate('/');
   };
   const handleClub = () => {
     console.log('clicked');

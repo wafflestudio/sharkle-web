@@ -1,9 +1,20 @@
 import styles from './ClubSearchPage.module.scss';
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const ClubInfo = ({ club }) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`circle/${club.name}/소개`, {
+      state: {
+        id: club.id,
+      },
+    });
+  };
+
   return (
-    <div className={styles.club}>
+    <div onClick={handleClick} className={styles.club}>
       <div className={styles['club-icon']}>
         <div className={styles['d-day']}>D-16</div>
       </div>
