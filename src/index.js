@@ -7,14 +7,17 @@ import { SessionProvider } from './Context/SessionContext';
 import axios from 'axios';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { FunctionProvider } from './Functions/Functions';
 
 axios.defaults.baseURL = 'http://sharkle-server.kro.kr/';
 
 ReactDOM.render(
   <React.StrictMode>
     <SessionProvider>
-      <ToastContainer autoClose={2700} />
-      <App />
+      <FunctionProvider>
+        <ToastContainer autoClose={2700} />
+        <App />
+      </FunctionProvider>
     </SessionProvider>
   </React.StrictMode>,
   document.getElementById('root')

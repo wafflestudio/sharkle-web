@@ -112,12 +112,7 @@ const CirclePage = ({ match }) => {
             </div>
           </div>
           <div className={styles.board_wrapper}>
-            <div className={styles.board}>
-              {/*<Routes>*/}
-              {/*  <Route exact path="/:postId" element={<QnA />} />*/}
-              {/*  <Route path="/" element={<Recruiting />} />*/}
-              {/*</Routes>*/}
-            </div>
+            <div className={styles.board}>{params.boardName === 'QnA' ? <QnA /> : null}</div>
           </div>
         </div>
       </div>
