@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import SearchPageHeader from './SearchPageHeader';
 import CircleCreateForm from './CircleCreateForm';
+import { validateElement } from 'react-modal/lib/helpers/ariaAppHider';
 
 const ClubSearchPage = () => {
   const [clubs, setClubs] = useState([]);
@@ -85,10 +86,20 @@ const ClubSearchPage = () => {
 
   const onClubSearch = (typePicked) => {
     console.log('getting Clubs');
+
+    let params = {};
+    if (typePicked == 0) params = {};
+    else if (typePicked <= 5) {
+      params = { type0: typePicked - 1 };
+    } else if (typePicked > 5) {
+      params = { type1: typePicked - 5 };
+    }
+
+    console.log(params);
+
     axios
       .get(`api/v1/circle`, {
-        type0: typePicked <= 5 ? typePicked - 1 : '',
-        type1: typePicked > 5 ? typePicked - 5 : '',
+        params: params,
       })
       .then((response) => {
         console.log(response.data.results);
@@ -293,10 +304,10 @@ const ClubSearchPage = () => {
         <div className={styles.list}>
           {clubs
             .sort(sortFunction)
-            .filter((club) => {
-              if (typePicked == '0') return club;
-              else if (club.type1 === typePicked) return club; // need fix
-            })
+            // .filter((club) => {
+            //   if (typePicked == '0') return club;
+            //   else if (club.type1 === typePicked) return club; // params로 받아오면 자체로 거를 필요 없음.
+            // })
             .filter((club) => {
               if (searcher === '') {
                 return club;
