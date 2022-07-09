@@ -5,6 +5,7 @@ import MyPage from './Component/MyPage/MyPage';
 import LoginPage from './Component/LoginPage/LoginPage';
 import RegisterPage from './Component/RegisterPage/RegisterPage';
 import ClubSearchPage from './Component/ClubSearchPage/ClubSearchPage';
+import LostPage from './Component/LostPage/LostPage';
 //npm install -save react-scripts
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route exact path="/mypage" element={<MyPage />} />
         <Route exact path="/login" element={<LoginPage />} />
         <Route exact path="/register" element={<RegisterPage />} />
+        <Route exact path="/lost" element={<LostPage />} />
       </Routes>
     </BrowserRouter>
   );
