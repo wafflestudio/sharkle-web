@@ -7,7 +7,6 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import SearchPageHeader from './SearchPageHeader';
 import CircleCreateForm from './CircleCreateForm';
-import { validateElement } from 'react-modal/lib/helpers/ariaAppHider';
 
 const ClubSearchPage = () => {
   const [clubs, setClubs] = useState([]);
