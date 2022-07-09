@@ -1,0 +1,81 @@
+.board_title_wrapper{
+  border-bottom: 1px solid #C4C4C4;
+  height: 90px;
+
+  .board_title{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    top: 10px;
+    height: 40px;
+    width: 300px;
+
+    .pin{
+      width: 20px;
+      height: 20px;
+      margin-left: 20px;
+
+      transform: rotate(-90.55deg);
+    }
+    .title{
+      margin-left: 10px;
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 18px;
+      font-family: "Noto Sans Adlam";
+      font-style: normal;
+    }
+  }
+
+  .board_sort{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    top: 10px;
+    right: 10px;
+    height: 40px;
+    width: auto;
+
+    .board_sort_list{
+      font-weight: 500;
+      font-size: 13px;
+      line-height: 18px;
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+  }
+
+  .board_subtitle{
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    top: 65px;
+    width: 1000px;
+
+    .board_sub_title{
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 18px;
+      margin-left: 350px;
+    }
+    .board_sub_click{
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 18px;
+      margin-left: 340px;
+    }
+    .board_sub_write{
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 18px;
+      margin-left: 70px;
+    }
+    .board_sub_date{
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 18px;
+      margin-left: 70px;
+    }
+  }
+}

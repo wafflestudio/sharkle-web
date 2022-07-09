@@ -43,7 +43,7 @@
 
       .menu_wrapper{
         position: relative;
-        top: 80px;
+        top: 100px;
         width: 180px;
         height: 400px;
         background: #FFFFFF;
@@ -203,6 +203,7 @@
         height: 100%;
 
         .board{
+          position: relative;
           background: #FFFFFF;
           border: 1px solid #C4C4C4;
           border-radius: 15px;
