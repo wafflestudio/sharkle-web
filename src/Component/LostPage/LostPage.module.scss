@@ -6,10 +6,21 @@
   overflow: scroll;
 }
 
+.backsection{
+  width: 768px;
+  margin: 60px auto 0px;
+
+  .backbutton{
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+}
 
 .mainsection {
   width: 768px;
-  margin: 100px auto 0px;
+  margin: 1rem auto 0px;
   line-height: 1.5;
 }
 
@@ -23,6 +34,53 @@
 .description {
   font-size: 1.5rem;
   color: rgb(33, 37, 41);
+}
+
+.membersection{
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+}
+
+.memberbutton{
+  height: 3rem;
+  font-size: 1rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  margin-right: 1.5rem;
+  border: 2px solid #538DFF;
+  border-radius: 0.75rem;
+  outline: none;
+  font-weight: bold;
+  word-break: keep-all;
+  background: none;
+  color: #538DFF;
+  transition: all 0.1s ease-in 0s;
+  cursor: pointer;
+}
+
+.memberbutton:hover{
+  border-width: 3px;
+}
+
+.memberbuttongray{
+  height: 3rem;
+  font-size: 1rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  margin-right: 1.5rem;
+  border: 2px solid #757883;
+  border-radius: 0.75rem;
+  outline: none;
+  font-weight: bold;
+  word-break: keep-all;
+  background: none;
+  color: #757883;
+  transition: all 0.1s ease-in 0s;
+  cursor: pointer;
+}
+
+.memberbuttongray:hover{
+  border-width: 3px;
 }
 
 
