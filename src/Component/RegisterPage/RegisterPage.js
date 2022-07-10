@@ -24,7 +24,7 @@ const RegisterPage = () => {
   };
 
   const handleCancel = () => {
-    navigate('/');
+    navigate(-1);
   };
 
   const handleRegister = () => {
