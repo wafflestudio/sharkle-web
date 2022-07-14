@@ -11,7 +11,6 @@
     background: #FFFFFF;
     overflow: scroll;
 
-
     .left{
       position: relative;
       width: 250px;
@@ -200,7 +199,16 @@
       .board_wrapper{
         position: relative;
         padding-top: 25px;
-        height: 100%;
+        height: 1000px;
+
+        .board_qna{
+          position: relative;
+          background: #FFFFFF;
+          border: 1px solid #C4C4C4;
+          border-radius: 15px;
+          height: 900px;
+          margin-bottom: 100px;
+        }
 
         .board{
           position: relative;

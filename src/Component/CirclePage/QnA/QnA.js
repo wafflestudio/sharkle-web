@@ -10,6 +10,7 @@ import QnAWrite from './QnAWrite/QnAWrite';
 import QnAItem from './QnAItem/QnAItem';
 import { useFunctionContext } from '../../../Functions/Functions';
 import { useParams } from 'react-router';
+import ClubInfo from '../../ClubSearchPage/ClubInfo';
 
 const QnA = () => {
   const params = useParams();
@@ -52,6 +53,11 @@ const QnA = () => {
           <div className={styles.board_sub_write}>작성자</div>
           <div className={styles.board_sub_date}>작성일</div>
         </div>
+      </div>
+      <div className={styles.board_contents}>
+        {DummyQnA.map((item) => (
+          <QnAList item={item} key={item.id} />
+        ))}
       </div>
       <LoginModal isOpen={isLoginOpen} setIsOpen={setIsLoginOpen} />
     </div>
