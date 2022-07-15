@@ -11,8 +11,9 @@ import QnAItem from './QnAItem/QnAItem';
 import { useFunctionContext } from '../../../Functions/Functions';
 import { useParams } from 'react-router';
 import ClubInfo from '../../ClubSearchPage/ClubInfo';
+import { Route } from 'react-router-dom';
 
-const QnA = () => {
+const QnA = ({ match }) => {
   const params = useParams();
 
   const { isLogin, handleLogout } = useSessionContext();

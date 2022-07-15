@@ -1,8 +1,11 @@
 import styles from './QnAList.module.scss';
 
 const QnAList = ({ item }) => {
+  const handleQnAItem = () => {
+    console.log(`${item.id}`);
+  };
   return (
-    <div className={styles.list_wrapper}>
+    <div className={styles.list_wrapper} onClick={handleQnAItem}>
       <div className={styles.list_id}>{item.id}</div>
       <div className={styles.list_title_wrap}>
         <div className={styles.list_title}>{item.title}</div>

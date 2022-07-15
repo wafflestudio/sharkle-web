@@ -8,19 +8,20 @@ import Header from '../Header/Header';
 import QnA from './QnA/QnA';
 import Recruiting from './Recruiting/Recruiting';
 import axios from 'axios';
-import { useLocation, useNavigate, useParams } from 'react-router';
+import { useLocation, useMatch, useNavigate, useParams } from 'react-router';
 import { toast } from 'react-toastify';
-import { BrowserRouter, Link, Navigate, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Link, Navigate, Route, Routes, useRouteMatch } from 'react-router-dom';
 import { useSessionContext } from '../../Context/SessionContext';
 import ClubSearchPage from '../ClubSearchPage/ClubSearchPage';
 import MyPage from '../MyPage/MyPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import classNames from 'classnames';
+import QnAItem from './QnA/QnAItem/QnAItem';
 
 const DummyMenuList = [{ name: '소개' }, { name: 'QnA' }, { name: '지원' }, { name: '커뮤니티' }];
 
-const CirclePage = ({ match }) => {
+const CirclePage = () => {
   const { accessToken } = useSessionContext();
   const navigate = useNavigate();
   const params = useParams();
@@ -53,25 +54,7 @@ const CirclePage = ({ match }) => {
   }, []);*/
 
   const tempFunction = () => {
-    console.log(accessToken);
-    axios
-      .post(
-        `api/v1/circle/${location.state.id}/board/`,
-        {
-          name: '임시게시판',
-        },
-        {
-          headers: {
-            Authentication: accessToken,
-          },
-        }
-      )
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.log(error.data);
-      });
+    console.log(params.id);
   };
 
   return (
@@ -112,7 +95,14 @@ const CirclePage = ({ match }) => {
             </div>
           </div>
           <div className={styles.board_wrapper}>
-            <div className={styles.board_qna}>{params.boardName === 'QnA' ? <QnA /> : null}</div>
+            {params.boardName === 'QnA' ? (
+              <div className={styles.board_qna}>
+                <Routes>
+                  <Route exact path="/:id" element={<QnAItem />} />
+                  <Route exact path="/" element={<QnA />} />
+                </Routes>
+              </div>
+            ) : null}
           </div>
         </div>
       </div>
