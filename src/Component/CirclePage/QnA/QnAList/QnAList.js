@@ -1,8 +1,11 @@
 import styles from './QnAList.module.scss';
+import { useNavigate, useParams } from 'react-router';
 
 const QnAList = ({ item }) => {
+  const navigate = useNavigate();
+  const params = useParams();
   const handleQnAItem = () => {
-    console.log(`${item.id}`);
+    navigate(`/circle/${params.circleName}/QnA/${item.id}`);
   };
   return (
     <div className={styles.list_wrapper} onClick={handleQnAItem}>

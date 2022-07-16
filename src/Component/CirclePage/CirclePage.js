@@ -41,20 +41,28 @@ const CirclePage = () => {
     setMenutype('qna');
   };
 
-  /*useEffect(() => {
+  useEffect(() => {
     axios
-      .get(`api/v1/circle/${location.state.id}/board/`)
+      .get(`api/v1/circle/${params.circleName}/board/`)
       .then((response) => {
         setMenuList(response.data);
-        //console.log(response.data);
+        console.log(response.data);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, []);*/
+  }, []);
 
   const tempFunction = () => {
-    console.log(params.id);
+    axios
+      .get(`api/v1/circle/${params.circleName}/board/`)
+      .then((response) => {
+        setMenuList(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
