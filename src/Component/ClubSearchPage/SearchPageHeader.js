@@ -77,8 +77,8 @@ const SearchPageHeader = ({ typePicked, setTypePicked, types, setTypes, onClubSe
             className={styles.select}
             style={{ color: type.picked ? '#FFFFFF' : null, backgroundColor: type.picked ? '#538DFF' : '#FFFFFF' }}
             onClick={() => {
-              onClubSearch(typePicked);
               onTypeClick(type.id);
+              onClubSearch(type.id);
             }}
           >
             {type.title}
