@@ -1,0 +1,22 @@
+.intro{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 50px;
+  margin-left: 40px;
+}
+
+
+.submit{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 13px 24px;
+  gap: 5px;
+  background: #538DFF;
+  border-radius: 18px;
+
+  height: 10px;
+  width: 50px;
+  cursor: pointer;
+}

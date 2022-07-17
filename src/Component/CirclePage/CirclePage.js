@@ -17,6 +17,7 @@ import MyPage from '../MyPage/MyPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import classNames from 'classnames';
+import CircleIntroduce from './CircleIntroduce';
 
 const DummyMenuList = [{ name: '소개' }, { name: 'QnA' }, { name: '지원' }, { name: '커뮤니티' }];
 
@@ -117,6 +118,7 @@ const CirclePage = ({ match }) => {
               {/*  <Route exact path="/:postId" element={<QnA />} />*/}
               {/*  <Route path="/" element={<Recruiting />} />*/}
               {/*</Routes>*/}
+              <CircleIntroduce />
             </div>
           </div>
         </div>
