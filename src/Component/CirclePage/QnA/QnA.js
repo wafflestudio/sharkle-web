@@ -12,12 +12,13 @@ import { useFunctionContext } from '../../../Functions/Functions';
 import { useParams } from 'react-router';
 import ClubInfo from '../../ClubSearchPage/ClubInfo';
 import { Route } from 'react-router-dom';
+import { AiOutlineSearch } from 'react-icons/ai';
 
 const QnA = ({ match }) => {
   const params = useParams();
 
   const { isLogin, handleLogout } = useSessionContext();
-  const { DummyQnA } = useFunctionContext();
+  const { DummyQnA, PageNum } = useFunctionContext();
 
   const [search, setSearch] = useState('');
   const [contentType, setContentType] = useState('list');
@@ -59,6 +60,25 @@ const QnA = ({ match }) => {
         {DummyQnA.map((item) => (
           <QnAList item={item} key={item.id} />
         ))}
+      </div>
+      <div className={styles.board_util}>
+        <div className={styles.board_page}>
+          {PageNum.map((item) => (
+            <div className={styles.board_page_num}>{item.id}</div>
+          ))}
+        </div>
+        <div className={styles.board_write}>
+          <button className={styles.board_write_btn}>글쓰기</button>
+        </div>
+        <div className={styles['searcher-wrapper']}>
+          <div className={styles.searcher}>
+            <div className={styles.inner}>
+              <div className={styles.title}>검색</div>
+              <input />
+              <AiOutlineSearch className={styles['search-icon']} />
+            </div>
+          </div>
+        </div>
       </div>
       <LoginModal isOpen={isLoginOpen} setIsOpen={setIsLoginOpen} />
     </div>

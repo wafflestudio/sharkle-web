@@ -54,10 +54,18 @@ const CirclePage = () => {
   }, []);
 
   const tempFunction = () => {
-    axios
+    /*axios
       .get(`api/v1/circle/${params.circleName}/board/`)
       .then((response) => {
         setMenuList(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });*/
+    axios
+      .get(`api/v1/circle/6/board/11/article/`)
+      .then((response) => {
         console.log(response.data);
       })
       .catch((error) => {

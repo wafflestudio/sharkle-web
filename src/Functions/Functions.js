@@ -23,7 +23,20 @@ export const FunctionProvider = ({ children }) => {
     { id: 14, title: '타대생도 가입 가능한가요?', comment: 1, click: 10, writer: '관리자자자', date: '2022.03.01' },
   ];
 
-  return <FunctionContext.Provider value={{ DummyQnA }}>{children}</FunctionContext.Provider>;
+  const PageNum = [
+    { id: 0 },
+    { id: 1 },
+    { id: 2 },
+    { id: 3 },
+    { id: 4 },
+    { id: 5 },
+    { id: 6 },
+    { id: 7 },
+    { id: 8 },
+    { id: 9 },
+  ];
+
+  return <FunctionContext.Provider value={{ DummyQnA, PageNum }}>{children}</FunctionContext.Provider>;
 };
 
 export const useFunctionContext = () => useContext(FunctionContext);
