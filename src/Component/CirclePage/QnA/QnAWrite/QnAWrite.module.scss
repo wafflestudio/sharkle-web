@@ -1,0 +1,81 @@
+.qna_modal{
+  position: absolute;
+  top: 100px;
+  left: calc(50% - 350px);
+  height: 560px;
+  width: 900px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: #fff;
+  overflow: auto;
+  WebkitOverflowScrolling: touch;
+  outline: none;
+  animation: 0.4s ease-in-out 0s 1 normal forwards running hwrkPK;
+  box-shadow: rgb(0 0 0 / 9%) 0px 2px 12px 0px;
+
+  .title{
+    height: 50px;
+    padding-bottom: 3px;
+    border-bottom: 1px solid #61dafb;
+
+    .text{
+      display: block;
+      padding-top: 4px;
+      padding-left: 20px;
+      font-size: 20px;
+      height: 95%;
+      width: 96%;
+      resize: none;
+      line-height: 1.5;
+      outline: none;
+      border: none;
+      font-weight: bold;
+    }
+  }
+  .content_wrap{
+    height: 440px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #61dafb;
+
+    .content{
+      resize: none;
+      border: none;
+      display: block;
+      outline: none;
+      padding-left: 20px;
+      padding-top: 20px;
+      width: 875px;
+      height: 95%;
+    }
+  }
+  .util{
+    display: flex;
+    height: 55px;
+    align-items: center;
+
+    .write_wrap{
+      position: absolute;
+      right: 20px;
+      height: 30px;
+      width: 100px;
+      display: flex;
+
+      .write{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        background: #538DFF;
+        color: #FFFFFF;
+        border: none;
+        border-radius: 24px;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 18px;
+        cursor: pointer;
+      }
+    }
+  }
+}

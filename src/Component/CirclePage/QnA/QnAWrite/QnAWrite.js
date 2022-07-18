@@ -1,70 +1,25 @@
-import '@toast-ui/editor/dist/toastui-editor.css';
-import { Editor } from '@toast-ui/react-editor';
+import Modal from 'react-modal';
+import styles from './QnAWrite.module.scss';
 
-//npm install --save @toast-ui/editor  # Latest Version
-
-import { createRef, useEffect, useState } from 'react';
-
-import './QnAWrite.scss';
+import './QnAWrite.module.scss';
 
 const QnAWrite = (props) => {
-  const titleRef = createRef();
-  const editorRef = createRef();
-
-  const { setContentType } = props;
-
-  const [title, setTitle] = useState('');
-  const [contents, setContents] = useState('');
-  const [isOpen, setIsOpen] = useState(false);
-  const [tag, setTag] = useState('');
-  const [tagList, setTagList] = useState([]);
-  const [tagId, setTagId] = useState(0);
-  const [imgTag, setImgTag] = useState([]);
-
-  const handleTitle = (e) => {
-    setTitle(e.target.value);
-  };
-  const handleCancle = () => {
-    setContentType('list');
-  };
-  const handlePost = () => {
-    window.alert(contents);
-  };
-  const onChangeEditorTextHandler = () => {
-    setContents(editorRef.current.getInstance().getMarkdown());
-  };
-
-  useEffect(() => {
-    if (editorRef.current) {
-    }
-    return () => {};
-  }, [editorRef]);
+  const { isOpen, setIsOpen } = props;
 
   return (
-    <div className="qna-write-wrap">
-      <textarea
-        className="title-style"
-        placeholder="제목을 입력하세요."
-        ref={titleRef}
-        value={title}
-        onChange={handleTitle}
-      />
-      <Editor
-        previewStyle="vertical"
-        height="43vh"
-        width="80vh"
-        initialEditType="markdown"
-        placeholder="내용을 입력하세요."
-        ref={editorRef}
-        onChange={onChangeEditorTextHandler}
-      />
-      <button variant="primary" type="submit" className="submitBtn" onClick={handlePost}>
-        Post
-      </button>
-      <button variant="primary" className="cancelBtn" onClick={handleCancle}>
-        Cancel
-      </button>
-    </div>
+    <Modal className={styles.qna_modal} isOpen={isOpen} onRequestClose={() => setIsOpen(false)}>
+      <div className={styles.title}>
+        <input placeholder="제목을 입력하세요" className={styles.text}></input>
+      </div>
+      <div className={styles.content_wrap}>
+        <textarea className={styles.content} placeholder="내용을 입력해 주세요"></textarea>
+      </div>
+      <div className={styles.util}>
+        <div className={styles.write_wrap}>
+          <button className={styles.write}>작성하기</button>
+        </div>
+      </div>
+    </Modal>
   );
 };
 

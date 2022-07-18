@@ -22,20 +22,23 @@ const QnA = ({ match }) => {
 
   const [search, setSearch] = useState('');
   const [contentType, setContentType] = useState('list');
+
   const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const [isWrite, setIsWrite] = useState(false);
 
   const handleSearch = (e) => {
     setSearch(e.target.value);
   };
-  const handleWrite = () => {
+
+  const handleBack = () => {
+    setContentType('list');
+  };
+  const handleWriteQnA = () => {
     if (isLogin) {
-      setContentType('write');
+      setIsWrite(true);
     } else {
       setIsLoginOpen(true);
     }
-  };
-  const handleBack = () => {
-    setContentType('list');
   };
 
   return (
@@ -64,10 +67,12 @@ const QnA = ({ match }) => {
       <div className={styles.board_util}>
         <div className={styles.board_page}>
           {PageNum.map((item) => (
-            <div className={styles.board_page_num}>{item.id}</div>
+            <div key={item.id} className={styles.board_page_num}>
+              {item.id}
+            </div>
           ))}
         </div>
-        <div className={styles.board_write}>
+        <div className={styles.board_write} onClick={handleWriteQnA}>
           <button className={styles.board_write_btn}>글쓰기</button>
         </div>
         <div className={styles['searcher-wrapper']}>
@@ -80,6 +85,7 @@ const QnA = ({ match }) => {
           </div>
         </div>
       </div>
+      <QnAWrite isOpen={isWrite} setIsOpen={setIsWrite} />
       <LoginModal isOpen={isLoginOpen} setIsOpen={setIsLoginOpen} />
     </div>
   );
