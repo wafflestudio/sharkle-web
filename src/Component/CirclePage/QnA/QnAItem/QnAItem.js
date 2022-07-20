@@ -1,4 +1,8 @@
 import './QnAItem.scss';
+import { useParams } from 'react-router';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import { createRenderer } from 'react-dom/test-utils';
 
 const dummyItem = {
   id: 0,
@@ -10,13 +14,28 @@ const dummyItem = {
 };
 
 const QnAItem = (props) => {
-  const { setContentType } = props;
+  const { circleId, curBoardId } = props;
+  const params = useParams();
+
+  const [qnaItem, setQnAItem] = useState({});
+
+  useEffect(() => {
+    axios
+      .get(`api/v1/circle/${circleId}/board/${curBoardId}/article/${params.id}`)
+      .then((response) => {
+        console.log(response.data);
+        setQnAItem(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   return (
     <div className="qna-item">
-      <div className="qna-item-id">{dummyItem.id}.</div>
-      <div className="qna-item-title">{dummyItem.title}</div>
-      <div className="qna-item-content">{dummyItem.contents}</div>
+      <div className="qna-item-id">{qnaItem.id}.</div>
+      <div className="qna-item-title">{qnaItem.title}</div>
+      <pre className="qna-item-content">{qnaItem.content}</pre>
       <div className="qna-item-reply">
         <div>{dummyItem.reply.user}</div>
         <div>{dummyItem.reply.comment}</div>

@@ -1,4 +1,5 @@
 import styles from './QnAList.module.scss';
+import dayjs from 'dayjs';
 import { useNavigate, useParams } from 'react-router';
 
 const QnAList = ({ item }) => {
@@ -15,8 +16,8 @@ const QnAList = ({ item }) => {
         <div className={styles.list_comment}>답변 {item.comment}</div>
       </div>
       <div className={styles.list_click}>{item.click}</div>
-      <div className={styles.list_writer}>{item.writer}</div>
-      <div className={styles.list_date}>{item.date}</div>
+      <div className={styles.list_writer}>{item.author}</div>
+      <div className={styles.list_date}>{dayjs(item.created_at).format('YY. MM. DD')}</div>
     </div>
   );
 };

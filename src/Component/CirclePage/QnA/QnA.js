@@ -2,7 +2,7 @@ import { BsPinAngle } from 'react-icons/bs';
 import { BiSearchAlt2 } from 'react-icons/bi';
 import styles from './QnA.module.scss';
 import QnAList from './QnAList/QnAList';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSessionContext } from '../../../Context/SessionContext';
 import LoginModal from '../../LoginModal/LoginModal';
 import Recruiting from '../Recruiting/Recruiting';
@@ -13,16 +13,18 @@ import { useParams } from 'react-router';
 import ClubInfo from '../../ClubSearchPage/ClubInfo';
 import { Route } from 'react-router-dom';
 import { AiOutlineSearch } from 'react-icons/ai';
+import axios from 'axios';
 
-const QnA = ({ match }) => {
+const QnA = (props) => {
+  const { circleId, curBoardId, isLoad } = props;
   const params = useParams();
 
   const { isLogin, handleLogout } = useSessionContext();
   const { DummyQnA, PageNum } = useFunctionContext();
 
   const [search, setSearch] = useState('');
-  const [contentType, setContentType] = useState('list');
 
+  const [qnaList, setQnAList] = useState([]);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isWrite, setIsWrite] = useState(false);
 
@@ -30,9 +32,6 @@ const QnA = ({ match }) => {
     setSearch(e.target.value);
   };
 
-  const handleBack = () => {
-    setContentType('list');
-  };
   const handleWriteQnA = () => {
     if (isLogin) {
       setIsWrite(true);
@@ -40,6 +39,19 @@ const QnA = ({ match }) => {
       setIsLoginOpen(true);
     }
   };
+
+  useEffect(() => {
+    if (isLoad) {
+      axios
+        .get(`api/v1/circle/${circleId}/board/${curBoardId}/article/`)
+        .then((response) => {
+          setQnAList(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }, [isLoad, isWrite]);
 
   return (
     <div>
@@ -60,7 +72,7 @@ const QnA = ({ match }) => {
         </div>
       </div>
       <div className={styles.board_contents}>
-        {DummyQnA.map((item) => (
+        {qnaList.map((item) => (
           <QnAList item={item} key={item.id} />
         ))}
       </div>
