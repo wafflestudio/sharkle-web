@@ -1,8 +1,10 @@
-import './QnAItem.scss';
-import { useParams } from 'react-router';
+import styles from './QnAItem.module.scss';
+import dayjs from 'dayjs';
+import { useNavigate, useParams } from 'react-router';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { createRenderer } from 'react-dom/test-utils';
+import { IoIosArrowBack } from 'react-icons/io';
 
 const dummyItem = {
   id: 0,
@@ -14,36 +16,54 @@ const dummyItem = {
 };
 
 const QnAItem = (props) => {
-  const { circleId, curBoardId } = props;
+  const { circleId, curBoardId, isLoad } = props;
   const params = useParams();
+  const navigate = useNavigate();
 
   const [qnaItem, setQnAItem] = useState({});
 
+  const handleQnA = () => {
+    navigate(`/circle/${params.circleName}/QnA`);
+  };
+
   useEffect(() => {
-    axios
-      .get(`api/v1/circle/${circleId}/board/${curBoardId}/article/${params.id}`)
-      .then((response) => {
-        console.log(response.data);
-        setQnAItem(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+    if (isLoad) {
+      axios
+        .get(`api/v1/circle/${circleId}/board/${curBoardId}/article/${params.id}`)
+        .then((response) => {
+          console.log(response.data);
+          setQnAItem(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }, [isLoad]);
 
   return (
-    <div className="qna-item">
-      <div className="qna-item-id">{qnaItem.id}.</div>
-      <div className="qna-item-title">{qnaItem.title}</div>
-      <pre className="qna-item-content">{qnaItem.content}</pre>
-      <div className="qna-item-reply">
-        <div>{dummyItem.reply.user}</div>
-        <div>{dummyItem.reply.comment}</div>
+    <div>
+      <div className={styles.header_wrapper}>
+        <div className={styles.menu_wrapper} onClick={handleQnA}>
+          <IoIosArrowBack className={styles.arrow} />
+          <div className={styles.menu}>QnA</div>
+        </div>
+        <div className={styles.title_wrapper}>
+          <div className={styles.title}>{qnaItem.title}</div>
+        </div>
+        <div className={styles.info_wrapper}>
+          <div className={styles.info}>
+            <div className={styles.author}>{qnaItem.author}</div>
+            <div className={styles.line} />
+            <div className={styles.date}>{dayjs(qnaItem.created_at).format('YYYY.MM.DD. HH:MM')}</div>
+            <div className={styles.line} />
+            <div className={styles.click}>조회 12</div>
+          </div>
+        </div>
       </div>
-      <div className="qna-item-write">
-        <div>ㅁㄴㅇㄹ</div>
-        <div>답변을 남겨보세요</div>
+      <div className={styles.content_wrapper}>
+        <pre className={styles.content}>{qnaItem.content}</pre>
       </div>
+      <div></div>
     </div>
   );
 };

@@ -131,7 +131,11 @@ const CirclePage = () => {
             {params.boardName === 'QnA' ? (
               <div className={styles.board_qna}>
                 <Routes>
-                  <Route exact path="/:id" element={<QnAItem circleId={circleId} curBoardId={curBoardId} />} />
+                  <Route
+                    exact
+                    path="/:id"
+                    element={<QnAItem circleId={circleId} curBoardId={curBoardId} isLoad={isLoad} />}
+                  />
                   <Route exact path="/" element={<QnA circleId={circleId} curBoardId={curBoardId} isLoad={isLoad} />} />
                 </Routes>
               </div>
