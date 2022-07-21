@@ -1,0 +1,205 @@
+.board_title_wrapper{
+  border-bottom: 1px solid #C4C4C4;
+  height: 90px;
+
+  .board_title{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    top: 10px;
+    height: 40px;
+    width: 300px;
+
+    .pin{
+      width: 20px;
+      height: 20px;
+      margin-left: 20px;
+
+      transform: rotate(-90.55deg);
+    }
+    .title{
+      margin-left: 10px;
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 18px;
+      font-family: "Noto Sans Adlam";
+      font-style: normal;
+    }
+  }
+
+  .board_sort{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    top: 10px;
+    right: 10px;
+    height: 40px;
+    width: auto;
+
+    .board_sort_list{
+      font-weight: 500;
+      font-size: 13px;
+      line-height: 18px;
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+  }
+
+  .board_subtitle{
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    top: 65px;
+    width: 100%;
+
+    .board_sub_title{
+      position: absolute;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 18px;
+      left: 350px;
+    }
+    .board_sub_click{
+      position: absolute;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 18px;
+      right: 239px;
+    }
+    .board_sub_write{
+      position: absolute;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 18px;
+      right: 142px;
+    }
+    .board_sub_date{
+      position: absolute;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 18px;
+      right: 35px;
+    }
+  }
+}
+
+.board_contents{
+  width: 100%;
+  height:auto;
+}
+
+.board_util{
+  position: absolute;
+  width: 100%;
+  height: 150px;
+  bottom: 0px;
+
+  .board_page{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    margin-top: 20px;
+
+    .board_page_num{
+      display: flex;
+      flex-direction: row;
+      align-items: flex-end;
+      padding: 7px 15px;
+      gap: 15px;
+      font-family: 'Noto Sans KR';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 15px;
+      line-height: 18px;
+    }
+  }
+  .board_write{
+    position: absolute;
+    top: 75px;
+    right: 180px;
+    height: 40px;
+    width: 80px;
+
+    .board_write_btn{
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+      background: #538DFF;
+      color: #FFFFFF;
+      border: none;
+      border-radius: 24px;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 18px;
+      cursor: pointer;
+    }
+  }
+
+  .searcher-wrapper{
+    margin-top: 20px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+
+    > .searcher {
+      background: #FFFFFF;
+      border: 1px solid #B9DBFF;
+      box-sizing: border-box;
+      border-radius: 18px;
+      width: 370px;
+      height: 45px;
+      display: flex;
+
+      > .inner {
+        width: 340px;
+        margin-left: 20px;
+        height: 45px;
+        display: flex;
+        align-items: center;
+
+        > .search-icon {
+          width: 20px;
+          height: 20px;
+          color: #83ADFF;
+          cursor: pointer;
+
+          &:hover {
+
+            transform: scale(1.25);
+            transition: transform .1s;
+
+          }
+        }
+
+        > .title {
+          font-size: 18px;
+          font-weight: 1000;
+          margin-right: 15px;
+        }
+
+        > input {
+          transition: all 0.125s ease-in 0s;
+          font-size: 1.1rem;
+          flex: 1 1 0%;
+          display: block;
+          line-height: 1.1rem;
+          height: 1.1rem;
+          padding: 0px;
+          border: none;
+          outline: 0px;
+          background: transparent;
+          color: #495057;
+          min-width: 0px;
+          //width: 280px;
+        }
+      }
+
+    }
+  }
+
+}

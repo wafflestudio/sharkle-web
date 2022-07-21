@@ -1,70 +1,69 @@
-import '@toast-ui/editor/dist/toastui-editor.css';
-import { Editor } from '@toast-ui/react-editor';
+import Modal from 'react-modal';
+import styles from './QnAWrite.module.scss';
 
-//npm install --save @toast-ui/editor  # Latest Version
-
-import { createRef, useEffect, useState } from 'react';
-
-import './QnAWrite.scss';
+import './QnAWrite.module.scss';
+import { useState } from 'react';
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import { useSessionContext } from '../../../../Context/SessionContext';
 
 const QnAWrite = (props) => {
-  const titleRef = createRef();
-  const editorRef = createRef();
-
-  const { setContentType } = props;
-
+  const { isOpen, setIsOpen, circleId, curBoardId } = props;
   const [title, setTitle] = useState('');
   const [contents, setContents] = useState('');
-  const [isOpen, setIsOpen] = useState(false);
-  const [tag, setTag] = useState('');
-  const [tagList, setTagList] = useState([]);
-  const [tagId, setTagId] = useState(0);
-  const [imgTag, setImgTag] = useState([]);
+  const { accessToken, refreshToken } = useSessionContext();
 
-  const handleTitle = (e) => {
-    setTitle(e.target.value);
+  const handlePostQnA = () => {
+    console.log(title);
+    console.log(contents);
+    axios
+      .post(
+        `api/v1/circle/${circleId}/board/${curBoardId}/article/`,
+        {
+          title: title,
+          content: contents,
+          is_private: false,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
+      )
+      .then((response) => {
+        toast.success('질문을 등록하였습니다.');
+        setIsOpen(false);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
-  const handleCancle = () => {
-    setContentType('list');
-  };
-  const handlePost = () => {
-    window.alert(contents);
-  };
-  const onChangeEditorTextHandler = () => {
-    setContents(editorRef.current.getInstance().getMarkdown());
-  };
-
-  useEffect(() => {
-    if (editorRef.current) {
-    }
-    return () => {};
-  }, [editorRef]);
-
   return (
-    <div className="qna-write-wrap">
-      <textarea
-        className="title-style"
-        placeholder="제목을 입력하세요."
-        ref={titleRef}
-        value={title}
-        onChange={handleTitle}
-      />
-      <Editor
-        previewStyle="vertical"
-        height="43vh"
-        width="80vh"
-        initialEditType="markdown"
-        placeholder="내용을 입력하세요."
-        ref={editorRef}
-        onChange={onChangeEditorTextHandler}
-      />
-      <button variant="primary" type="submit" className="submitBtn" onClick={handlePost}>
-        Post
-      </button>
-      <button variant="primary" className="cancelBtn" onClick={handleCancle}>
-        Cancel
-      </button>
-    </div>
+    <Modal className={styles.qna_modal} isOpen={isOpen} onRequestClose={() => setIsOpen(false)}>
+      <div className={styles.title}>
+        <input
+          placeholder="제목을 입력하세요"
+          className={styles.text}
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+      </div>
+      <div className={styles.content_wrap}>
+        <textarea
+          className={styles.content}
+          placeholder="내용을 입력해 주세요"
+          value={contents}
+          onChange={(e) => setContents(e.target.value)}
+        />
+      </div>
+      <div className={styles.util}>
+        <div className={styles.write_wrap}>
+          <button className={styles.write} onClick={handlePostQnA}>
+            작성하기
+          </button>
+        </div>
+      </div>
+    </Modal>
   );
 };
 

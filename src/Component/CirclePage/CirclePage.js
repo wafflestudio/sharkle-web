@@ -8,70 +8,86 @@ import Header from '../Header/Header';
 import QnA from './QnA/QnA';
 import Recruiting from './Recruiting/Recruiting';
 import axios from 'axios';
-import { useLocation, useNavigate, useParams } from 'react-router';
+import { useLocation, useMatch, useNavigate, useParams } from 'react-router';
 import { toast } from 'react-toastify';
-import { BrowserRouter, Link, Navigate, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Link, Navigate, Route, Routes, useRouteMatch } from 'react-router-dom';
 import { useSessionContext } from '../../Context/SessionContext';
 import ClubSearchPage from '../ClubSearchPage/ClubSearchPage';
 import MyPage from '../MyPage/MyPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import classNames from 'classnames';
+import QnAItem from './QnA/QnAItem/QnAItem';
 
 const DummyMenuList = [{ name: '소개' }, { name: 'QnA' }, { name: '지원' }, { name: '커뮤니티' }];
 
-const CirclePage = ({ match }) => {
-  const { accessToken } = useSessionContext();
+const CirclePage = () => {
+  const { accessToken, isLogin } = useSessionContext();
   const navigate = useNavigate();
   const params = useParams();
-  const location = useLocation();
 
-  const [circleId, setCircleId] = useState(0);
+  const [circleId, setCircleId] = useState(null);
+  const [circleTag, setCircleTag] = useState(null);
+  const [circleD_day, setCircleD_day] = useState(null);
+
+  const [curBoardId, setCurBoardId] = useState(null);
   const [menuList, setMenuList] = useState([]);
-  const [menutype, setMenutype] = useState('recruiting');
+  const [isLoad, setIsLoad] = useState(false);
 
   const handleMenu = (item) => {
+    setCurBoardId(item.id);
     navigate(`/circle/${params.circleName}/${item.name}`);
   };
-  const handleRecruiting = () => {
-    setMenutype('recruiting');
-  };
-  const handleQnA = () => {
-    setMenutype('qna');
-  };
 
-  /*useEffect(() => {
+  useEffect(() => {
     axios
-      .get(`api/v1/circle/${location.state.id}/board/`)
+      .get(`api/v1/circle/${params.circleName}/name/`)
       .then((response) => {
-        setMenuList(response.data);
-        //console.log(response.data);
+        setCircleId(response.data.id);
+        setCircleTag(response.data.tag);
+        setCircleD_day(response.data.d_day_detail);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, []);*/
+
+    if (isLogin) {
+      axios
+        .get(`api/v1/circle/${params.circleName}/board/`, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        })
+        .then((response) => {
+          setMenuList(response.data);
+          setCurBoardId(response.data.find((item) => item.name === params.boardName).id);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else {
+      axios
+        .get(`api/v1/circle/${params.circleName}/board/`, {})
+        .then((response) => {
+          setMenuList(response.data);
+          setCurBoardId(response.data.find((item) => item.name === params.boardName).id);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }, []);
+
+  useEffect(() => {
+    if (circleId !== null && curBoardId !== null && curBoardId !== undefined) {
+      setIsLoad(true);
+    }
+  }, [circleId, curBoardId]);
 
   const tempFunction = () => {
-    console.log(accessToken);
-    axios
-      .post(
-        `api/v1/circle/${location.state.id}/board/`,
-        {
-          name: '임시게시판',
-        },
-        {
-          headers: {
-            Authentication: accessToken,
-          },
-        }
-      )
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.log(error.data);
-      });
+    console.log(curBoardId);
+    console.log(circleId);
+    console.log(isLoad);
   };
 
   return (
@@ -88,7 +104,7 @@ const CirclePage = ({ match }) => {
           </div>
           <div className={styles.menu_wrapper}>
             <div className={styles.menu_title}>게시판 목록</div>
-            {DummyMenuList.map((item) => (
+            {menuList.map((item) => (
               <div className={styles.menu_list} key={item.name} onClick={() => handleMenu(item)}>
                 <BsPinAngle className={params.boardName === item.name ? styles.on : styles.pin} />
                 <div className={params.boardName === item.name ? styles.menu_name_on : styles.menu_name}>
@@ -106,18 +122,24 @@ const CirclePage = ({ match }) => {
               <div className={styles.due}>지원기간 박스 자리</div>
             </div>
             <div className={styles.extra_wrapper}>
-              <div className={styles.tag}>태그 자리</div>
+              <div className={styles.tag}>{circleTag}</div>
               <button className={styles.join}>가입신청 자리</button>
               <button className={styles.notice}>알림설정 자리</button>
             </div>
           </div>
           <div className={styles.board_wrapper}>
-            <div className={styles.board}>
-              {/*<Routes>*/}
-              {/*  <Route exact path="/:postId" element={<QnA />} />*/}
-              {/*  <Route path="/" element={<Recruiting />} />*/}
-              {/*</Routes>*/}
-            </div>
+            {params.boardName === 'QnA' ? (
+              <div className={styles.board_qna}>
+                <Routes>
+                  <Route
+                    exact
+                    path="/:id"
+                    element={<QnAItem circleId={circleId} curBoardId={curBoardId} isLoad={isLoad} />}
+                  />
+                  <Route exact path="/" element={<QnA circleId={circleId} curBoardId={curBoardId} isLoad={isLoad} />} />
+                </Routes>
+              </div>
+            ) : null}
           </div>
         </div>
       </div>

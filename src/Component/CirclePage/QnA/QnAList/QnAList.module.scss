@@ -1,0 +1,100 @@
+.list_wrapper{
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 50px;
+  width: 100%;
+  border-bottom: 1px solid #C4C4C4;
+  cursor: pointer;
+
+  .list_id{
+    width: 80px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+
+    color: #C4C4C4;
+  }
+
+  .list_title_wrap{
+    width: 550px;
+    display: flex;
+    align-items: center;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+
+    .list_title{
+      width: auto;
+      font-weight: 500;
+      font-size: 15px;
+      line-height: 18px;
+      display: flex;
+      align-items: center;
+      margin-right: 20px;
+    }
+
+    .list_comment{
+      width: auto;
+      display: flex;
+      align-items: center;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 18px;
+      color: #1571FF;
+    }
+  }
+
+  .list_click{
+    position: absolute;
+    width: 50px;
+    right: 240px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+
+    color: #C4C4C4;
+  }
+  .list_writer{
+    position: absolute;
+    width: 80px;
+    right: 120px;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 10px;
+    line-height: 18px;
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+  }
+  .list_date{
+    position: absolute;
+    width: 80px;
+    right: 15px;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 10px;
+    line-height: 18px;
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    color: #C4C4C4;
+  }
+}
