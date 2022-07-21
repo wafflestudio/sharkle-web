@@ -8,7 +8,7 @@ import { toast } from 'react-toastify';
 import { useSessionContext } from '../../../../Context/SessionContext';
 
 const QnAWrite = (props) => {
-  const { isOpen, setIsOpen } = props;
+  const { isOpen, setIsOpen, circleId, curBoardId } = props;
   const [title, setTitle] = useState('');
   const [contents, setContents] = useState('');
   const { accessToken, refreshToken } = useSessionContext();
@@ -18,7 +18,7 @@ const QnAWrite = (props) => {
     console.log(contents);
     axios
       .post(
-        `api/v1/circle/6/board/1/article/`,
+        `api/v1/circle/${circleId}/board/${curBoardId}/article/`,
         {
           title: title,
           content: contents,

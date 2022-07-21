@@ -97,7 +97,7 @@ const QnA = (props) => {
           </div>
         </div>
       </div>
-      <QnAWrite isOpen={isWrite} setIsOpen={setIsWrite} />
+      <QnAWrite isOpen={isWrite} setIsOpen={setIsWrite} circleId={circleId} curBoardId={curBoardId} />
       <LoginModal isOpen={isLoginOpen} setIsOpen={setIsLoginOpen} />
     </div>
   );
