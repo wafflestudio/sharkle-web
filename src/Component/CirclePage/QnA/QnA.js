@@ -45,6 +45,7 @@ const QnA = (props) => {
       axios
         .get(`api/v1/circle/${circleId}/board/${curBoardId}/article/`)
         .then((response) => {
+          console.log(response.data);
           setQnAList(response.data);
         })
         .catch((error) => {

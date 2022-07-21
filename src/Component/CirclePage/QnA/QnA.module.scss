@@ -1,6 +1,7 @@
 .board_title_wrapper{
   border-bottom: 1px solid #C4C4C4;
   height: 90px;
+  width: 100%;
 
   .board_title{
     position: absolute;
@@ -51,31 +52,35 @@
     display: flex;
     flex-direction: row;
     top: 65px;
-    width: 1000px;
+    width: 100%;
 
     .board_sub_title{
+      position: absolute;
       font-weight: 600;
       font-size: 14px;
       line-height: 18px;
-      margin-left: 350px;
+      left: 350px;
     }
     .board_sub_click{
+      position: absolute;
       font-weight: 600;
       font-size: 14px;
       line-height: 18px;
-      margin-left: 340px;
+      right: 239px;
     }
     .board_sub_write{
+      position: absolute;
       font-weight: 600;
       font-size: 14px;
       line-height: 18px;
-      margin-left: 70px;
+      right: 142px;
     }
     .board_sub_date{
+      position: absolute;
       font-weight: 600;
       font-size: 14px;
       line-height: 18px;
-      margin-left: 70px;
+      right: 35px;
     }
   }
 }
