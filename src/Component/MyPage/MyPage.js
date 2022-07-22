@@ -7,6 +7,7 @@ import InfoForm from './InfoForm/InfoForm';
 import axios from 'axios';
 import Header from '../Header/Header';
 import { useNavigate } from 'react-router';
+import { AiOutlinePushpin } from 'react-icons/ai';
 
 const MyPage = () => {
   //dummy data
@@ -95,35 +96,59 @@ const MyPage = () => {
   const [userEmail, setUserEmail] = useState(dummyUserEmail);
   const [myPostList, setMyPostList] = useState(dummyMyPostList);
 
+  // 알림설정중, 가입중, 관리중 탭 클릭 여부 (0, 1, 2)
+  const [clicked, setClicked] = useState(0);
   const navigate = useNavigate();
   const onAddButtonClick = () => {
     navigate('/search');
     console.log('clicked');
   };
+
   return (
-    <div className={styles['my-page']}>
+    <>
       <Header />
-      <div className={styles.container}>
-        <div className={styles.clubs}>
-          <div className={styles.title}>
-            <div className={styles.inner}>알림설정한 동아리 목록</div>
-          </div>
-          <div className={styles.content}>
-            <div className={styles.add}>
-              <div className={styles.inner} onClick={onAddButtonClick}>
-                <AddButton />
-              </div>
-              <div className={styles.description}>동아리 추가하기</div>
+      <div className={styles['my-page']}>
+        <div className={styles.title}>마이페이지</div>
+      </div>
+      <div className={styles.wrapper}>
+        <div className={styles.container}>
+          <div className={styles['user-setting']}>
+            <div className={styles.list}>
+              <AiOutlinePushpin className={styles.pin} />
+              <div className={styles.list}>프로필 설정</div>
             </div>
-            <ClubsList clubsList={clubsList} />
+            <div className={styles.list}>
+              <AiOutlinePushpin className={styles.pin} />
+              <div className={styles.list}>알림 설정</div>
+            </div>
+            <div className={styles.list}>
+              <AiOutlinePushpin className={styles.pin} />
+              <div className={styles.list}>회원탈퇴</div>
+            </div>
+            <div className={styles.list}>
+              <AiOutlinePushpin className={styles.pin} />
+              <div className={styles.list}>커뮤니티</div>
+            </div>
           </div>
-        </div>
-        <div className={styles.info}>
-          <div className={styles.title}>
-            <div className={styles.inner}>내 정보</div>
-          </div>
-          <div className={styles.content}>
-            <div className={styles.profile}>
+
+          <div className={styles.clubs}>
+            <div className={styles.modes}>
+              <div className={clicked == 0 ? styles.clickmode : styles.mode} onClick={() => setClicked(0)}>
+                알림 설정 중
+              </div>
+              <div className={clicked == 1 ? styles.clickmode : styles.mode} onClick={() => setClicked(1)}>
+                가입 중
+              </div>
+              <div className={clicked == 2 ? styles.clickmode : styles.mode} onClick={() => setClicked(2)}>
+                관리 중
+              </div>
+            </div>
+            <div className={styles['content-upper']}>
+              <ClubsList clubsList={clubsList} />
+            </div>
+
+            <div className={styles['content-under']}>
+              <div className={styles.title}>내 정보</div>
               <InfoForm
                 userInfo={userNickname}
                 setUserInfo={setUserNickname}
@@ -132,16 +157,10 @@ const MyPage = () => {
               ></InfoForm>
               <InfoForm userInfo={userEmail} setUserInfo={setUserEmail} infoType={'이메일'} useAlarm={true}></InfoForm>
             </div>
-            <div className={styles.vline}></div>
-
-            <div className={styles.posts}>
-              <div className={styles.title}>내 게시글</div>
-              <MyPostsList postList={myPostList} />
-            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
