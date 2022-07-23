@@ -58,6 +58,10 @@ const LoginModal = (props) => {
     navigate('/register');
   };
 
+  const handleLost = () => {
+    navigate('/lost');
+  };
+
   return (
     <Modal className={styles['login-modal']} isOpen={isOpen} onRequestClose={() => setIsOpen(false)}>
       <div className={styles.title}>
@@ -94,6 +98,12 @@ const LoginModal = (props) => {
           <button className={styles.register} onClick={handleRegister}>
             {' '}
             회원가입
+          </button>
+        </div>
+
+        <div className={styles.lost}>
+          <button className={styles.lostbutton} onClick={handleLost}>
+            <u>계정 / 비밀번호 찾기</u>
           </button>
         </div>
       </div>

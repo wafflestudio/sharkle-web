@@ -18,7 +18,7 @@
 
   .title{
     display: flex;
-    margin-top: 60px;
+    margin-top: 54px;
     margin-left: 86px;
     font-size: 26px;
     font-weight: bold;
@@ -39,7 +39,7 @@
 
     .id{
       display: flex;
-      margin-top: 2rem;
+      margin-top: 1.8rem;
       margin-left: 50px;
       padding-left: 0.8rem;
       padding-right: 0.8rem;
@@ -116,7 +116,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 2rem;
+    margin-top: 1.8rem;
     margin-left: 50px;
     width: 400px;
 
@@ -159,6 +159,23 @@
       width: 180px;
       font-size: 1rem;
     }
+  }
+
+  .lost{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+    margin-left: 50px;
+    width: 400px;
+
+    .lostbutton{
+      background: none;
+      border: none;
+      font-size: 0.9rem;
+      color: #444748;
+    }
+
   }
 
 }

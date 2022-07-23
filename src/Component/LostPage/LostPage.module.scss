@@ -1,0 +1,186 @@
+.lostpage {
+  position: absolute;
+  margin: 0px;
+  width: 100vw;
+  height: 100vh;
+  overflow: scroll;
+}
+
+.backsection{
+  width: 768px;
+  margin: 60px auto 0px;
+
+  .backbutton{
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+}
+
+.mainsection {
+  width: 768px;
+  margin: 1rem auto 0px;
+  line-height: 1.5;
+}
+
+.welcome {
+  font-size: 3rem;
+  color: rgb(33, 37, 41);
+  font-weight: bolder;
+  margin-bottom: 1rem;
+}
+
+.description {
+  font-size: 1.5rem;
+  color: rgb(33, 37, 41);
+}
+
+.membersection{
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+}
+
+.memberbutton{
+  height: 3rem;
+  font-size: 1rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  margin-right: 1.5rem;
+  border: 2px solid #538DFF;
+  border-radius: 0.75rem;
+  outline: none;
+  font-weight: bold;
+  word-break: keep-all;
+  background: none;
+  color: #538DFF;
+  transition: all 0.1s ease-in 0s;
+  cursor: pointer;
+}
+
+.memberbutton:hover{
+  border-width: 3px;
+}
+
+.memberbuttongray{
+  height: 3rem;
+  font-size: 1rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  margin-right: 1.5rem;
+  border: 2px solid #757883;
+  border-radius: 0.75rem;
+  outline: none;
+  font-weight: bold;
+  word-break: keep-all;
+  background: none;
+  color: #757883;
+  transition: all 0.1s ease-in 0s;
+  cursor: pointer;
+}
+
+.memberbuttongray:hover{
+  border-width: 3px;
+}
+
+
+.detailsection {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+.block {
+  box-sizing: inherit;
+  margin-bottom: 3rem;
+}
+
+.text {
+  font-weight: bold;
+  font-size: 1.125rem;
+  color: rgb(33, 37, 41);
+  margin-bottom: 1rem;
+  transition: all 0.125s ease-in 0s;
+  display: block;
+  line-height: 1.5;
+}
+
+.block:focus-within {
+  .text {
+    font-weight: bold;
+    font-size: 1.125rem;
+    color: #538DFF;
+    margin-bottom: 1rem;
+    transition: all 0.125s ease-in 0s;
+    display: block;
+    line-height: 1.5;
+  }
+}
+
+.input {
+  display: inline-block;
+  max-width: 100%;
+}
+
+.inputwrapper {
+  width: 400px;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgb(73, 80, 87);
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+}
+
+.inputwrapper:focus-within {
+  border-bottom: 1px solid #538DFF;
+}
+
+.inputbox {
+  font-size: 1.5rem;
+  border: none;
+  outline: none;
+  width: 100%;
+  color: rgb(73, 80, 87);
+  transition: all 0.125s ease-in 0s;
+}
+
+.inputbox:focus-within {
+  color: #538DFF;
+}
+
+
+.buttonsection {
+  margin-bottom: 5rem;
+}
+
+.cancelbutton{
+  height: 3rem;
+  font-size: 1.5rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  margin-right: 1.5rem;
+  border-radius: 1.5rem;
+  border: none;
+  outline: none;
+  font-weight: bold;
+  word-break: keep-all;
+  background: rgb(233, 236, 239);
+  color: rgb(73, 80, 87);
+  transition: all 0.125s ease-in 0s;
+  cursor: pointer;
+}
+
+.completebutton{
+  height: 3rem;
+  font-size: 1.5rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  border-radius: 1.5rem;
+  border: none;
+  outline: none;
+  font-weight: bold;
+  word-break: keep-all;
+  background: #538DFF;
+  color: white;
+  transition: all 0.125s ease-in 0s;
+  cursor: pointer;
+}

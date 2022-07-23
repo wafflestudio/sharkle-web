@@ -1,5 +1,4 @@
 import styles from './RegisterPage.module.scss';
-// import './RegisterPage.module.scss';
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import axios from 'axios';
@@ -25,7 +24,7 @@ const RegisterPage = () => {
   };
 
   const handleCancel = () => {
-    navigate('/');
+    navigate(-1);
   };
 
   const handleRegister = () => {
@@ -55,7 +54,7 @@ const RegisterPage = () => {
         .then((response) => {
           console.log(response);
           toast.success('회원가입 되었습니다.');
-          navigate('/login');
+          navigate('/');
         })
         .catch((error) => {
           console.log(error.response);
