@@ -90,7 +90,7 @@
 }
 
 .board_util{
-  position: absolute;
+  position: relative;
   width: 100%;
   height: 150px;
   bottom: 0px;
@@ -117,7 +117,7 @@
   }
   .board_write{
     position: absolute;
-    top: 75px;
+    top: 54.5px;
     right: 180px;
     height: 40px;
     width: 80px;

@@ -1,117 +1,129 @@
-.header_wrapper{
-  border-bottom: 1px solid #C4C4C4;
-  height: 120px;
 
-  .menu_wrapper{
-    display: flex;
-    align-items: center;
-    height: 50px;
-    padding-left: 20px;
-    cursor: pointer;
-    width: 60px;
+.board_wrapper{
+  height: auto;
 
-    .arrow{
-      color: #1571FF;
-      height: 25px;
-      width: 25px;
+  .header_wrapper{
+    border-bottom: 1px solid #C4C4C4;
+    height: 120px;
+
+    .menu_wrapper{
+      display: flex;
+      align-items: center;
+      height: 50px;
+      padding-left: 20px;
+      cursor: pointer;
+      width: 60px;
+
+      .arrow{
+        color: #1571FF;
+        height: 25px;
+        width: 25px;
+      }
+      .menu{
+        font-style: normal;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 18px;
+
+        display: flex;
+        align-items: center;
+
+        color: #1571FF;
+      }
     }
-    .menu{
-      font-style: normal;
-      font-weight: 600;
-      font-size: 18px;
-      line-height: 18px;
-
+    .title_wrapper {
+      height: 40px;
       display: flex;
       align-items: center;
 
-      color: #1571FF;
-    }
-  }
-  .title_wrapper {
-    height: 40px;
-    display: flex;
-    align-items: center;
-
-    .title{
-      padding-left: 30px;
-      font-weight: 600;
-      font-size: 30px;
-      line-height: 14px;
-
-      display: flex;
-      align-items: center;
-
-      color: #000000;
-    }
-  }
-
-  .info_wrapper{
-    height: 30px;
-    display: flex;
-    align-items: center;
-
-    .info{
-      display: flex;
-      align-items: center;
-
-      .author{
-        padding-left: 35px;
-        font-weight: 400;
-        font-size: 15px;
-        line-height: 10px;
+      .title{
+        padding-left: 30px;
+        font-weight: 600;
+        font-size: 30px;
+        line-height: 14px;
 
         display: flex;
         align-items: center;
 
         color: #000000;
       }
+    }
 
-      .date{
-        font-weight: 500;
-        font-size: 13px;
-        line-height: 10px;
+    .info_wrapper{
+      height: 30px;
+      display: flex;
+      align-items: center;
 
+      .info{
         display: flex;
         align-items: center;
-        color: #C4C4C4;
-      }
 
-      .click{
-        font-weight: 500;
-        font-size: 13px;
-        line-height: 10px;
+        .author{
+          padding-left: 35px;
+          font-weight: 400;
+          font-size: 15px;
+          line-height: 10px;
 
-        display: flex;
-        align-items: center;
-        color: #C4C4C4;
-      }
+          display: flex;
+          align-items: center;
 
-      .line{
-        margin-left: 5px;
-        margin-right: 5px;
-        width: 1px;
-        height: 15px;
-        border-left: 1px solid #c4c4c4;
+          color: #000000;
+        }
+
+        .date{
+          font-weight: 500;
+          font-size: 13px;
+          line-height: 10px;
+
+          display: flex;
+          align-items: center;
+          color: #C4C4C4;
+        }
+
+        .click{
+          font-weight: 500;
+          font-size: 13px;
+          line-height: 10px;
+
+          display: flex;
+          align-items: center;
+          color: #C4C4C4;
+        }
+
+        .line{
+          margin-left: 5px;
+          margin-right: 5px;
+          width: 1px;
+          height: 15px;
+          border-left: 1px solid #c4c4c4;
+        }
       }
     }
   }
+
+  .content_wrapper{
+    border-bottom: 1px solid #C4C4C4;
+    height: auto;
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    .content{
+      padding-top: 10px;
+      padding-left: 50px;
+      padding-right: 50px;
+      width: 990px;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 30px;
+      overflow: auto;
+      word-break: break-all;
+      white-space: pre-wrap;
+    }
+  }
+
 }
 
-.content_wrapper{
-  border-bottom: 1px solid #C4C4C4;
+.comment_wrapper{
   height: auto;
-  display: flex;
-  align-items: center;
-  width: 990px;
-
-  .content{
-    padding-left: 50px;
-    width: 990px;
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 30px;
-    overflow: auto;
-    word-break: break-all;
-    white-space: pre-wrap;
-  }
 }

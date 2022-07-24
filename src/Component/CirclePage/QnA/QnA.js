@@ -45,7 +45,8 @@ const QnA = (props) => {
       axios
         .get(`api/v1/circle/${circleId}/board/${curBoardId}/article/`)
         .then((response) => {
-          setQnAList(response.data);
+          console.log(response.data);
+          setQnAList(response.data.articles);
         })
         .catch((error) => {
           console.log(error);
@@ -54,7 +55,7 @@ const QnA = (props) => {
   }, [isLoad, isWrite]);
 
   return (
-    <div>
+    <div className={styles.board_skel}>
       <div className={styles.board_title_wrapper}>
         <div className={styles.board_title}>
           <BsPinAngle className={styles.pin} />
