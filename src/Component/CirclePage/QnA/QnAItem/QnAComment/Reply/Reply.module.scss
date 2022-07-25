@@ -1,13 +1,19 @@
 .reply_wrap{
   width: 100%;
   height: auto;
+  padding-top: 5px;
 
-  .reply_box1{
+  .reply_depth0{
     padding-left: 30px;
     border-bottom: 1px solid #C4C4C4;
   }
-  .reply_box2{
+  .reply_depth1{
     margin-left: 80px;
+    padding-left: 30px;
+    border-bottom: 1px solid #C4C4C4;
+  }
+  .reply_depth2{
+    margin-left: 160px;
     padding-left: 30px;
     border-bottom: 1px solid #C4C4C4;
   }
@@ -44,7 +50,11 @@
     line-height: 36px;
     display: flex;
     align-items: center;
-
+    gap: 10px;
     color: #C4C4C4;
+
+    .rereply{
+      cursor: pointer;
+    }
   }
 }

@@ -6,37 +6,45 @@ import { toast } from 'react-toastify';
 import { useSessionContext } from '../../../../../Context/SessionContext';
 import { useParams } from 'react-router';
 import Reply from './Reply/Reply';
+import LoginModal from '../../../../LoginModal/LoginModal';
 
 const QnAComment = (props) => {
   const { DummyComment } = useFunctionContext();
-  const { accessToken, refreshToken } = useSessionContext();
+  const { accessToken, refreshToken, isLogin } = useSessionContext();
   const params = useParams();
   const { counts } = props;
 
   const [contents, setContents] = useState();
   const [reply, setReply] = useState([]);
+  const [update, setUpdate] = useState(false);
+  const [openLogin, setOpenLogin] = useState(false);
 
   const handleComment = () => {
-    axios
-      .post(
-        `api/v1/article/${params.id}/comment/`,
-        {
-          content: contents,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
+    if (isLogin) {
+      axios
+        .post(
+          `api/v1/article/${params.id}/comment/`,
+          {
+            content: contents,
           },
-        }
-      )
-      .then((response) => {
-        toast.success('댓글을 등록하였습니다.');
-        setContents('');
-      })
-      .catch((error) => {
-        toast.error('등록을 실패하였습니다.');
-        console.log(error);
-      });
+          {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
+          }
+        )
+        .then((response) => {
+          toast.success('댓글을 등록하였습니다.');
+          setContents('');
+          setUpdate(!update);
+        })
+        .catch((error) => {
+          toast.error('등록을 실패하였습니다.');
+          console.log(error);
+        });
+    } else {
+      setOpenLogin(true);
+    }
   };
 
   //login 아니어도 나중에 볼 수 있게 수정//
@@ -54,7 +62,7 @@ const QnAComment = (props) => {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [update]);
 
   return (
     <div className={styles.comment_wrapper}>
@@ -65,7 +73,7 @@ const QnAComment = (props) => {
       </div>
       <div className={styles.content}>
         {reply.map((item) => (
-          <Reply item={item} key={item.id} />
+          <Reply item={item} key={item.id} update={update} setUpdate={setUpdate} />
         ))}
       </div>
       <div className={styles.box_wrap}>
@@ -83,6 +91,7 @@ const QnAComment = (props) => {
           </div>
         </div>
       </div>
+      <LoginModal isOpen={openLogin} setIsOpen={setOpenLogin} />
     </div>
   );
 };
