@@ -1,24 +1,21 @@
 .container_wrapper{
-  width: 100vw;
-  height: 1500px;
+  background: #FFFFFF;
 
   .container{
     position: relative;
     display: flex;
     justify-content: center;
-    width: 100vw;
-    height: 1500px;
     background: #FFFFFF;
-    overflow: scroll;
+    width: 100%;
 
     .left{
       position: relative;
       width: 250px;
-      height: 100%;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
       align-items: center;
+      margin-bottom: 250px;
 
       .image_wrapper{
         position: relative;
@@ -105,7 +102,6 @@
     .right{
       position: relative;
       width: 1000px;
-      height: 1000px;
 
       .info{
         position: relative;
@@ -199,15 +195,14 @@
       .board_wrapper{
         position: relative;
         padding-top: 25px;
-        height: 1000px;
+        padding-bottom: 100px;
 
         .board_qna{
           position: relative;
           background: #FFFFFF;
           border: 1px solid #C4C4C4;
           border-radius: 15px;
-          height: auto;
-          padding-bottom: 150px;
+          margin-bottom: 250px;
         }
 
         .board{
@@ -215,7 +210,7 @@
           background: #FFFFFF;
           border: 1px solid #C4C4C4;
           border-radius: 15px;
-          height: 1000px;
+          height: auto;
         }
       }
     }

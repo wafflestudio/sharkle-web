@@ -28,7 +28,44 @@ export const FunctionProvider = ({ children }) => {
     { id: 9 },
   ];
 
-  return <FunctionContext.Provider value={{ DummyQnA, PageNum }}>{children}</FunctionContext.Provider>;
+  const DummyComment = [
+    {
+      id: 0,
+      comment:
+        '대앳그을 ㅁㄴㅇㄹㅁㄴㅇ ㄹㅁ ㄴㅇ ㄹㅁㄴㅇㄹㅁㄴㅇㄹ ㅁㄴㅇ ㄹ ㄴㅇ ㄹㅁ ㄴㅇㄹ  ㅁㄴ ㄹㅁㄴ ㅇㄹ ㅁㄴ ㅇㄹㅁ ㄴㅇ ㄹㅁㄴ ㅇㄹ ㅁㄴㅇㄹ ㅁㄴ ㅇㄹ ㅁㄴ ㅇㄹ',
+      date: '2022.03.01',
+      author: 'dasfasdfasdadv',
+      reply: 0,
+    },
+    {
+      id: 1,
+      comment:
+        '대앳그을 ㅁㄴㅇㄹㅁㄴㅇ ㄹㅁ ㄴㅇ ㄹㅁㄴㅇㄹㅁㄴㅇㄹ ㅁㄴㅇ ㄹ ㄴㅇ ㄹㅁ ㄴㅇㄹ  ㅁㄴ ㄹㅁㄴ ㅇㄹ ㅁㄴ ㅇㄹㅁ ㄴㅇ ㄹㅁㄴ ㅇㄹ ㅁㄴㅇㄹ ㅁㄴ ㅇㄹ ㅁㄴ ㅇㄹ',
+      date: '2022.03.01',
+      author: '작성자아아아아아ㅏdadv',
+      reply: 0,
+    },
+    {
+      id: 2,
+      comment:
+        '대앳그을 ㅁㄴㅇㄹㅁㅁㄴㅇ퍔ㄴㅇ7푬ㅅ87ㄷㅈ9ㄷ8ㄱㅎ0ㅁㄷ8명냐ㅓㅜㅍㄹㅁ도ㅕㅐㅛㅎㄴ여퓨ㅣㅗㅓ앞ㅋ랴ㅕㅗ모  ㅁㄴㅇㄹ' +
+        'ㄹㅁㄴ ㅇㄹ ㅁㄴ ㅇㄹㅁ ㄴㅇ ㄹㅁㄴ ㅇㄹ ㅁㄴㅇㄹ ㅁㄴ ㅇㄹ ㅁㄴ ㅇㄹ',
+      date: '2022.03.01',
+      author: 'dasfasdfasdadv',
+      reply: 1,
+    },
+    {
+      id: 3,
+      comment:
+        '대앳그을 ㅁㄴㅇㄹㅁㅁㄴㅇ퍔ㄴㅇ7푬ㅅ87ㄷㅈ9ㄷ8ㄱㅎ0ㅁㄷ8명냐ㅓㅜㅍㄹㅁ도ㅕㅐㅛㅎㄴ여퓨ㅣㅗㅓ앞ㅋ랴ㅕㅗ모  ㅁㄴㅇㄹ' +
+        'ㄹㅁㄴ ㅇㄹ ㅁㄴ ㅇㄹㅁ ㄴㅇ ㄹㅁㄴ ㅇㄹ ㅁㄴㅇㄹ ㅁㄴ ㅇㄹ ㅁㄴ ㅇㄹ',
+      date: '2022.03.01',
+      author: 'dasfasdfasdadv',
+      reply: 2,
+    },
+  ];
+
+  return <FunctionContext.Provider value={{ DummyQnA, PageNum, DummyComment }}>{children}</FunctionContext.Provider>;
 };
 
 export const useFunctionContext = () => useContext(FunctionContext);
