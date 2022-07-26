@@ -7,10 +7,16 @@ import InfoForm from './InfoForm/InfoForm';
 import axios from 'axios';
 import Header from '../Header/Header';
 import { useNavigate } from 'react-router';
+import { AiOutlinePushpin } from 'react-icons/ai';
+import { useSessionContext } from '../../Context/SessionContext';
+import { toast } from 'react-toastify';
+import { BiEdit, BiSave } from 'react-icons/bi';
+import EditModal from './EditModal';
 
 const MyPage = () => {
   //dummy data
 
+  const { id, email, setId, accessToken } = useSessionContext();
   const dummyUserNickname = '김와플';
   const dummyUserEmail = 'sharkle@ws.com';
   const dummyMyPostList = [
@@ -90,58 +96,138 @@ const MyPage = () => {
   ];
   // states
 
+  /* TODO : 1. user_id 및 username 받아와서
+     TODO : 2. 내 동아리 목록 불러와서 보여주기
+     TODO : 3. 모달 띄워서 처리?
+  */
+
   const [clubsList, setClubsList] = useState(dummyClubsList);
   const [userNickname, setUserNickname] = useState(dummyUserNickname);
-  const [userEmail, setUserEmail] = useState(dummyUserEmail);
+  const [userEmail, setUserEmail] = useState(email);
   const [myPostList, setMyPostList] = useState(dummyMyPostList);
 
+  const editEmail = () => {
+    setUserEmail(userEmail);
+  };
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [editParam, setEditParam] = useState(); // 수정하려는 값 ( 닉네임 or 이메일 )
+
+  const onEditClick = (key) => {
+    setEditParam(key);
+    setIsModalOpen(true);
+  };
+
+  // 알림설정중, 가입중, 관리중 탭 클릭 여부 (0, 1, 2)
+  const [clicked, setClicked] = useState(0);
   const navigate = useNavigate();
   const onAddButtonClick = () => {
     navigate('/search');
     console.log('clicked');
   };
-  return (
-    <div className={styles['my-page']}>
-      <Header />
-      <div className={styles.container}>
-        <div className={styles.clubs}>
-          <div className={styles.title}>
-            <div className={styles.inner}>알림설정한 동아리 목록</div>
-          </div>
-          <div className={styles.content}>
-            <div className={styles.add}>
-              <div className={styles.inner} onClick={onAddButtonClick}>
-                <AddButton />
-              </div>
-              <div className={styles.description}>동아리 추가하기</div>
-            </div>
-            <ClubsList clubsList={clubsList} />
-          </div>
-        </div>
-        <div className={styles.info}>
-          <div className={styles.title}>
-            <div className={styles.inner}>내 정보</div>
-          </div>
-          <div className={styles.content}>
-            <div className={styles.profile}>
-              <InfoForm
-                userInfo={userNickname}
-                setUserInfo={setUserNickname}
-                infoType={'닉네임'}
-                useAlarm={false}
-              ></InfoForm>
-              <InfoForm userInfo={userEmail} setUserInfo={setUserEmail} infoType={'이메일'} useAlarm={true}></InfoForm>
-            </div>
-            <div className={styles.vline}></div>
 
-            <div className={styles.posts}>
-              <div className={styles.title}>내 게시글</div>
-              <MyPostsList postList={myPostList} />
+  return (
+    <>
+      <Header />
+      <div
+        onClick={() => {
+          axios
+            .get(`api/v1/account/my/`, {
+              headers: {
+                Authorization: `Bearer ${accessToken}`,
+              },
+            })
+            .then((response) => {
+              localStorage.setItem('id', response.data.id);
+              setId(response.data.id);
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+          console.log(id);
+        }}
+      >
+        테스트 버튼
+      </div>
+      <div className={styles['my-page']}>
+        <div className={styles.title}>마이페이지</div>
+      </div>
+      <div className={styles.wrapper}>
+        <div className={styles.container}>
+          <div className={styles['user-setting']}>
+            <div className={styles.list}>
+              <AiOutlinePushpin className={styles.pin} />
+              <div className={styles.list}>프로필 설정</div>
+            </div>
+            <div className={styles.list}>
+              <AiOutlinePushpin className={styles.pin} />
+              <div className={styles.list}>알림 설정</div>
+            </div>
+            <div className={styles.list}>
+              <AiOutlinePushpin className={styles.pin} />
+              <div className={styles.list}>회원탈퇴</div>
+            </div>
+            <div className={styles.list}>
+              <AiOutlinePushpin className={styles.pin} />
+              <div className={styles.list}>커뮤니티</div>
+            </div>
+          </div>
+
+          <div className={styles.clubs}>
+            <div className={styles.modes}>
+              <div className={clicked == 0 ? styles.clickmode : styles.mode} onClick={() => setClicked(0)}>
+                알림 설정 중
+              </div>
+              <div className={clicked == 1 ? styles.clickmode : styles.mode} onClick={() => setClicked(1)}>
+                가입 중
+              </div>
+              <div className={clicked == 2 ? styles.clickmode : styles.mode} onClick={() => setClicked(2)}>
+                관리 중
+              </div>
+            </div>
+            <div className={styles['content-upper']}>
+              <ClubsList clubsList={clubsList} />
+            </div>
+
+            <div className={styles['content-under']}>
+              <div className={styles.title}>내 정보</div>
+
+              <div className={styles.alarm}>
+                <div className={styles.key}>닉네임</div>
+                <div className={styles.value}>{id} : user_id로 바꿔야 함</div>
+                <div className={styles['button-wrapper']} onClick={() => onEditClick('user_id')}>
+                  <div className={styles.button}>
+                    {true ? <BiSave className={styles['edit-icon']} /> : <BiEdit className={styles['edit-icon']} />}
+                  </div>
+                </div>
+              </div>
+
+              <div className={styles.alarm}>
+                <div className={styles.key}>이메일</div>
+                <div className={styles.value}>{email}</div>
+                <div className={styles['button-wrapper']} onClick={() => onEditClick('email')}>
+                  <div className={styles.button}>
+                    {true ? <BiSave className={styles['edit-icon']} /> : <BiEdit className={styles['edit-icon']} />}
+                  </div>
+                </div>
+              </div>
+
+              <div className={styles.alarm}>
+                <div className={styles.key}>이메일로 알림 받기</div>
+                <div className={styles.toggle}></div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+      <EditModal
+        _key={editParam}
+        value={editParam == 'user_id' ? id : email}
+        editValue={'수정할 함수'}
+        isOpen={isModalOpen}
+        setIsOpen={setIsModalOpen}
+      />
+    </>
   );
 };
 

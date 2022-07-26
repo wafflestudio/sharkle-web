@@ -23,7 +23,7 @@ const InfoForm = ({ userInfo, setUserInfo, infoType, useAlarm = true }) => {
   };
 
   return (
-    <div className={styles['form-wrapper']}>
+    <>
       <div className={styles.form}>
         <div className={styles.key}>{infoType}</div>
         <div className={styles.wrapper}>
@@ -40,8 +40,7 @@ const InfoForm = ({ userInfo, setUserInfo, infoType, useAlarm = true }) => {
           </div>
         </div>
       </div>
-      {useAlarm ? <AlarmSetButton clicked={buttonClicked} onClick={onButtonClick} /> : null}
-    </div>
+    </>
   );
 };
 

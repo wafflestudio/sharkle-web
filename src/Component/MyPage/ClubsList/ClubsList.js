@@ -65,9 +65,6 @@ const ClubsList = ({ clubsList }) => {
       {clubsList.map((club, idx) => (
         <MyClub club={club} key={idx} />
       ))}
-      <button className={styles.more} onClick={onNextClick}>
-        {clubsList.length > 4 ? <AiOutlineDoubleRight className={styles.arrow} /> : null}
-      </button>
     </div>
   );
 };

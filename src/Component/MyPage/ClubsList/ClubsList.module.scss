@@ -1,18 +1,20 @@
 .club{
-  margin-left:10px;
-  margin-right: 10px;
+  margin-left:20px;
+  margin-right: 20px;
   margin-top: 5px;
+  height: 300px;
   display: flex;
   flex-direction: column;
 }
   .button{
     border:0;
-    background: #F7F7F7;
+    background: #E5E5E5;
     display: flex;
     justify-content: center;
     width: 173px;
     height: 173px;
     cursor: pointer;
+    border-radius: 30px;
 
 
     .container{
@@ -70,7 +72,8 @@
     .tag{
       margin: 3px;
       padding: 6px;
-      background: #C4C4C4;
+      background: #E5E5E5;
+      color: white;
       border-radius: 21px;
       font-size: 15px;
       line-height: 15px;
@@ -78,9 +81,10 @@
       align-items: center;
       cursor: pointer;
 
-      &:hover{
-        transform:scale(1.1);
-        transition: transform .2s;
+      &:hover {
+        background: #B9DBFF;
+        transform: scale(1.05);
+        transition: transform .1s;
       }
 
 
@@ -105,12 +109,15 @@
 }
 
 .list{
-  width: 80%;
+  width: 100%;
   display: flex;
   overflow: auto;
+  margin-left: 30px;
 
   &::-webkit-scrollbar{
+    height: 10px;
     width: 10px;
+    left:10px
   }
 
   &::-webkit-scrollbar-thumb {
