@@ -22,7 +22,7 @@ import QnAItem from './QnA/QnAItem/QnAItem';
 const DummyMenuList = [{ name: '소개' }, { name: 'QnA' }, { name: '지원' }, { name: '커뮤니티' }];
 
 const CirclePage = () => {
-  const { accessToken, refreshToken, isLogin, checkToken } = useSessionContext();
+  const { accessToken, refreshToken, isLogin, checkToken, refreshing, setRefreshing } = useSessionContext();
   const navigate = useNavigate();
   const params = useParams();
 
@@ -51,8 +51,7 @@ const CirclePage = () => {
         console.log(error);
       });
 
-    if (isLogin) {
-      console.log(1);
+    if (isLogin && refreshing) {
       console.log(accessToken);
       axios
         .get(`api/v1/circle/${params.circleName}/board/`, {
@@ -63,17 +62,18 @@ const CirclePage = () => {
         .then((response) => {
           setMenuList(response.data);
           setCurBoardId(response.data.find((item) => item.name === params.boardName).id);
+          setRefreshing(false);
         })
         .catch((error) => {
           console.log(error);
         });
     } else {
-      console.log(2);
       axios
         .get(`api/v1/circle/${params.circleName}/board/`, {})
         .then((response) => {
           setMenuList(response.data);
           setCurBoardId(response.data.find((item) => item.name === params.boardName).id);
+          setRefreshing(false);
         })
         .catch((error) => {
           console.log(error);
