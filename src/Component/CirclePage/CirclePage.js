@@ -22,7 +22,7 @@ import QnAItem from './QnA/QnAItem/QnAItem';
 const DummyMenuList = [{ name: '소개' }, { name: 'QnA' }, { name: '지원' }, { name: '커뮤니티' }];
 
 const CirclePage = () => {
-  const { accessToken, isLogin } = useSessionContext();
+  const { accessToken, refreshToken, isLogin, checkToken } = useSessionContext();
   const navigate = useNavigate();
   const params = useParams();
 
@@ -52,6 +52,8 @@ const CirclePage = () => {
       });
 
     if (isLogin) {
+      console.log(1);
+      console.log(accessToken);
       axios
         .get(`api/v1/circle/${params.circleName}/board/`, {
           headers: {
@@ -66,6 +68,7 @@ const CirclePage = () => {
           console.log(error);
         });
     } else {
+      console.log(2);
       axios
         .get(`api/v1/circle/${params.circleName}/board/`, {})
         .then((response) => {
@@ -76,7 +79,7 @@ const CirclePage = () => {
           console.log(error);
         });
     }
-  }, []);
+  }, [accessToken]);
 
   useEffect(() => {
     if (circleId !== null && curBoardId !== null && curBoardId !== undefined) {
@@ -85,9 +88,7 @@ const CirclePage = () => {
   }, [circleId, curBoardId]);
 
   const tempFunction = () => {
-    console.log(curBoardId);
-    console.log(circleId);
-    console.log(isLoad);
+    console.log(isLogin);
   };
 
   return (

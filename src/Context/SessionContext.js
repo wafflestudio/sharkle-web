@@ -113,7 +113,18 @@ export const SessionProvider = ({ children }) => {
 
   return (
     <SessionContext.Provider
-      value={{ isLogin, accessToken, refreshToken, id, userId, userImg, handleLogin, handleLogout, setUserImg }}
+      value={{
+        isLogin,
+        accessToken,
+        refreshToken,
+        id,
+        userId,
+        userImg,
+        handleLogin,
+        handleLogout,
+        setUserImg,
+        checkToken,
+      }}
     >
       {children}
     </SessionContext.Provider>

@@ -33,6 +33,8 @@ const QnAWrite = (props) => {
       .then((response) => {
         toast.success('질문을 등록하였습니다.');
         setIsOpen(false);
+        setTitle('');
+        setContents('');
       })
       .catch((error) => {
         console.log(error);
