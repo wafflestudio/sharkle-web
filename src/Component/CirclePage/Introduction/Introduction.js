@@ -1,6 +1,6 @@
 import { BsImage, BsPinAngle } from 'react-icons/bs';
 import { BiSearchAlt2 } from 'react-icons/bi';
-import styles from './Recruiting.module.scss';
+import styles from './Introduction.module.scss';
 import { useEffect, useRef, useState } from 'react';
 import { useSessionContext } from '../../../Context/SessionContext';
 import LoginModal from '../../LoginModal/LoginModal';
@@ -12,27 +12,10 @@ import { AiOutlineSearch } from 'react-icons/ai';
 import axios from 'axios';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-// import Font from '@ckeditor/ckeditor5-font/src/font';
 import Parser from 'html-react-parser';
 import { toast } from 'react-toastify';
-import ImageGallery from 'react-image-gallery';
 
-const images = [
-  {
-    original: 'https://picsum.photos/id/1018/1000/600/',
-    thumbnail: 'https://picsum.photos/id/1018/250/150/',
-  },
-  {
-    original: 'https://picsum.photos/id/1015/1000/600/',
-    thumbnail: 'https://picsum.photos/id/1015/250/150/',
-  },
-  {
-    original: 'https://picsum.photos/id/1019/1000/600/',
-    thumbnail: 'https://picsum.photos/id/1019/250/150/',
-  },
-];
-
-const Recruiting = (props) => {
+const Introduction = (props) => {
   const { circleId, curBoardId, isLoad } = props;
   const navigate = useNavigate();
   const params = useParams();
@@ -47,8 +30,6 @@ const Recruiting = (props) => {
   const [thumbImgBase64, setThumbImgBase64] = useState(''); // 파일 base64
   const [thumbImgFile, setThumbImgFile] = useState(null); //파일
   const [thumbUrl, setThumbUrl] = useState('');
-
-  const [imageList, setImageList] = useState([]);
 
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isWrite, setIsWrite] = useState(false);
@@ -145,16 +126,6 @@ const Recruiting = (props) => {
           <BsPinAngle className={styles.pin} />
           <div className={styles.title}>{params.boardName}</div>
         </div>
-        {/*<div className={styles.board_sort}>*/}
-        {/*  <div className={styles.board_sort_list}>최신순</div>│<div className={styles.board_sort_list}>과거순</div>│*/}
-        {/*  <div className={styles.board_sort_list}>조회순</div>│<div className={styles.board_sort_list}>답변순</div>*/}
-        {/*</div>*/}
-        {/*<div className={styles.board_subtitle}>*/}
-        {/*  <div className={styles.board_sub_title}>제목</div>*/}
-        {/*  <div className={styles.board_sub_click}>조회수</div>*/}
-        {/*  <div className={styles.board_sub_write}>작성자</div>*/}
-        {/*  <div className={styles.board_sub_date}>작성일</div>*/}
-        {/*</div>*/}
       </div>
 
       {!isWrite ? (
@@ -164,19 +135,10 @@ const Recruiting = (props) => {
               <img
                 className={styles.board_club_image}
                 src="https://wafflestudio.com/images/icon_header.svg?auto=format&fit=max&w=256"
-                alt="포스터 이미지"
+                alt="대표 이미지"
               />
             </div>
             <div className={styles.board_article}>{Parser(article)}</div>
-
-            <div className={styles.board_activity}>
-              <ImageGallery
-                items={images}
-                showIndex={true}
-                showPlayButton={false}
-                additionalClass={styles.image_gallery}
-              />
-            </div>
           </div>
 
           <div className={styles.board_util}>
@@ -188,7 +150,7 @@ const Recruiting = (props) => {
       ) : (
         <>
           <div className={styles.board_contents}>
-            <div className={styles.board_club_image_title}>포스터 이미지</div>
+            <div className={styles.board_club_image_title}>대표 이미지</div>
             {clubImage != null ? (
               <>
                 <img className={styles.board_club_image} src={clubImage} alt="대표 이미지" />
@@ -223,7 +185,7 @@ const Recruiting = (props) => {
               </>
             )}
 
-            <div className={styles.board_article_title}>설명 글</div>
+            <div className={styles.board_article_title}>소개 글</div>
             <div className={styles.board_editor}>
               <CKEditor
                 editor={ClassicEditor}
@@ -249,8 +211,6 @@ const Recruiting = (props) => {
                 }}
               />
             </div>
-
-            <div className={styles.board_article_title}>활동 이미지</div>
           </div>
 
           <div className={styles.board_util}>
@@ -268,4 +228,4 @@ const Recruiting = (props) => {
   );
 };
 
-export default Recruiting;
+export default Introduction;

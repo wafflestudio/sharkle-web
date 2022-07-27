@@ -18,6 +18,8 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import classNames from 'classnames';
 import QnAItem from './QnA/QnAItem/QnAItem';
+import Introduction from './Introduction/Introduction';
+import IntroWrite from './Introduction/IntroWrite/IntroWrite';
 
 const DummyMenuList = [{ name: '소개' }, { name: 'QnA' }, { name: '지원' }, { name: '커뮤니티' }];
 
@@ -69,6 +71,7 @@ const CirclePage = () => {
       axios
         .get(`api/v1/circle/${params.circleName}/board/`, {})
         .then((response) => {
+          console.log(response.data);
           setMenuList(response.data);
           setCurBoardId(response.data.find((item) => item.name === params.boardName).id);
         })
@@ -128,7 +131,31 @@ const CirclePage = () => {
             </div>
           </div>
           <div className={styles.board_wrapper}>
-            {params.boardName === 'QnA' ? (
+            {params.boardName === '소개' ? (
+              <div className={styles.board_qna}>
+                <Routes>
+                  <Route
+                    exact
+                    path="/"
+                    element={<Introduction circleId={circleId} curBoardId={curBoardId} isLoad={isLoad} />}
+                  />
+                  <Route
+                    path="/write"
+                    element={<IntroWrite circleId={circleId} curBoardId={curBoardId} isLoad={isLoad} />}
+                  />
+                </Routes>
+              </div>
+            ) : params.boardName === '지원' ? (
+              <div className={styles.board_qna}>
+                <Routes>
+                  <Route
+                    exact
+                    path="/"
+                    element={<Recruiting circleId={circleId} curBoardId={curBoardId} isLoad={isLoad} />}
+                  />
+                </Routes>
+              </div>
+            ) : params.boardName === 'QnA' ? (
               <div className={styles.board_qna}>
                 <Routes>
                   <Route

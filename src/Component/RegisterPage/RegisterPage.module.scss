@@ -1,4 +1,4 @@
-.registerpage {
+.register_page {
   position: absolute;
   margin: 0px;
   width: 100vw;
@@ -6,7 +6,7 @@
   overflow: scroll;
 }
 
-.mainsection {
+.main_section {
   width: 768px;
   margin: 100px auto 0px;
   line-height: 1.5;
@@ -24,12 +24,12 @@
   color: rgb(33, 37, 41);
 }
 
-.membersection{
+.member_section{
   margin-top: 3rem;
   margin-bottom: 2rem;
 }
 
-.memberbutton{
+.member_button{
   height: 3rem;
   font-size: 1rem;
   padding-left: 1.5rem;
@@ -46,11 +46,11 @@
   cursor: pointer;
 }
 
-.memberbutton:hover{
+.member_button:hover{
   border-width: 3px;
 }
 
-.memberbuttongray{
+.member_button_gray{
   height: 3rem;
   font-size: 1rem;
   padding-left: 1.5rem;
@@ -67,12 +67,12 @@
   cursor: pointer;
 }
 
-.memberbuttongray:hover{
+.member_button_gray:hover{
   border-width: 3px;
 }
 
 
-.detailsection {
+.detail_section {
   margin-top: 3rem;
   margin-bottom: 3rem;
 }
@@ -109,7 +109,7 @@
   max-width: 100%;
 }
 
-.inputwrapper {
+.input_wrapper {
   width: 400px;
   padding-bottom: 0.5rem;
   border-bottom: 1px solid rgb(73, 80, 87);
@@ -118,11 +118,11 @@
   align-items: center;
 }
 
-.inputwrapper:focus-within {
+.input_wrapper:focus-within {
   border-bottom: 1px solid #538DFF;
 }
 
-.inputbox {
+.input_box {
   font-size: 1.5rem;
   border: none;
   outline: none;
@@ -131,11 +131,11 @@
   transition: all 0.125s ease-in 0s;
 }
 
-.inputbox:focus-within {
+.inpu_tbox:focus-within {
   color: #538DFF;
 }
 
-.errorsection{
+.error_section{
   margin-top: 5rem;
   margin-bottom: 1rem;
   font-size: 1.125rem;
@@ -144,11 +144,11 @@
   font-weight: bold;
 }
 
-.buttonsection {
+.button_section {
   margin-bottom: 5rem;
 }
 
-.cancelbutton{
+.cancel_button{
   height: 3rem;
   font-size: 1.5rem;
   padding-left: 2rem;
@@ -165,7 +165,7 @@
   cursor: pointer;
 }
 
-.completebutton{
+.complete_button{
   height: 3rem;
   font-size: 1.5rem;
   padding-left: 2rem;

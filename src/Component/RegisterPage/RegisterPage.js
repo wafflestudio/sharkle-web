@@ -69,38 +69,38 @@ const RegisterPage = () => {
   };
 
   return (
-    <div className={styles.registerpage}>
-      <div className={styles.mainsection}>
+    <div className={styles.registe_rpage}>
+      <div className={styles.main_section}>
         <h1 className={styles.welcome}>환영합니다!</h1>
         <div className={styles.description}>기본 회원 정보를 등록해주세요.</div>
 
-        <div className={styles.membersection}>
+        <div className={styles.member_section}>
           {isMember === true ? (
             <>
-              <button className={styles.memberbutton} onClick={handleSnu}>
+              <button className={styles.member_button} onClick={handleSnu}>
                 서울대 구성원
               </button>
-              <button className={styles.memberbuttongray} onClick={handleNonSnu}>
+              <button className={styles.member_button_gray} onClick={handleNonSnu}>
                 비구성원
               </button>
             </>
           ) : (
             <>
-              <button className={styles.memberbuttongray} onClick={handleSnu}>
+              <button className={styles.member_button_gray} onClick={handleSnu}>
                 서울대 구성원
               </button>
-              <button className={styles.memberbutton} onClick={handleNonSnu}>
+              <button className={styles.member_button} onClick={handleNonSnu}>
                 비구성원
               </button>
             </>
           )}
         </div>
 
-        <div className={styles.detailsection}>
+        <div className={styles.detail_section}>
           <div className={styles.block}>
             <label className={styles.text}>이메일</label>
             <div className={styles.input}>
-              <div className={styles.inputwrapper}>
+              <div className={styles.input_wrapper}>
                 <input
                   className={styles.inputbox}
                   placeholder="이메일을 입력하세요"
@@ -113,9 +113,9 @@ const RegisterPage = () => {
           <div className={styles.block}>
             <label className={styles.text}>닉네임</label>
             <div className={styles.input}>
-              <div className={styles.inputwrapper}>
+              <div className={styles.input_wrapper}>
                 <input
-                  className={styles.inputbox}
+                  className={styles.input_box}
                   placeholder="닉네임을 입력하세요"
                   onChange={(e) => setRegisterName(e.target.value)}
                 />
@@ -139,9 +139,9 @@ const RegisterPage = () => {
           <div className={styles.block}>
             <label className={styles.text}>비밀번호</label>
             <div className={styles.input}>
-              <div className={styles.inputwrapper}>
+              <div className={styles.input_wrapper}>
                 <input
-                  className={styles.inputbox}
+                  className={styles.input_box}
                   type={'password'}
                   placeholder="비밀번호를 입력하세요"
                   onChange={(e) => setRegisterPassword(e.target.value)}
@@ -153,9 +153,9 @@ const RegisterPage = () => {
           <div className={styles.block}>
             <label className={styles.text}>비밀번호 확인</label>
             <div className={styles.input}>
-              <div className={styles.inputwrapper}>
+              <div className={styles.input_wrapper}>
                 <input
-                  className={styles.inputbox}
+                  className={styles.input_box}
                   type={'password'}
                   placeholder="비밀번호를 다시 한번 입력하세요"
                   onChange={(e) => setCheckPassword(e.target.value)}
@@ -165,7 +165,7 @@ const RegisterPage = () => {
           </div>
         </div>
 
-        <div className={styles.errorsection}>
+        <div className={styles.error_section}>
           {registerError}
           {/*{registerError === 0*/}
           {/*  ? ''*/}
@@ -178,11 +178,11 @@ const RegisterPage = () => {
           {/*  : '에러 발생!'}*/}
         </div>
 
-        <div className={styles.buttonsection}>
-          <button className={styles.cancelbutton} onClick={handleCancel}>
+        <div className={styles.button_section}>
+          <button className={styles.cancel_button} onClick={handleCancel}>
             취소
           </button>
-          <button className={styles.completebutton} onClick={handleRegister}>
+          <button className={styles.complete_button} onClick={handleRegister}>
             완료
           </button>
         </div>
