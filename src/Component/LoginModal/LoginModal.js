@@ -43,8 +43,8 @@ const LoginModal = (props) => {
           setIsOpen(false);
 
           // TODO : get user id from Server
-
-          handleLogin(loginId, null, null, response.data.access, response.data.refresh);
+          console.log(response)
+          handleLogin(loginId, null, null, response.data.username, response.data.access, response.data.refresh);
         })
         .catch((error) => {
           console.log(error);

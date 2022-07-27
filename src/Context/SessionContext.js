@@ -25,6 +25,8 @@ export const SessionProvider = ({ children }) => {
   const [id, setId] = useState(localStorage.getItem('id') === null ? '' : localStorage.getItem('id'));
   //const [userId, setUserId] = useState("idplace");
 
+  const [username, setUsername] = useState(localStorage.getItem('username') === null ? '' : localStorage.getItem('username'));
+
   const [userImg, setUserImg] = useState(
     localStorage.getItem('userImg') === null ? '' : localStorage.getItem('userImg')
   );
@@ -33,9 +35,10 @@ export const SessionProvider = ({ children }) => {
   //자동 로그아웃 타이머
   const [count, setCount] = useState(0);
 
-  const handleLogin = (email, id, img, accessToken, refreshToken) => {
+  const handleLogin = (email, id, img, username, accessToken, refreshToken) => {
     localStorage.setItem('email', email);
     localStorage.setItem('id', id);
+    localStorage.setItem('username', username);
     localStorage.setItem('accessToken', accessToken);
     localStorage.setItem('refreshToken', refreshToken);
     setIsLogin(true);
@@ -48,6 +51,7 @@ export const SessionProvider = ({ children }) => {
   const handleLogout = () => {
     localStorage.removeItem('email');
     localStorage.removeItem('id');
+    localStorage.removeItem('username');
     localStorage.removeItem('accessToken');
     localStorage.removeItem('refreshToken');
     setIsLogin(false);
@@ -117,7 +121,7 @@ export const SessionProvider = ({ children }) => {
 
   return (
     <SessionContext.Provider
-      value={{ isLogin, accessToken, refreshToken, email, id, setId, userImg, handleLogin, handleLogout, setUserImg }}
+      value={{ isLogin, accessToken, refreshToken, email, id, username, setId, userImg, handleLogin, handleLogout, setUserImg }}
     >
       {children}
     </SessionContext.Provider>

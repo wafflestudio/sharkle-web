@@ -17,7 +17,7 @@ const Header = () => {
 
   const navigate = useNavigate();
 
-  const { isLogin, handleLogout, email } = useSessionContext();
+  const { isLogin, handleLogout, email, username } = useSessionContext();
 
   const [isAlertClicked, setIsAlertClicked] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
@@ -81,7 +81,7 @@ const Header = () => {
               </button>
             ) : (
               <>
-                <div className={styles.name}>{email}</div>
+                <div className={styles.name}>{username}</div>
                 <button className={styles.button} onClick={onUserIconClick}>
                   <AiOutlineUser className={styles.icon} />
                   {isUserIconClicked ? <UserIconPopUp handleMyPage={handleMyPage} handleClub={handleClub} /> : null}

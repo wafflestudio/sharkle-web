@@ -28,6 +28,11 @@ const EditModal = (props) => {
     setIsOpen(false);
   };
 
+  const onClickEdit = () => {
+    console.log('username / email edit 구현 필요')
+  }
+
+
   const onKeyPress = (e) => {
     if (e.key == 'Enter') {
     }
@@ -54,7 +59,7 @@ const EditModal = (props) => {
         </div>
 
         <div className={styles.button}>
-          <button className={styles.login} onClick={() => {}}>
+          <button className={styles.login} onClick={onClickEdit}>
             {' '}
             수정
           </button>

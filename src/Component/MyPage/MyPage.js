@@ -16,7 +16,7 @@ import EditModal from './EditModal';
 const MyPage = () => {
   //dummy data
 
-  const { id, email, setId, accessToken } = useSessionContext();
+  const { id, email, username, setId, accessToken } = useSessionContext();
   const dummyUserNickname = '김와플';
   const dummyUserEmail = 'sharkle@ws.com';
   const dummyMyPostList = [
@@ -94,6 +94,18 @@ const MyPage = () => {
       tags: ['tag1', 'tag2', 'tag3'],
     },
   ];
+  useEffect(() => {
+    axios
+      .get(`api/v1/circle/`)
+      .then((response) => {
+        console.log(response.data.results);
+        setClubsList(response.data.results);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
   // states
 
   /* TODO : 1. user_id 및 username 받아와서
@@ -101,10 +113,11 @@ const MyPage = () => {
      TODO : 3. 모달 띄워서 처리?
   */
 
-  const [clubsList, setClubsList] = useState(dummyClubsList);
+  const [clubsList, setClubsList] = useState([]);
   const [userNickname, setUserNickname] = useState(dummyUserNickname);
   const [userEmail, setUserEmail] = useState(email);
   const [myPostList, setMyPostList] = useState(dummyMyPostList);
+  const [alert, setAlert] = useState(false);
 
   const editEmail = () => {
     setUserEmail(userEmail);
@@ -117,6 +130,10 @@ const MyPage = () => {
     setEditParam(key);
     setIsModalOpen(true);
   };
+
+  const onAlertClick = () => {
+    setAlert(!alert)
+  }
 
   // 알림설정중, 가입중, 관리중 탭 클릭 여부 (0, 1, 2)
   const [clicked, setClicked] = useState(0);
@@ -194,8 +211,8 @@ const MyPage = () => {
 
               <div className={styles.alarm}>
                 <div className={styles.key}>닉네임</div>
-                <div className={styles.value}>{id} : user_id로 바꿔야 함</div>
-                <div className={styles['button-wrapper']} onClick={() => onEditClick('user_id')}>
+                <div className={styles.value}>{username}</div>
+                <div className={styles['button-wrapper']} onClick={() => onEditClick('username')}>
                   <div className={styles.button}>
                     {true ? <BiSave className={styles['edit-icon']} /> : <BiEdit className={styles['edit-icon']} />}
                   </div>
@@ -214,7 +231,9 @@ const MyPage = () => {
 
               <div className={styles.alarm}>
                 <div className={styles.key}>이메일로 알림 받기</div>
-                <div className={styles.toggle}></div>
+                <div className={alert ? styles['toggle-clicked'] : styles.toggle} onClick={onAlertClick}>
+                  <div className={alert ? styles['toggle-button-clicked'] : styles['toggle-button']}></div>
+                </div>
               </div>
             </div>
           </div>
@@ -222,7 +241,7 @@ const MyPage = () => {
       </div>
       <EditModal
         _key={editParam}
-        value={editParam == 'user_id' ? id : email}
+        value={editParam == 'username' ? username : email}
         editValue={'수정할 함수'}
         isOpen={isModalOpen}
         setIsOpen={setIsModalOpen}
