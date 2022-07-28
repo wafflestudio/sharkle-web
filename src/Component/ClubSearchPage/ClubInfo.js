@@ -17,7 +17,7 @@ const ClubInfo = ({ club }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(`circle/${club.name}/소개`, {
+    navigate(`circle/${club.name}/QnA`, {
       state: {
         id: club.id,
       },
