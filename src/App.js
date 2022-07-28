@@ -5,9 +5,6 @@ import MyPage from './Component/MyPage/MyPage';
 import LoginPage from './Component/LoginPage/LoginPage';
 import RegisterPage from './Component/RegisterPage/RegisterPage';
 import ClubSearchPage from './Component/ClubSearchPage/ClubSearchPage';
-import Introduction from './Component/CirclePage/Introduction/Introduction';
-import Recruiting from './Component/CirclePage/Recruiting/Recruiting';
-//npm install -save react-scripts
 
 function App() {
   return (
