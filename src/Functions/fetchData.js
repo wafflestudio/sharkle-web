@@ -3,9 +3,7 @@ function fetchQnAList(circleId, curBoardId) {
   const suspender = fetch(`http://sharkle-server.kro.kr/api/v1/circle/${circleId}/board/${curBoardId}/article/`)
     .then((response) => response.json())
     .then((data) => {
-      setTimeout(() => {
-        list = data;
-      }, 3000);
+      list = data;
     });
   return {
     read() {
