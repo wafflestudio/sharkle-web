@@ -1,0 +1,285 @@
+.board_title_wrapper{
+  border-bottom: 1px solid #C4C4C4;
+  height: 90px;
+
+  .board_title{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    top: 10px;
+    height: 40px;
+    width: 300px;
+
+    .pin{
+      width: 20px;
+      height: 20px;
+      margin-left: 20px;
+
+      transform: rotate(-90.55deg);
+    }
+    .title{
+      margin-left: 10px;
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 18px;
+      font-family: "Noto Sans Adlam";
+      font-style: normal;
+    }
+  }
+
+  .board_sort{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    top: 10px;
+    right: 10px;
+    height: 40px;
+    width: auto;
+
+    .board_sort_list{
+      font-weight: 500;
+      font-size: 13px;
+      line-height: 18px;
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+  }
+
+  .board_subtitle{
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    top: 65px;
+    width: 100%;
+
+    .board_sub_title{
+      position: absolute;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 18px;
+      left: 350px;
+    }
+    .board_sub_click{
+      position: absolute;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 18px;
+      right: 239px;
+    }
+    .board_sub_write{
+      position: absolute;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 18px;
+      right: 142px;
+    }
+    .board_sub_date{
+      position: absolute;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 18px;
+      right: 35px;
+    }
+  }
+}
+
+.board_contents{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height:auto;
+
+
+  .board_club_image_wrapper{
+    display: flex;
+    height: auto;
+    margin: 6rem;
+
+  }
+
+  .board_club_image{
+    margin: auto;
+  }
+
+  .board_club_image_title{
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    padding-left: 2rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+
+  .board_club_image_upload{
+    display: flex;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    margin: auto;
+    height: 200px;
+    width: 50%;
+    font-size: 1.2rem;
+    border-style: dashed;
+    border-color: #8e939d;
+    background-color: rgba(226, 226, 231, 0.5);
+    justify-content : center;
+    align-items : center;
+  }
+
+
+  .board_club_image_box {
+    display: flex;
+    background: rgb(233, 236, 239);
+    margin-left: calc(50% - 250px);
+    width: 500px;
+    height: 300px;
+    text-align: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    flex-direction: column;
+
+    .club_image_icon {
+      width: 107px;
+      height: auto;
+      color: rgb(133, 137, 141);
+    }
+
+    .club_image_img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .upload_btn {
+      position: absolute;
+      margin-top: 9rem;
+      padding: 0.25rem 2rem;
+      background: white;
+      border-radius: 4px;
+      box-shadow: rgb(0 0 0 / 2%) 0px 0px 4px;
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #538DFF;
+      outline: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.125s ease-in 0s;
+      font-weight: bold;
+    }
+
+    .upload_input{
+      display: none;
+    }
+
+  }
+
+  .image_delete_button{
+    height: 2.4rem;
+    width: 8rem;
+    font-size: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
+    border-radius: 1rem;
+    border: none;
+    outline: none;
+    font-weight: bold;
+    word-break: keep-all;
+    background: #f32b2b;
+    color: white;
+    transition: all 0.125s ease-in 0s;
+    cursor: pointer;
+  }
+
+  .board_article_title{
+    width: 100%;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    padding-left: 2rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+
+  .board_article{
+    width: 90%;
+    margin-left: 5%;
+    //border: solid;
+    word-break:break-all;
+  }
+
+  .board_editor{
+    width: 95%;
+    margin-left: 2.5%;
+  }
+
+  .board_activity{
+    margin-top: 5rem;
+    width: 50%;
+    margin-left: 25%;
+  }
+
+}
+
+.board_util{
+  display: flex;
+  width: auto;
+  margin-top: 2rem;
+  margin-left: 2rem;
+
+
+  .write_button{
+    height: 2.4rem;
+    font-size: 1rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    border-radius: 1rem;
+    border: none;
+    outline: none;
+    font-weight: bold;
+    word-break: keep-all;
+    background: #538DFF;
+    color: white;
+    transition: all 0.125s ease-in 0s;
+    cursor: pointer;
+  }
+
+
+  .cancel_button{
+    height: 2.4rem;
+    font-size: 1rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    margin-right: 1rem;
+    border-radius: 1rem;
+    border: none;
+    outline: none;
+    font-weight: bold;
+    word-break: keep-all;
+    background: rgb(233, 236, 239);
+    color: rgb(73, 80, 87);
+    transition: all 0.125s ease-in 0s;
+    cursor: pointer;
+  }
+
+  .complete_button{
+    height: 2.4rem;
+    font-size: 1rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    border-radius: 1rem;
+    border: none;
+    outline: none;
+    font-weight: bold;
+    word-break: keep-all;
+    background: #538DFF;
+    color: white;
+    transition: all 0.125s ease-in 0s;
+    cursor: pointer;
+  }
+
+
+
+}
