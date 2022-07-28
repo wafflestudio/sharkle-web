@@ -8,6 +8,8 @@ import axios from 'axios';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { FunctionProvider } from './Functions/Functions';
+import ScrollTop from './Context/ScrollTop';
+import { BrowserRouter } from 'react-router-dom';
 
 axios.defaults.baseURL = 'http://sharkle-server.kro.kr/';
 
@@ -15,8 +17,11 @@ ReactDOM.render(
   <React.StrictMode>
     <SessionProvider>
       <FunctionProvider>
-        <ToastContainer autoClose={2700} />
-        <App />
+        <BrowserRouter>
+          <ToastContainer autoClose={2700} />
+          <ScrollTop />
+          <App />
+        </BrowserRouter>
       </FunctionProvider>
     </SessionProvider>
   </React.StrictMode>,

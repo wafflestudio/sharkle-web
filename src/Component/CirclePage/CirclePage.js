@@ -24,7 +24,7 @@ import IntroWrite from './Introduction/IntroWrite/IntroWrite';
 const DummyMenuList = [{ name: '소개' }, { name: 'QnA' }, { name: '지원' }, { name: '커뮤니티' }];
 
 const CirclePage = () => {
-  const { accessToken, isLogin } = useSessionContext();
+  const { accessToken, refreshToken, isLogin, checkToken, refreshing, setRefreshing } = useSessionContext();
   const navigate = useNavigate();
   const params = useParams();
 
@@ -53,7 +53,8 @@ const CirclePage = () => {
         console.log(error);
       });
 
-    if (isLogin) {
+    if (isLogin && refreshing) {
+      console.log(accessToken);
       axios
         .get(`api/v1/circle/${params.circleName}/board/`, {
           headers: {
@@ -63,6 +64,7 @@ const CirclePage = () => {
         .then((response) => {
           setMenuList(response.data);
           setCurBoardId(response.data.find((item) => item.name === params.boardName).id);
+          setRefreshing(false);
         })
         .catch((error) => {
           console.log(error);
@@ -74,12 +76,13 @@ const CirclePage = () => {
           console.log(response.data);
           setMenuList(response.data);
           setCurBoardId(response.data.find((item) => item.name === params.boardName).id);
+          setRefreshing(false);
         })
         .catch((error) => {
           console.log(error);
         });
     }
-  }, []);
+  }, [accessToken]);
 
   useEffect(() => {
     if (circleId !== null && curBoardId !== null && curBoardId !== undefined) {
@@ -88,9 +91,7 @@ const CirclePage = () => {
   }, [circleId, curBoardId]);
 
   const tempFunction = () => {
-    console.log(curBoardId);
-    console.log(circleId);
-    console.log(isLoad);
+    console.log(isLogin);
   };
 
   return (
