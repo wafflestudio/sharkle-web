@@ -16,7 +16,7 @@ import { AiOutlineSearch } from 'react-icons/ai';
 import axios from 'axios';
 
 const QnA = (props) => {
-  const { circleId, curBoardId, isLoad } = props;
+  const { circleId, curBoardId, isLoad, resource } = props;
   const params = useParams();
 
   const { isLogin, handleLogout } = useSessionContext();
@@ -24,7 +24,7 @@ const QnA = (props) => {
 
   const [search, setSearch] = useState('');
 
-  const [qnaList, setQnAList] = useState([]);
+  //const [qnaList, setQnAList] = useState([]);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isWrite, setIsWrite] = useState(false);
 
@@ -40,7 +40,9 @@ const QnA = (props) => {
     }
   };
 
-  useEffect(() => {
+  const qnaList = resource.qnaList.read().articles;
+
+  /*useEffect(() => {
     if (isLoad) {
       axios
         .get(`api/v1/circle/${circleId}/board/${curBoardId}/article/`)
@@ -52,7 +54,7 @@ const QnA = (props) => {
           console.log(error);
         });
     }
-  }, [isLoad, isWrite]);
+  }, [isLoad, isWrite]);*/
 
   return (
     <div className={styles.board_skel}>

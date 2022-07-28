@@ -1,4 +1,5 @@
 import './App.css';
+import { Suspense } from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import CirclePage from './Component/CirclePage/CirclePage';
 import MyPage from './Component/MyPage/MyPage';

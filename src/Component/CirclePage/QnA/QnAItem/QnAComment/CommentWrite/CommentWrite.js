@@ -18,7 +18,7 @@ const CommentWrite = (props) => {
     if (isLogin) {
       axios
         .post(
-          `api/v1/article/${params.id}/comment/?reply_to=${id}`,
+          `api/v1/article/${params.id}/comment/?reply_to=${id}/`,
           {
             content: contents,
           },

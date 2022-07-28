@@ -30,7 +30,7 @@ const QnAItem = (props) => {
   useEffect(() => {
     if (isLoad) {
       axios
-        .get(`api/v1/circle/${circleId}/board/${curBoardId}/article/${params.id}`)
+        .get(`api/v1/circle/${circleId}/board/${curBoardId}/article/${params.id}/`)
         .then((response) => {
           console.log(response.data);
           setQnAItem(response.data);

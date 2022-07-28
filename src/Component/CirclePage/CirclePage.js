@@ -2,7 +2,7 @@ import styles from './CirclePage.module.scss';
 import { BiCalendar, BiSearchAlt2 } from 'react-icons/bi';
 import { AiFillTags } from 'react-icons/ai';
 import { BsPinAngle } from 'react-icons/bs';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import QnAList from './QnA/QnAList/QnAList';
 import Header from '../Header/Header';
 import QnA from './QnA/QnA';
@@ -18,6 +18,8 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import classNames from 'classnames';
 import QnAItem from './QnA/QnAItem/QnAItem';
+
+import fetchData from '../../Functions/fetchData';
 
 const DummyMenuList = [{ name: '소개' }, { name: 'QnA' }, { name: '지원' }, { name: '커뮤니티' }];
 
@@ -39,7 +41,7 @@ const CirclePage = () => {
     navigate(`/circle/${params.circleName}/${item.name}`);
   };
 
-  useEffect(() => {
+  const testSus = () => {
     axios
       .get(`api/v1/circle/${params.circleName}/name/`)
       .then((response) => {
@@ -53,6 +55,50 @@ const CirclePage = () => {
 
     if (isLogin && refreshing) {
       console.log(accessToken);
+      axios
+        .get(`api/v1/circle/${params.circleName}/board/`, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        })
+        .then((response) => {
+          setMenuList(response.data);
+          setCurBoardId(response.data.find((item) => item.name === params.boardName).id);
+          setRefreshing(false);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else {
+      axios
+        .get(`api/v1/circle/${params.circleName}/board/`, {})
+        .then((response) => {
+          setMenuList(response.data);
+          setCurBoardId(response.data.find((item) => item.name === params.boardName).id);
+          setRefreshing(false);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+    if (circleId !== null && curBoardId !== null && curBoardId !== undefined) {
+      setIsLoad(true);
+    }
+  };
+
+  useEffect(() => {
+    axios
+      .get(`api/v1/circle/${params.circleName}/name/`)
+      .then((response) => {
+        setCircleId(response.data.id);
+        setCircleTag(response.data.tag);
+        setCircleD_day(response.data.d_day_detail);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    if (isLogin && refreshing) {
       axios
         .get(`api/v1/circle/${params.circleName}/board/`, {
           headers: {
@@ -137,7 +183,20 @@ const CirclePage = () => {
                     path="/:id"
                     element={<QnAItem circleId={circleId} curBoardId={curBoardId} isLoad={isLoad} />}
                   />
-                  <Route exact path="/" element={<QnA circleId={circleId} curBoardId={curBoardId} isLoad={isLoad} />} />
+                  <Route
+                    exact
+                    path="/"
+                    element={
+                      <Suspense fallback={<div>asdfasdf</div>}>
+                        <QnA
+                          circleId={circleId}
+                          curBoardId={curBoardId}
+                          isLoad={isLoad}
+                          resource={fetchData(circleId, curBoardId)}
+                        />
+                      </Suspense>
+                    }
+                  />
                 </Routes>
               </div>
             ) : null}
