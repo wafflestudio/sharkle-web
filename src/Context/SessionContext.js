@@ -19,11 +19,13 @@ export const SessionProvider = ({ children }) => {
     localStorage.getItem('refreshToken') === null ? null : localStorage.getItem('refreshToken')
   );
 
-  const [id, setId] = useState(localStorage.getItem('id') === null ? '' : localStorage.getItem('id'));
+  const [email, setEmail] = useState(localStorage.getItem('email') === null ? '' : localStorage.getItem('email'));
   //const [id, setId] = useState("20");
 
-  const [userId, setUserId] = useState(localStorage.getItem('userId') === null ? '' : localStorage.getItem('userId'));
+  const [id, setId] = useState(localStorage.getItem('id') === null ? '' : localStorage.getItem('id'));
   //const [userId, setUserId] = useState("idplace");
+
+  const [username, setUsername] = useState(localStorage.getItem('username') === null ? '' : localStorage.getItem('username'));
 
   const [userImg, setUserImg] = useState(
     localStorage.getItem('userImg') === null ? '' : localStorage.getItem('userImg')
@@ -33,21 +35,27 @@ export const SessionProvider = ({ children }) => {
   //자동 로그아웃 타이머
   const [count, setCount] = useState(0);
 
-  const handleLogin = (id, userid, img, accessToken, refreshToken) => {
+  const handleLogin = (email, id, img, username, accessToken, refreshToken) => {
+    localStorage.setItem('email', email);
     localStorage.setItem('id', id);
+    localStorage.setItem('username', username);
     localStorage.setItem('accessToken', accessToken);
     localStorage.setItem('refreshToken', refreshToken);
     setIsLogin(true);
+    setEmail(email);
     setId(id);
     setAccessToken(accessToken);
     setRefreshToken(refreshToken);
   };
 
   const handleLogout = () => {
+    localStorage.removeItem('email');
     localStorage.removeItem('id');
+    localStorage.removeItem('username');
     localStorage.removeItem('accessToken');
     localStorage.removeItem('refreshToken');
     setIsLogin(false);
+    setEmail('');
     setId('');
     setAccessToken(null);
     setRefreshToken(null);
@@ -113,7 +121,7 @@ export const SessionProvider = ({ children }) => {
 
   return (
     <SessionContext.Provider
-      value={{ isLogin, accessToken, refreshToken, id, userId, userImg, handleLogin, handleLogout, setUserImg }}
+      value={{ isLogin, accessToken, refreshToken, email, id, username, setId, userImg, handleLogin, handleLogout, setUserImg }}
     >
       {children}
     </SessionContext.Provider>

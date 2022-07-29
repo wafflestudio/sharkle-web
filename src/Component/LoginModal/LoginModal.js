@@ -14,7 +14,7 @@ const LoginModal = (props) => {
 
   const { isOpen, setIsOpen } = props;
 
-  const { handleLogin, handleLogout } = useSessionContext();
+  const { handleLogin, handleLogout, accessToken } = useSessionContext();
 
   const [loginId, setLoginId] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
@@ -41,7 +41,10 @@ const LoginModal = (props) => {
         .then((response) => {
           toast.success('로그인 되었습니다.');
           setIsOpen(false);
-          handleLogin(loginId, null, null, response.data.access, response.data.refresh);
+
+          // TODO : get user id from Server
+          console.log(response)
+          handleLogin(loginId, null, null, response.data.username, response.data.access, response.data.refresh);
         })
         .catch((error) => {
           console.log(error);
