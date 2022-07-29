@@ -17,6 +17,7 @@ import axios from 'axios';
 
 const QnA = (props) => {
   const { circleId, curBoardId, isLoad, resource } = props;
+  const qnaList = circleId !== null && curBoardId !== null ? resource.read().articles : [];
   const params = useParams();
 
   const { isLogin, handleLogout } = useSessionContext();
@@ -40,7 +41,8 @@ const QnA = (props) => {
     }
   };
 
-  const qnaList = resource.qnaList.read().articles;
+  const test = circleId !== null && curBoardId !== null ? console.log('sucess') : console.log('null case');
+  //const qnaList = circleId !== null && curBoardId !== null ? resource.qnaList.read().articles : [];
 
   /*useEffect(() => {
     if (isLoad) {

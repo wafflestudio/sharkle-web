@@ -41,51 +41,6 @@ const CirclePage = () => {
     navigate(`/circle/${params.circleName}/${item.name}`);
   };
 
-  const testSus = () => {
-    axios
-      .get(`api/v1/circle/${params.circleName}/name/`)
-      .then((response) => {
-        setCircleId(response.data.id);
-        setCircleTag(response.data.tag);
-        setCircleD_day(response.data.d_day_detail);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-
-    if (isLogin && refreshing) {
-      console.log(accessToken);
-      axios
-        .get(`api/v1/circle/${params.circleName}/board/`, {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-        })
-        .then((response) => {
-          setMenuList(response.data);
-          setCurBoardId(response.data.find((item) => item.name === params.boardName).id);
-          setRefreshing(false);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    } else {
-      axios
-        .get(`api/v1/circle/${params.circleName}/board/`, {})
-        .then((response) => {
-          setMenuList(response.data);
-          setCurBoardId(response.data.find((item) => item.name === params.boardName).id);
-          setRefreshing(false);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
-    if (circleId !== null && curBoardId !== null && curBoardId !== undefined) {
-      setIsLoad(true);
-    }
-  };
-
   useEffect(() => {
     axios
       .get(`api/v1/circle/${params.circleName}/name/`)
@@ -175,7 +130,7 @@ const CirclePage = () => {
             </div>
           </div>
           <div className={styles.board_wrapper}>
-            {params.boardName === 'QnA' ? (
+            {params.boardName === 'QnA' && isLoad ? (
               <div className={styles.board_qna}>
                 <Routes>
                   <Route
@@ -187,12 +142,12 @@ const CirclePage = () => {
                     exact
                     path="/"
                     element={
-                      <Suspense fallback={<div>asdfasdf</div>}>
+                      <Suspense fallback={<div>Loading...</div>}>
                         <QnA
                           circleId={circleId}
                           curBoardId={curBoardId}
                           isLoad={isLoad}
-                          resource={fetchData(circleId, curBoardId)}
+                          resource={fetchData(circleId, curBoardId).qnaList}
                         />
                       </Suspense>
                     }

@@ -127,6 +127,7 @@ export const SessionProvider = ({ children }) => {
         setUserImg,
         checkToken,
         refreshing,
+        setRefreshing,
       }}
     >
       {children}
