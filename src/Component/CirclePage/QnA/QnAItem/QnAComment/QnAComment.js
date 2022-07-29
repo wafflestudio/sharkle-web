@@ -47,22 +47,37 @@ const QnAComment = (props) => {
     }
   };
 
+  const detectLogin = () => {
+    if (!isLogin) {
+      setOpenLogin(true);
+    }
+  };
+
   //login 아니어도 나중에 볼 수 있게 수정//
   useEffect(() => {
-    axios
-      .get(`api/v1/article/${params.id}/comment/`, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      })
-      .then((response) => {
-        console.log(response.data);
-        setReply(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, [update]);
+    if (isLogin) {
+      axios
+        .get(`api/v1/article/${params.id}/comment/`, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        })
+        .then((response) => {
+          console.log(response.data);
+          setReply(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }, [update, accessToken]);
+
+  useEffect(() => {
+    if (isLogin) {
+    } else {
+      setReply([]);
+    }
+  }, [isLogin]);
 
   return (
     <div className={styles.comment_wrapper}>
@@ -76,11 +91,11 @@ const QnAComment = (props) => {
           <Reply item={item} key={item.id} update={update} setUpdate={setUpdate} />
         ))}
       </div>
-      <div className={styles.box_wrap}>
+      <div className={styles.box_wrap} onClick={detectLogin}>
         <div className={styles.box}>
           <textarea
             className={styles.comments}
-            placeholder="내용을 입력해 주세요"
+            placeholder={isLogin ? '내용을 입력해 주세요' : '로그인을 먼저 해주세요.'}
             value={contents}
             onChange={(e) => setContents(e.target.value)}
           />

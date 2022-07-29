@@ -32,6 +32,7 @@ export const SessionProvider = ({ children }) => {
 
   //자동 로그아웃 타이머
   const [count, setCount] = useState(0);
+  const [refreshing, setRefreshing] = useState(false);
 
   const handleLogin = (id, userid, img, accessToken, refreshToken) => {
     localStorage.setItem('id', id);
@@ -66,6 +67,7 @@ export const SessionProvider = ({ children }) => {
           })
           .then((response) => {
             setAccessToken(response.data.access);
+            setRefreshing(true);
           })
           .catch((error) => {
             console.log(error);
@@ -113,7 +115,19 @@ export const SessionProvider = ({ children }) => {
 
   return (
     <SessionContext.Provider
-      value={{ isLogin, accessToken, refreshToken, id, userId, userImg, handleLogin, handleLogout, setUserImg }}
+      value={{
+        isLogin,
+        accessToken,
+        refreshToken,
+        id,
+        userId,
+        userImg,
+        handleLogin,
+        handleLogout,
+        setUserImg,
+        refreshing,
+        setRefreshing,
+      }}
     >
       {children}
     </SessionContext.Provider>

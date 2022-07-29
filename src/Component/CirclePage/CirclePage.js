@@ -24,7 +24,7 @@ import IntroWrite from './Introduction/IntroWrite/IntroWrite';
 const DummyMenuList = [{ name: '소개' }, { name: 'QnA' }, { name: '지원' }, { name: '커뮤니티' }];
 
 const CirclePage = () => {
-  const { accessToken, isLogin } = useSessionContext();
+  const { accessToken, isLogin, refreshing, setRefreshing } = useSessionContext();
   const navigate = useNavigate();
   const params = useParams();
 
@@ -53,7 +53,7 @@ const CirclePage = () => {
         console.log(error);
       });
 
-    if (isLogin) {
+    if (isLogin && refreshing) {
       axios
         .get(`api/v1/circle/${params.circleName}/board/`, {
           headers: {
@@ -63,6 +63,7 @@ const CirclePage = () => {
         .then((response) => {
           setMenuList(response.data);
           setCurBoardId(response.data.find((item) => item.name === params.boardName).id);
+          setRefreshing(false);
         })
         .catch((error) => {
           console.log(error);
@@ -88,9 +89,14 @@ const CirclePage = () => {
   }, [circleId, curBoardId]);
 
   const tempFunction = () => {
-    console.log(curBoardId);
-    console.log(circleId);
-    console.log(isLoad);
+    axios
+      .get(`api/v1/circle/${circleId}/intro/`)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
