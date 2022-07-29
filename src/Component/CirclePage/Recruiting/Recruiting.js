@@ -251,6 +251,9 @@ const Recruiting = (props) => {
             </div>
 
             <div className={styles.board_article_title}>활동 이미지</div>
+            <button className={styles.activity_image_upload_button} onClick={handleThumbnail}>
+              +
+            </button>
           </div>
 
           <div className={styles.board_util}>
