@@ -32,6 +32,8 @@ const QnAWrite = (props) => {
       )
       .then((response) => {
         toast.success('질문을 등록하였습니다.');
+        setTitle('');
+        setContents('');
         setIsOpen(false);
       })
       .catch((error) => {

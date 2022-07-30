@@ -8,6 +8,7 @@ import axios from 'axios';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { FunctionProvider } from './Functions/Functions';
+import ScrollSetting from './Context/ScrolSetting';
 
 axios.defaults.baseURL = 'http://sharkle-server.kro.kr/';
 
@@ -15,6 +16,7 @@ ReactDOM.render(
   <React.StrictMode>
     <SessionProvider>
       <FunctionProvider>
+        <ScrollSetting />
         <ToastContainer autoClose={2700} />
         <App />
       </FunctionProvider>
