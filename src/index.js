@@ -16,7 +16,6 @@ ReactDOM.render(
   <React.StrictMode>
     <SessionProvider>
       <FunctionProvider>
-        <ScrollSetting />
         <ToastContainer autoClose={2700} />
         <App />
       </FunctionProvider>
