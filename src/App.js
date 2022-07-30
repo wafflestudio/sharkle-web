@@ -6,11 +6,14 @@ import LoginPage from './Component/LoginPage/LoginPage';
 import RegisterPage from './Component/RegisterPage/RegisterPage';
 import ClubSearchPage from './Component/ClubSearchPage/ClubSearchPage';
 import LostPage from './Component/LostPage/LostPage';
+import ScrollSetting from './Context/ScrolSetting';
+import React from 'react';
 //npm install -save react-scripts
 
 function App() {
   return (
     <BrowserRouter>
+      <ScrollSetting />
       <Routes>
         <Route exact path="/" element={<ClubSearchPage />} />
         <Route path="/circle/:circleName/:boardName/*" element={<CirclePage />} />
