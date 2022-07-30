@@ -19,11 +19,15 @@ export const SessionProvider = ({ children }) => {
     localStorage.getItem('refreshToken') === null ? null : localStorage.getItem('refreshToken')
   );
 
+  const [email, setEmail] = useState(localStorage.getItem('email') === null ? '' : localStorage.getItem('email'));
+  //const [id, setId] = useState("20");
+
   const [id, setId] = useState(localStorage.getItem('id') === null ? '' : localStorage.getItem('id'));
   //const [id, setId] = useState("20");
 
-  const [userId, setUserId] = useState(localStorage.getItem('userId') === null ? '' : localStorage.getItem('userId'));
-  //const [userId, setUserId] = useState("idplace");
+  const [username, setUsername] = useState(
+    localStorage.getItem('username') === null ? '' : localStorage.getItem('username')
+  );
 
   const [userImg, setUserImg] = useState(
     localStorage.getItem('userImg') === null ? '' : localStorage.getItem('userImg')
@@ -113,53 +117,16 @@ export const SessionProvider = ({ children }) => {
     }
   }, [count]);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   return (
     <SessionContext.Provider
       value={{
         isLogin,
         accessToken,
         refreshToken,
+        email,
         id,
-        userId,
+        username,
+        setId,
         userImg,
         handleLogin,
         handleLogout,
