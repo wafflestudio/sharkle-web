@@ -20,7 +20,6 @@ export const SessionProvider = ({ children }) => {
   );
 
   const [email, setEmail] = useState(localStorage.getItem('email') === null ? '' : localStorage.getItem('email'));
-
   //const [id, setId] = useState("20");
 
   const [id, setId] = useState(localStorage.getItem('id') === null ? '' : localStorage.getItem('id'));
@@ -37,23 +36,28 @@ export const SessionProvider = ({ children }) => {
 
   //자동 로그아웃 타이머
   const [count, setCount] = useState(0);
-  const [refreshing, setRefreshing] = useState(false);
 
-  const handleLogin = (id, userid, img, accessToken, refreshToken) => {
+  const handleLogin = (email, id, img, username, accessToken, refreshToken) => {
+    localStorage.setItem('email', email);
     localStorage.setItem('id', id);
+    localStorage.setItem('username', username);
     localStorage.setItem('accessToken', accessToken);
     localStorage.setItem('refreshToken', refreshToken);
     setIsLogin(true);
+    setEmail(email);
     setId(id);
     setAccessToken(accessToken);
     setRefreshToken(refreshToken);
   };
 
   const handleLogout = () => {
+    localStorage.removeItem('email');
     localStorage.removeItem('id');
+    localStorage.removeItem('username');
     localStorage.removeItem('accessToken');
     localStorage.removeItem('refreshToken');
     setIsLogin(false);
+    setEmail('');
     setId('');
     setAccessToken(null);
     setRefreshToken(null);
@@ -72,7 +76,6 @@ export const SessionProvider = ({ children }) => {
           })
           .then((response) => {
             setAccessToken(response.data.access);
-            setRefreshing(true);
           })
           .catch((error) => {
             console.log(error);
@@ -132,8 +135,6 @@ export const SessionProvider = ({ children }) => {
         handleLogin,
         handleLogout,
         setUserImg,
-        refreshing,
-        setRefreshing,
       }}
     >
       {children}
