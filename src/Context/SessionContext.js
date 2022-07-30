@@ -25,14 +25,14 @@ export const SessionProvider = ({ children }) => {
   const [id, setId] = useState(localStorage.getItem('id') === null ? '' : localStorage.getItem('id'));
   //const [userId, setUserId] = useState("idplace");
 
-  const [username, setUsername] = useState(
-    localStorage.getItem('username') === null ? '' : localStorage.getItem('username')
-  );
-
   const [userImg, setUserImg] = useState(
     localStorage.getItem('userImg') === null ? '' : localStorage.getItem('userImg')
   );
   //const [userImg, setUserImg] = useState("https://wafflestudio.com/_next/image?url=%2Fimages%2Ficon_intro.svg&w=640&q=75");
+
+  const [username, setUsername] = useState(
+    localStorage.getItem('username') === null ? '' : localStorage.getItem('username')
+  );
 
   //자동 로그아웃 타이머
   const [count, setCount] = useState(0);
