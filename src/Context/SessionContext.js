@@ -20,10 +20,11 @@ export const SessionProvider = ({ children }) => {
   );
 
   const [email, setEmail] = useState(localStorage.getItem('email') === null ? '' : localStorage.getItem('email'));
+
   //const [id, setId] = useState("20");
 
   const [id, setId] = useState(localStorage.getItem('id') === null ? '' : localStorage.getItem('id'));
-  //const [id, setId] = useState("20");
+  //const [userId, setUserId] = useState("idplace");
 
   const [username, setUsername] = useState(
     localStorage.getItem('username') === null ? '' : localStorage.getItem('username')
