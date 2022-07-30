@@ -11,13 +11,9 @@ export const SessionProvider = ({ children }) => {
   const [isLogin, setIsLogin] = useState(localStorage.getItem('accessToken') !== null);
   //const [isLogin, setIsLogin] = useState(true);
 
-  const [accessToken, setAccessToken] = useState(
-    localStorage.getItem('accessToken') === null ? null : localStorage.getItem('accessToken')
-  );
+  const [accessToken, setAccessToken] = useState(localStorage.getItem('accessToken') === null ? null : localStorage.getItem('accessToken'));
 
-  const [refreshToken, setRefreshToken] = useState(
-    localStorage.getItem('refreshToken') === null ? null : localStorage.getItem('refreshToken')
-  );
+  const [refreshToken, setRefreshToken] = useState(localStorage.getItem('refreshToken') === null ? null : localStorage.getItem('refreshToken'));
 
   const [email, setEmail] = useState(localStorage.getItem('email') === null ? '' : localStorage.getItem('email'));
   //const [id, setId] = useState("20");
@@ -25,14 +21,10 @@ export const SessionProvider = ({ children }) => {
   const [id, setId] = useState(localStorage.getItem('id') === null ? '' : localStorage.getItem('id'));
   //const [userId, setUserId] = useState("idplace");
 
-  const [userImg, setUserImg] = useState(
-    localStorage.getItem('userImg') === null ? '' : localStorage.getItem('userImg')
-  );
+  const [userImg, setUserImg] = useState(localStorage.getItem('userImg') === null ? '' : localStorage.getItem('userImg'));
   //const [userImg, setUserImg] = useState("https://wafflestudio.com/_next/image?url=%2Fimages%2Ficon_intro.svg&w=640&q=75");
 
-  const [username, setUsername] = useState(
-    localStorage.getItem('username') === null ? '' : localStorage.getItem('username')
-  );
+  const [username, setUsername] = useState(localStorage.getItem('username') === null ? '' : localStorage.getItem('username'));
 
   const [refreshing, setRefreshing] = useState(false);
 
@@ -125,25 +117,8 @@ export const SessionProvider = ({ children }) => {
   }, [count]);
 
   return (
-    <SessionContext.Provider
-        {children}
-      value={{
-        refreshing,
-        setRefreshing,
-        isLogin,
-        accessToken,
-        refreshToken,
-        email,
-        id,
-        username,
-        setId,
-        userImg,
-        handleLogin,
-        handleLogout,
-        setUserImg,
-
-      }}
-    >
+    <SessionContext.Provider value={{ isLogin, accessToken, refreshToken, email, id, username, setId, userImg, handleLogin, handleLogout, setUserImg, refreshing, setRefreshing }}>
+      {children}
     </SessionContext.Provider>
   );
 };
