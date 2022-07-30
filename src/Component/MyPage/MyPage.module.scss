@@ -8,7 +8,7 @@
     height: 66px;
     margin-top: 20px;
     font-weight: 700;
-    font-size: 32px;
+    font-size: 2rem;
   }
 }
 
@@ -37,7 +37,7 @@
         height: 50px;
         display: flex;
         align-items: center;
-        font-size: 20px;
+        font-size: 1rem;
         font-weight: 500;
 
         >.pin {
@@ -58,11 +58,11 @@
         height: 50px;
 
         >.clickmode {
-          width: 172px;
+          width: 120px;
           background: #538DFF;
           color: white;
           border-radius: 15px 15px 0 0;
-          font-size: 24px;
+          font-size: 1rem;
           text-align: center;
           display: flex;
           flex-direction: column;
@@ -72,12 +72,12 @@
 
         >.mode {
 
-          width: 172px;
+          width: 120px;
           background: #FFFFFF;
           border: 1px solid #C4C4C4;
           color: black;
           border-radius: 15px 15px 0 0;
-          font-size: 24px;
+          font-size: 1rem;
           text-align: center;
           display: flex;
           flex-direction: column;
@@ -97,7 +97,7 @@
           top: 45px;
           font-style: normal;
           font-weight: bold;
-          font-size: 24px;
+          font-size: 1rem;
           line-height: 18px;
           /* or 75% */
 
@@ -112,6 +112,7 @@
         border-radius: 15px;
 
         height: 320px;
+        margin-bottom: 2rem;
         padding-top: 30px;
         display: flex;
         flex-direction: row;
@@ -152,7 +153,7 @@
       .title {
         margin-left: 29px;
         font-weight: bold;
-        font-size: 24px;
+        font-size: 1.2rem;
       }
 
       .posts {
@@ -168,7 +169,7 @@
           font-family: Noto Sans KR;
           font-style: normal;
           font-weight: bold;
-          font-size: 20px;
+          font-size: 1.2rem;
           line-height: 20px;
           /* or 100% */
 
@@ -186,7 +187,7 @@
 
         .key {
           font-weight: bold;
-          font-size: 20px;
+          font-size: 1.2rem;
           text-align: center;
           margin-left: 10px;
         }
@@ -195,7 +196,7 @@
           display: flex;
           font-weight: 500;
           color: #1571FF;
-          font-size: 32px;
+          font-size: 1.2rem;
           margin-left: 35px;
           height: 17px;
           line-height: 20px;

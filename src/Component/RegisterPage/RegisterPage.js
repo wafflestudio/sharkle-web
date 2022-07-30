@@ -68,7 +68,7 @@ const RegisterPage = () => {
   };
 
   return (
-    <div className={styles.registe_rpage}>
+    <div className={styles.register_page}>
       <div className={styles.main_section}>
         <h1 className={styles.welcome}>환영합니다!</h1>
         <div className={styles.description}>기본 회원 정보를 등록해주세요.</div>
@@ -101,7 +101,7 @@ const RegisterPage = () => {
             <div className={styles.input}>
               <div className={styles.input_wrapper}>
                 <input
-                  className={styles.inputbox}
+                  className={styles.input_box}
                   placeholder="이메일을 입력하세요"
                   onChange={(e) => setRegisterEmail(e.target.value)}
                 />

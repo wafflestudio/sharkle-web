@@ -216,9 +216,20 @@
   }
 
   .board_activity{
-    margin-top: 5rem;
+    margin-top: 3rem;
     width: 50%;
     margin-left: 25%;
+  }
+
+  .activity_image_upload_button{
+    margin-left: 2rem;
+    margin-bottom: 2rem;
+    width: 180px;
+    height: 180px;
+    border-style: dashed;
+    font-size: 3rem;
+    color: #8e939d;
+    background: none;
   }
 
 }
@@ -228,6 +239,7 @@
   width: auto;
   margin-top: 2rem;
   margin-left: 2rem;
+  margin-bottom: 3rem;
 
 
   .write_button{
