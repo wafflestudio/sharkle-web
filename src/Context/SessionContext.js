@@ -25,7 +25,9 @@ export const SessionProvider = ({ children }) => {
   const [id, setId] = useState(localStorage.getItem('id') === null ? '' : localStorage.getItem('id'));
   //const [userId, setUserId] = useState("idplace");
 
-  const [username, setUsername] = useState(localStorage.getItem('username') === null ? '' : localStorage.getItem('username'));
+  const [username, setUsername] = useState(
+    localStorage.getItem('username') === null ? '' : localStorage.getItem('username')
+  );
 
   const [userImg, setUserImg] = useState(
     localStorage.getItem('userImg') === null ? '' : localStorage.getItem('userImg')
@@ -34,6 +36,8 @@ export const SessionProvider = ({ children }) => {
 
   //자동 로그아웃 타이머
   const [count, setCount] = useState(0);
+
+  const [refreshing, setRefreshing] = useState(false);
 
   const handleLogin = (email, id, img, username, accessToken, refreshToken) => {
     localStorage.setItem('email', email);
@@ -74,6 +78,7 @@ export const SessionProvider = ({ children }) => {
           })
           .then((response) => {
             setAccessToken(response.data.access);
+            setRefreshing(true);
           })
           .catch((error) => {
             console.log(error);
@@ -121,7 +126,21 @@ export const SessionProvider = ({ children }) => {
 
   return (
     <SessionContext.Provider
-      value={{ isLogin, accessToken, refreshToken, email, id, username, setId, userImg, handleLogin, handleLogout, setUserImg }}
+      value={{
+        isLogin,
+        accessToken,
+        refreshToken,
+        email,
+        id,
+        username,
+        setId,
+        userImg,
+        handleLogin,
+        handleLogout,
+        setUserImg,
+        refreshing,
+        setRefreshing,
+      }}
     >
       {children}
     </SessionContext.Provider>
