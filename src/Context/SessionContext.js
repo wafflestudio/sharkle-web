@@ -128,6 +128,8 @@ export const SessionProvider = ({ children }) => {
     <SessionContext.Provider
         {children}
       value={{
+        refreshing,
+        setRefreshing,
         isLogin,
         accessToken,
         refreshToken,
@@ -139,8 +141,7 @@ export const SessionProvider = ({ children }) => {
         handleLogin,
         handleLogout,
         setUserImg,
-        refreshing,
-        setRefreshing,
+
       }}
     >
     </SessionContext.Provider>
