@@ -34,6 +34,8 @@ export const SessionProvider = ({ children }) => {
     localStorage.getItem('username') === null ? '' : localStorage.getItem('username')
   );
 
+  const [refreshing, setRefreshing] = useState(false);
+
   //자동 로그아웃 타이머
   const [count, setCount] = useState(0);
 
@@ -76,6 +78,7 @@ export const SessionProvider = ({ children }) => {
           })
           .then((response) => {
             setAccessToken(response.data.access);
+            setRefreshing(true);
           })
           .catch((error) => {
             console.log(error);
@@ -123,6 +126,7 @@ export const SessionProvider = ({ children }) => {
 
   return (
     <SessionContext.Provider
+        {children}
       value={{
         isLogin,
         accessToken,
@@ -135,9 +139,10 @@ export const SessionProvider = ({ children }) => {
         handleLogin,
         handleLogout,
         setUserImg,
+        refreshing,
+        setRefreshing,
       }}
     >
-      {children}
     </SessionContext.Provider>
   );
 };
