@@ -6,6 +6,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { useSessionContext } from '../../../../Context/SessionContext';
+import TextLimit from '../../../TextLimit/TextLimit';
 
 const QnAWrite = (props) => {
   const { isOpen, setIsOpen, circleId, curBoardId } = props;
@@ -49,6 +50,9 @@ const QnAWrite = (props) => {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
+        <div className={styles.title_limit}>
+          <TextLimit cnt={title.length} limit={20} />
+        </div>
       </div>
       <div className={styles.content_wrap}>
         <textarea
@@ -59,6 +63,9 @@ const QnAWrite = (props) => {
         />
       </div>
       <div className={styles.util}>
+        <div className={styles.content_limit}>
+          <TextLimit cnt={contents.length} limit={1000} />
+        </div>
         <div className={styles.write_wrap}>
           <button className={styles.write} onClick={handlePostQnA}>
             작성하기
