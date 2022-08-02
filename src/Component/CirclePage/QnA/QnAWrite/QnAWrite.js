@@ -11,19 +11,31 @@ import TextLimit from '../../../TextLimit/TextLimit';
 const QnAWrite = (props) => {
   const { isOpen, setIsOpen, circleId, curBoardId } = props;
   const [title, setTitle] = useState('');
+  const [hide, setHide] = useState(false);
   const [contents, setContents] = useState('');
   const { accessToken, refreshToken } = useSessionContext();
 
+  const handleHide = () => {
+    setHide(!hide);
+  };
+
   const handlePostQnA = () => {
-    console.log(title);
-    console.log(contents);
+    if (title.length > 20) {
+      toast.error('제목이 너무 길어요!');
+      return;
+    }
+    if (contents.length > 1000) {
+      toast.error('내용이 너무 많아요!');
+      return;
+    }
+    console.log(hide);
     axios
       .post(
         `api/v1/circle/${circleId}/board/${curBoardId}/article/`,
         {
           title: title,
           content: contents,
-          is_private: false,
+          is_private: hide,
         },
         {
           headers: {
@@ -63,6 +75,11 @@ const QnAWrite = (props) => {
         />
       </div>
       <div className={styles.util}>
+        <div className={styles.hide_wrap}>
+          <button className={hide ? styles.hide_on : styles.hide_off} onClick={handleHide}>
+            익명 {hide ? 'ON' : 'OFF'}
+          </button>
+        </div>
         <div className={styles.content_limit}>
           <TextLimit cnt={contents.length} limit={1000} />
         </div>

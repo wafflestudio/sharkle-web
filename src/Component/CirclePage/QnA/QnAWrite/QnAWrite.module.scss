@@ -59,9 +59,53 @@
     height: 55px;
     align-items: center;
 
+    .hide_wrap{
+      position: absolute;
+      right: 140px;
+      height: 30px;
+      width: 80px;
+      display: flex;
+
+      .hide_on{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        cursor: pointer;
+        outline: none;
+        border: none;
+        background: #12b886;
+        color: #ffffff;
+        border-radius: 24px;
+        font-weight: 500;
+        font-size: 15px;
+        line-height: 18px;
+      }
+
+      .hide_off{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        cursor: pointer;
+        outline: none;
+        border: none;
+        background: rgb(134, 142, 150);
+        color: #ffffff;
+        border-radius: 24px;
+        font-weight: 500;
+        font-size: 15px;
+        line-height: 18px;
+      }
+    }
+
     .content_limit{
       position: absolute;
-      right: 160px;
+      right: 240px;
     }
 
     .write_wrap{
