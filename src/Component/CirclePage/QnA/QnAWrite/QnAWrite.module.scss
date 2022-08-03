@@ -18,13 +18,19 @@
     padding-bottom: 3px;
     border-bottom: 1px solid #61dafb;
 
+    .title_limit{
+      position: absolute;
+      top: 15px;
+      right: 20px;
+    }
+
     .text{
       display: block;
       padding-top: 4px;
       padding-left: 20px;
       font-size: 20px;
       height: 95%;
-      width: 96%;
+      width: 80%;
       resize: none;
       line-height: 1.5;
       outline: none;
@@ -52,6 +58,65 @@
     display: flex;
     height: 55px;
     align-items: center;
+
+    .warning{
+      position: absolute;
+      left: 30px;
+      font-weight: bold;
+      font-size: 17px;
+      line-height: 15px;
+      color: #ff4242;
+
+    }
+
+    .hide_wrap{
+      position: absolute;
+      right: 140px;
+      height: 30px;
+      width: 80px;
+      display: flex;
+
+      .hide_on{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        cursor: pointer;
+        outline: none;
+        border: none;
+        background: #12b886;
+        color: #ffffff;
+        border-radius: 24px;
+        font-weight: 500;
+        font-size: 15px;
+        line-height: 18px;
+      }
+
+      .hide_off{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        cursor: pointer;
+        outline: none;
+        border: none;
+        background: rgb(134, 142, 150);
+        color: #ffffff;
+        border-radius: 24px;
+        font-weight: 500;
+        font-size: 15px;
+        line-height: 18px;
+      }
+    }
+
+    .content_limit{
+      position: absolute;
+      right: 240px;
+    }
 
     .write_wrap{
       position: absolute;

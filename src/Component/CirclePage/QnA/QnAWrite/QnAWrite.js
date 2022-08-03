@@ -6,23 +6,36 @@ import { useState } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { useSessionContext } from '../../../../Context/SessionContext';
+import TextLimit from '../../../TextLimit/TextLimit';
 
 const QnAWrite = (props) => {
   const { isOpen, setIsOpen, circleId, curBoardId } = props;
   const [title, setTitle] = useState('');
+  const [hide, setHide] = useState(false);
   const [contents, setContents] = useState('');
   const { accessToken, refreshToken } = useSessionContext();
 
+  const handleHide = () => {
+    setHide(!hide);
+  };
+
   const handlePostQnA = () => {
-    console.log(title);
-    console.log(contents);
+    if (title.length > 20) {
+      toast.error('제목이 너무 길어요!');
+      return;
+    }
+    if (contents.length > 1000) {
+      toast.error('내용이 너무 많아요!');
+      return;
+    }
+    console.log(hide);
     axios
       .post(
         `api/v1/circle/${circleId}/board/${curBoardId}/article/`,
         {
           title: title,
           content: contents,
-          is_private: false,
+          is_private: hide,
         },
         {
           headers: {
@@ -49,6 +62,9 @@ const QnAWrite = (props) => {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
+        <div className={styles.title_limit}>
+          <TextLimit cnt={title.length} limit={20} />
+        </div>
       </div>
       <div className={styles.content_wrap}>
         <textarea
@@ -59,6 +75,15 @@ const QnAWrite = (props) => {
         />
       </div>
       <div className={styles.util}>
+        <div className={styles.warning}>답변이 달린 글은 삭제할 수 없습니다.</div>
+        <div className={styles.hide_wrap}>
+          <button className={hide ? styles.hide_on : styles.hide_off} onClick={handleHide}>
+            익명 {hide ? 'ON' : 'OFF'}
+          </button>
+        </div>
+        <div className={styles.content_limit}>
+          <TextLimit cnt={contents.length} limit={1000} />
+        </div>
         <div className={styles.write_wrap}>
           <button className={styles.write} onClick={handlePostQnA}>
             작성하기

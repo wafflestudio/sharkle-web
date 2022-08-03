@@ -6,6 +6,8 @@ import axios from 'axios';
 import { createRenderer } from 'react-dom/test-utils';
 import { IoIosArrowBack } from 'react-icons/io';
 import QnAComment from './QnAComment/QnAComment';
+import DeleteModal from '../DeleteModal/DeleteModal';
+import { useSessionContext } from '../../../../Context/SessionContext';
 
 const dummyItem = {
   id: 0,
@@ -18,14 +20,21 @@ const dummyItem = {
 
 const QnAItem = (props) => {
   const { circleId, curBoardId, isLoad } = props;
+  const { username } = useSessionContext();
   const params = useParams();
   const navigate = useNavigate();
 
   const [qnaItem, setQnAItem] = useState({});
+  const [open, setOpen] = useState(false);
 
   const handleQnA = () => {
     navigate(`/circle/${params.circleName}/QnA`);
   };
+
+  const handleDelete = () => {
+    setOpen(true);
+  };
+  const handleEdit = () => {};
 
   useEffect(() => {
     if (isLoad) {
@@ -44,9 +53,21 @@ const QnAItem = (props) => {
   return (
     <div className={styles.board_wrapper}>
       <div className={styles.header_wrapper}>
-        <div className={styles.menu_wrapper} onClick={handleQnA}>
-          <IoIosArrowBack className={styles.arrow} />
-          <div className={styles.menu}>QnA</div>
+        <div className={styles.menu_wrapper}>
+          <IoIosArrowBack className={styles.arrow} onClick={handleQnA} />
+          <div className={styles.menu} onClick={handleQnA}>
+            QnA
+          </div>
+          {qnaItem.author_username === username ? (
+            <>
+              <div className={styles.edit} onClick={handleEdit}>
+                <button className={styles.edit_btn}>수정하기</button>
+              </div>
+              <div className={styles.delete} onClick={handleDelete}>
+                <button className={styles.delete_btn}>삭제하기</button>
+              </div>
+            </>
+          ) : null}
         </div>
         <div className={styles.title_wrapper}>
           <div className={styles.title}>{qnaItem.title}</div>
@@ -67,6 +88,7 @@ const QnAItem = (props) => {
       <div className={styles.comment_wrapper}>
         <QnAComment curBoardId={curBoardId} counts={qnaItem.comments_counts} />
       </div>
+      <DeleteModal isOpen={open} setIsOpen={setOpen} circleId={circleId} curBoardId={curBoardId} type={'post'} />
     </div>
   );
 };
