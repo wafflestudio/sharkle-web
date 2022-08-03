@@ -1,0 +1,75 @@
+.delete_modal{
+  position: fixed;
+  top: calc(50% - 100px);
+  left: calc(50% - 200px);
+  height: 200px;
+  width: 400px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: #fff;
+  overflow: auto;
+  outline: none;
+  animation: 0.4s ease-in-out 0s 1 normal forwards running hwrkPK;
+  box-shadow: rgb(0 0 0 / 9%) 0px 2px 12px 0px;
+
+  .title{
+    position: absolute;
+    left: 30px;
+    top: 15px;
+    font-size: 1.5rem;
+    color: var(--text1);
+    line-height: 1.5;
+    font-weight: bold;
+  }
+  .message{
+    position: absolute;
+    color: #495057;
+    left: 30px;
+    top: 70px;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  .btn{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    position: absolute;
+    bottom: 20px;
+    right: 30px;
+
+    .cancle{
+      display: inline-flex;
+      -webkit-box-align: center;
+      align-items: center;
+      -webkit-box-pack: center;
+      justify-content: center;
+      font-weight: bold;
+      cursor: pointer;
+      outline: none;
+      border: none;
+      background: none;
+      color: #12b886;
+      border-radius: 4px;
+      padding: 0px 1.25rem;
+      height: 2rem;
+      font-size: 1rem;
+    }
+    .confirm{
+      display: inline-flex;
+      -webkit-box-align: center;
+      align-items: center;
+      -webkit-box-pack: center;
+      justify-content: center;
+      font-weight: bold;
+      cursor: pointer;
+      outline: none;
+      border: none;
+      background: #12b886;
+      color: #ffffff;
+      border-radius: 4px;
+      padding: 0px 1.25rem;
+      height: 2rem;
+      font-size: 1rem;
+    }
+  }
+}

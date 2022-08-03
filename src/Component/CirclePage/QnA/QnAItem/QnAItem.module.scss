@@ -30,6 +30,44 @@
 
         color: #1571FF;
       }
+      .edit{
+        position: absolute;
+        right: 110px;
+        display: flex;
+        align-items: center;
+
+        .edit_btn{
+          width: 70px;
+          height: 30px;
+          background: #83ADFF;
+          color: #ffffff;
+          border: none;
+          border-radius: 10px;
+          font-size: 14px;
+          font-weight: 600;
+          line-height: 14px;
+          cursor: pointer;
+        }
+      }
+      .delete{
+        position: absolute;
+        right: 30px;
+        display: flex;
+        align-items: center;
+
+        .delete_btn{
+          width: 70px;
+          height: 30px;
+          background: red;
+          color: #ffffff;
+          border: none;
+          border-radius: 10px;
+          font-size: 14px;
+          font-weight: 600;
+          line-height: 14px;
+          cursor: pointer;
+        }
+      }
     }
     .title_wrapper {
       height: 40px;
