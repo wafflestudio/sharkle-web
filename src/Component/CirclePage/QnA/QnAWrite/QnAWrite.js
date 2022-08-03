@@ -75,6 +75,7 @@ const QnAWrite = (props) => {
         />
       </div>
       <div className={styles.util}>
+        <div className={styles.warning}>답변이 달린 글은 삭제할 수 없습니다.</div>
         <div className={styles.hide_wrap}>
           <button className={hide ? styles.hide_on : styles.hide_off} onClick={handleHide}>
             익명 {hide ? 'ON' : 'OFF'}

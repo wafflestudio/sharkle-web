@@ -59,6 +59,16 @@
     height: 55px;
     align-items: center;
 
+    .warning{
+      position: absolute;
+      left: 30px;
+      font-weight: bold;
+      font-size: 17px;
+      line-height: 15px;
+      color: #ff4242;
+
+    }
+
     .hide_wrap{
       position: absolute;
       right: 140px;
